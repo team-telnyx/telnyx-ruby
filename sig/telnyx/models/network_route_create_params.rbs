@@ -53,12 +53,13 @@ module Telnyx
           type: Telnyx::Models::NetworkRouteCreateParams::NextHop::type_
         }
 
-        type type_ = :tunnel
+        type type_ = :tunnel | :wireguard_peer
 
         module Type
           extend Telnyx::Internal::Type::Enum
 
           TUNNEL: :tunnel
+          WIREGUARD_PEER: :wireguard_peer
 
           def self?.values: -> ::Array[Telnyx::Models::NetworkRouteCreateParams::NextHop::type_]
         end

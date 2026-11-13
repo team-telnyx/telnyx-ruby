@@ -2,16 +2,16 @@ module Telnyx
   module Models
     type porting_order_status =
       {
-        details: ::Array[Telnyx::PortingOrdersExceptionType],
+        details: ::Array[Telnyx::PortingOrderStatus::Detail],
         value: Telnyx::Models::PortingOrderStatus::value
       }
 
     class PortingOrderStatus < Telnyx::Internal::Type::BaseModel
-      attr_reader details: ::Array[Telnyx::PortingOrdersExceptionType]?
+      attr_reader details: ::Array[Telnyx::PortingOrderStatus::Detail]?
 
       def details=: (
-        ::Array[Telnyx::PortingOrdersExceptionType]
-      ) -> ::Array[Telnyx::PortingOrdersExceptionType]
+        ::Array[Telnyx::PortingOrderStatus::Detail]
+      ) -> ::Array[Telnyx::PortingOrderStatus::Detail]
 
       attr_reader value: Telnyx::Models::PortingOrderStatus::value?
 
@@ -20,14 +20,205 @@ module Telnyx
       ) -> Telnyx::Models::PortingOrderStatus::value
 
       def initialize: (
-        ?details: ::Array[Telnyx::PortingOrdersExceptionType],
+        ?details: ::Array[Telnyx::PortingOrderStatus::Detail],
         ?value: Telnyx::Models::PortingOrderStatus::value
       ) -> void
 
       def to_hash: -> {
-        details: ::Array[Telnyx::PortingOrdersExceptionType],
+        details: ::Array[Telnyx::PortingOrderStatus::Detail],
         value: Telnyx::Models::PortingOrderStatus::value
       }
+
+      type detail =
+        {
+          code: Telnyx::Models::PortingOrderStatus::Detail::code,
+          description: String,
+          remediation: Telnyx::PortingOrderStatus::Detail::Remediation
+        }
+
+      class Detail < Telnyx::Internal::Type::BaseModel
+        attr_accessor code: Telnyx::Models::PortingOrderStatus::Detail::code
+
+        attr_accessor description: String
+
+        attr_accessor remediation: Telnyx::PortingOrderStatus::Detail::Remediation
+
+        def initialize: (
+          code: Telnyx::Models::PortingOrderStatus::Detail::code,
+          description: String,
+          remediation: Telnyx::PortingOrderStatus::Detail::Remediation
+        ) -> void
+
+        def to_hash: -> {
+          code: Telnyx::Models::PortingOrderStatus::Detail::code,
+          description: String,
+          remediation: Telnyx::PortingOrderStatus::Detail::Remediation
+        }
+
+        type code =
+          :ACCOUNT_NUMBER_MISMATCH
+          | :ACCOUNT_NUMBER_MISMATCH_OR_MISSING
+          | :ACCOUNT_NUMBER_REQUIRED
+          | :ALL_DATA_MISMATCH
+          | :AUTH_PERSON_MISMATCH
+          | :BTN_ATN_MISMATCH
+          | :DOCUMENT_BLOCKED
+          | :ENTITY_NAME_MISMATCH
+          | :FOC_EXPIRED
+          | :FOC_REJECTED
+          | :INCORRECT_LOA_TEMPLATE
+          | :INCORRECT_LOSING_COMMUNICATION_PROVIDER
+          | :INCORRECT_PORT_TYPE
+          | :INVALID_OR_MISSING_INVOICE
+          | :INVALID_OR_MISSING_LOA
+          | :INVALID_SIGNATURE_ON_THE_LOA
+          | :J2_PASSCODE_PIN_INVALID
+          | :LOA_ILLEGIBLE
+          | :LOCATION_MISMATCH
+          | :LOSING_CARRIER_OUTAGE
+          | :LSR_PENDING
+          | :MAIN_BTN_PORTING
+          | :MISSING_MANDATORY_REQUIREMENT
+          | :MISSING_NUMBER_DETAILS
+          | :NUMBER_HAS_ASSOCIATED_SERVICES
+          | :ORDER_REFLOW
+          | :OSP_IRRESPONSIVE
+          | :OTHER
+          | :PASSCODE_PIN_INVALID
+          | :PHONE_NUMBER_HAS_SPECIAL_FEATURE
+          | :PHONE_NUMBER_MISMATCH
+          | :PHONE_NUMBER_NOT_PORTABLE
+          | :PORTING_ORDER_SPLIT_REQUIRED
+          | :PORT_TYPE_INCORRECT
+          | :POSTAL_CODE_MISMATCH
+          | :RATE_CENTER_NOT_PORTABLE
+          | :RESELLER_INVALID
+          | :STRANDED_SERVICES_NEED_NEW_BTN
+          | :SV_CONFLICT
+          | :SV_UNKNOWN_FAILURE
+          | :TNS_ON_MULTIPLE_ACCOUNTS
+          | :TN_BUILD_CONFLICT
+          | :TN_DISCONNECTED
+          | :UNAUTHORIZED_PERSON_SIGNATURE
+
+        module Code
+          extend Telnyx::Internal::Type::Enum
+
+          ACCOUNT_NUMBER_MISMATCH: :ACCOUNT_NUMBER_MISMATCH
+          ACCOUNT_NUMBER_MISMATCH_OR_MISSING: :ACCOUNT_NUMBER_MISMATCH_OR_MISSING
+          ACCOUNT_NUMBER_REQUIRED: :ACCOUNT_NUMBER_REQUIRED
+          ALL_DATA_MISMATCH: :ALL_DATA_MISMATCH
+          AUTH_PERSON_MISMATCH: :AUTH_PERSON_MISMATCH
+          BTN_ATN_MISMATCH: :BTN_ATN_MISMATCH
+          DOCUMENT_BLOCKED: :DOCUMENT_BLOCKED
+          ENTITY_NAME_MISMATCH: :ENTITY_NAME_MISMATCH
+          FOC_EXPIRED: :FOC_EXPIRED
+          FOC_REJECTED: :FOC_REJECTED
+          INCORRECT_LOA_TEMPLATE: :INCORRECT_LOA_TEMPLATE
+          INCORRECT_LOSING_COMMUNICATION_PROVIDER: :INCORRECT_LOSING_COMMUNICATION_PROVIDER
+          INCORRECT_PORT_TYPE: :INCORRECT_PORT_TYPE
+          INVALID_OR_MISSING_INVOICE: :INVALID_OR_MISSING_INVOICE
+          INVALID_OR_MISSING_LOA: :INVALID_OR_MISSING_LOA
+          INVALID_SIGNATURE_ON_THE_LOA: :INVALID_SIGNATURE_ON_THE_LOA
+          J2_PASSCODE_PIN_INVALID: :J2_PASSCODE_PIN_INVALID
+          LOA_ILLEGIBLE: :LOA_ILLEGIBLE
+          LOCATION_MISMATCH: :LOCATION_MISMATCH
+          LOSING_CARRIER_OUTAGE: :LOSING_CARRIER_OUTAGE
+          LSR_PENDING: :LSR_PENDING
+          MAIN_BTN_PORTING: :MAIN_BTN_PORTING
+          MISSING_MANDATORY_REQUIREMENT: :MISSING_MANDATORY_REQUIREMENT
+          MISSING_NUMBER_DETAILS: :MISSING_NUMBER_DETAILS
+          NUMBER_HAS_ASSOCIATED_SERVICES: :NUMBER_HAS_ASSOCIATED_SERVICES
+          ORDER_REFLOW: :ORDER_REFLOW
+          OSP_IRRESPONSIVE: :OSP_IRRESPONSIVE
+          OTHER: :OTHER
+          PASSCODE_PIN_INVALID: :PASSCODE_PIN_INVALID
+          PHONE_NUMBER_HAS_SPECIAL_FEATURE: :PHONE_NUMBER_HAS_SPECIAL_FEATURE
+          PHONE_NUMBER_MISMATCH: :PHONE_NUMBER_MISMATCH
+          PHONE_NUMBER_NOT_PORTABLE: :PHONE_NUMBER_NOT_PORTABLE
+          PORTING_ORDER_SPLIT_REQUIRED: :PORTING_ORDER_SPLIT_REQUIRED
+          PORT_TYPE_INCORRECT: :PORT_TYPE_INCORRECT
+          POSTAL_CODE_MISMATCH: :POSTAL_CODE_MISMATCH
+          RATE_CENTER_NOT_PORTABLE: :RATE_CENTER_NOT_PORTABLE
+          RESELLER_INVALID: :RESELLER_INVALID
+          STRANDED_SERVICES_NEED_NEW_BTN: :STRANDED_SERVICES_NEED_NEW_BTN
+          SV_CONFLICT: :SV_CONFLICT
+          SV_UNKNOWN_FAILURE: :SV_UNKNOWN_FAILURE
+          TNS_ON_MULTIPLE_ACCOUNTS: :TNS_ON_MULTIPLE_ACCOUNTS
+          TN_BUILD_CONFLICT: :TN_BUILD_CONFLICT
+          TN_DISCONNECTED: :TN_DISCONNECTED
+          UNAUTHORIZED_PERSON_SIGNATURE: :UNAUTHORIZED_PERSON_SIGNATURE
+
+          def self?.values: -> ::Array[Telnyx::Models::PortingOrderStatus::Detail::code]
+        end
+
+        type remediation =
+          {
+            action: Telnyx::Models::PortingOrderStatus::Detail::Remediation::action,
+            fields: ::Array[String],
+            required_document: Telnyx::Models::PortingOrderStatus::Detail::Remediation::required_document?,
+            retryable: bool
+          }
+
+        class Remediation < Telnyx::Internal::Type::BaseModel
+          attr_accessor action: Telnyx::Models::PortingOrderStatus::Detail::Remediation::action
+
+          attr_accessor fields: ::Array[String]
+
+          attr_accessor required_document: Telnyx::Models::PortingOrderStatus::Detail::Remediation::required_document?
+
+          attr_accessor retryable: bool
+
+          def initialize: (
+            action: Telnyx::Models::PortingOrderStatus::Detail::Remediation::action,
+            fields: ::Array[String],
+            required_document: Telnyx::Models::PortingOrderStatus::Detail::Remediation::required_document?,
+            retryable: bool
+          ) -> void
+
+          def to_hash: -> {
+            action: Telnyx::Models::PortingOrderStatus::Detail::Remediation::action,
+            fields: ::Array[String],
+            required_document: Telnyx::Models::PortingOrderStatus::Detail::Remediation::required_document?,
+            retryable: bool
+          }
+
+          type action =
+            :update_order_fields
+            | :upload_document
+            | :create_orders
+            | :assign_foc_datetime
+            | :wait
+            | :external_action
+            | :contact_support
+
+          module Action
+            extend Telnyx::Internal::Type::Enum
+
+            UPDATE_ORDER_FIELDS: :update_order_fields
+            UPLOAD_DOCUMENT: :upload_document
+            CREATE_ORDERS: :create_orders
+            ASSIGN_FOC_DATETIME: :assign_foc_datetime
+            WAIT: :wait
+            EXTERNAL_ACTION: :external_action
+            CONTACT_SUPPORT: :contact_support
+
+            def self?.values: -> ::Array[Telnyx::Models::PortingOrderStatus::Detail::Remediation::action]
+          end
+
+          type required_document = :loa | :invoice | :null
+
+          module RequiredDocument
+            extend Telnyx::Internal::Type::Enum
+
+            LOA: :loa
+            INVOICE: :invoice
+            NULL: :null
+
+            def self?.values: -> ::Array[Telnyx::Models::PortingOrderStatus::Detail::Remediation::required_document]
+          end
+        end
+      end
 
       type value =
         :draft

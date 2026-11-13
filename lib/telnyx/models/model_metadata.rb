@@ -86,8 +86,8 @@ module Telnyx
       optional :description, String, nil?: true
 
       # @!attribute is_fine_tunable
-      #   Whether the model can be used as a base for a fine-tuning job via
-      #   `POST /v2/ai/fine_tuning/jobs`.
+      #   Whether the model can be used as a base for fine-tuning. Fine-tuning jobs are no
+      #   longer served by the Telnyx API.
       #
       #   @return [Boolean, nil]
       optional :is_fine_tunable, Telnyx::Internal::Type::Boolean
@@ -197,7 +197,7 @@ module Telnyx
       #
       #   @param description [String, nil] Short, human-readable summary of what the model is best suited for.
       #
-      #   @param is_fine_tunable [Boolean] Whether the model can be used as a base for a fine-tuning job via `POST /v2/ai/f
+      #   @param is_fine_tunable [Boolean] Whether the model can be used as a base for fine-tuning. Fine-tuning jobs are no
       #
       #   @param is_vision_supported [Boolean] Whether the model accepts image inputs in chat completions (multimodal vision su
       #

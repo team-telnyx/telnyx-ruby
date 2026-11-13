@@ -8,11 +8,11 @@ module Telnyx
       include Telnyx::Internal::Type::RequestParameters
 
       # @!attribute cidr
-      #   The IPv4 subnet to route, such as a subnet behind the tunnel. It must be a
-      #   canonical CIDR. Default, loopback, link-local, multicast, and shared address
-      #   space (`100.64.0.0/10`) ranges are rejected. So are ranges that overlap the
-      #   Tailscale Subnet Router ranges, `172.27.254.0/24` and `198.18.0.0/20`, or a
-      #   subnet already on the Network.
+      #   The IPv4 subnet to route, such as a subnet behind a tunnel or a WireGuard peer.
+      #   It must be a canonical CIDR. Default, loopback, link-local, multicast, and
+      #   shared address space (`100.64.0.0/10`) ranges are rejected. So are ranges that
+      #   overlap the Tailscale Subnet Router ranges, `172.27.254.0/24` and
+      #   `198.18.0.0/20`, or a subnet already on the Network.
       #
       #   @return [String]
       required :cidr, String
@@ -33,7 +33,7 @@ module Telnyx
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::NetworkRouteCreateParams} for more details.
       #
-      #   @param cidr [String] The IPv4 subnet to route, such as a subnet behind the tunnel. It must be a canon
+      #   @param cidr [String] The IPv4 subnet to route, such as a subnet behind a tunnel or a WireGuard peer.
       #
       #   @param network_id [String] The id of the Network to add the route to.
       #
@@ -43,7 +43,8 @@ module Telnyx
 
       class NextHop < Telnyx::Internal::Type::BaseModel
         # @!attribute id
-        #   The id of the tunnel.
+        #   The id of the tunnel, or of a WireGuard peer on the Network's WireGuard
+        #   Interface.
         #
         #   @return [String]
         required :id, String
@@ -55,9 +56,12 @@ module Telnyx
         required :type, enum: -> { Telnyx::NetworkRouteCreateParams::NextHop::Type }
 
         # @!method initialize(id:, type:)
+        #   Some parameter documentations has been truncated, see
+        #   {Telnyx::Models::NetworkRouteCreateParams::NextHop} for more details.
+        #
         #   Where the Network sends traffic for `cidr`.
         #
-        #   @param id [String] The id of the tunnel.
+        #   @param id [String] The id of the tunnel, or of a WireGuard peer on the Network's WireGuard Interfac
         #
         #   @param type [Symbol, Telnyx::Models::NetworkRouteCreateParams::NextHop::Type] The type of the next hop.
 
@@ -68,6 +72,7 @@ module Telnyx
           extend Telnyx::Internal::Type::Enum
 
           TUNNEL = :tunnel
+          WIREGUARD_PEER = :wireguard_peer
 
           # @!method self.values
           #   @return [Array<Symbol>]

@@ -20,15 +20,13 @@ module Telnyx
       # parameters.
       #
       # Supported providers: `aws`, `telnyx`, `azure`, `elevenlabs`, `minimax`,
-      # `resemble`, `xai`, `humain`, `soniox`, `assemblyai`.
+      # `resemble`, `xai`, `humain`, `soniox`.
       #
       # The Telnyx `Ultra` model supports 44 languages with emotion control, speed
       # adjustment, and volume control. Use the `telnyx` provider-specific parameters to
       # configure these features.
       #
-      # @overload generate_speech(assemblyai: nil, aws: nil, azure: nil, disable_cache: nil, elevenlabs: nil, humain: nil, language: nil, minimax: nil, output_type: nil, provider: nil, resemble: nil, soniox: nil, telnyx: nil, text: nil, text_type: nil, voice: nil, voice_settings: nil, xai: nil, request_options: {})
-      #
-      # @param assemblyai [::Telnyx::Models::TextToSpeechGenerateSpeechParams::Assemblyai] AssemblyAI provider-specific parameters. Every voice speaks all six supported la
+      # @overload generate_speech(aws: nil, azure: nil, disable_cache: nil, elevenlabs: nil, humain: nil, language: nil, minimax: nil, output_type: nil, provider: nil, resemble: nil, soniox: nil, telnyx: nil, text: nil, text_type: nil, voice: nil, voice_settings: nil, xai: nil, request_options: {})
       #
       # @param aws [::Telnyx::Models::TextToSpeechGenerateSpeechParams::Aws] AWS Polly provider-specific parameters.
       #
@@ -118,7 +116,7 @@ module Telnyx
       # synthesize; receive JSON frames containing base64-encoded audio chunks.
       #
       # Supported providers: `aws`, `telnyx`, `azure`, `minimax`, `resemble`,
-      # `elevenlabs`, `xai`, `humain`, `soniox`, `assemblyai`.
+      # `elevenlabs`, `xai`, `humain`, `soniox`.
       #
       # **Connection flow:**
       #

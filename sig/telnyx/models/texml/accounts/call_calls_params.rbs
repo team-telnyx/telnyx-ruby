@@ -84,6 +84,14 @@ module Telnyx
                 status_callback: String,
                 status_callback_event: String,
                 status_callback_method: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL::status_callback_method,
+                stream_auth_token: String,
+                stream_bidirectional_codec: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL::stream_bidirectional_codec,
+                stream_bidirectional_mode: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL::stream_bidirectional_mode,
+                stream_bidirectional_sampling_rate: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL::stream_bidirectional_sampling_rate,
+                stream_codec: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL::stream_codec,
+                stream_establish_before_call_originate: bool,
+                stream_track: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL::stream_track,
+                stream_url: String,
                 supervise_call_sid: String,
                 supervising_role: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL::supervising_role,
                 texml: String?,
@@ -303,6 +311,48 @@ module Telnyx
                 Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL::status_callback_method
               ) -> Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL::status_callback_method
 
+              attr_reader stream_auth_token: String?
+
+              def stream_auth_token=: (String) -> String
+
+              attr_reader stream_bidirectional_codec: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL::stream_bidirectional_codec?
+
+              def stream_bidirectional_codec=: (
+                Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL::stream_bidirectional_codec
+              ) -> Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL::stream_bidirectional_codec
+
+              attr_reader stream_bidirectional_mode: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL::stream_bidirectional_mode?
+
+              def stream_bidirectional_mode=: (
+                Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL::stream_bidirectional_mode
+              ) -> Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL::stream_bidirectional_mode
+
+              attr_reader stream_bidirectional_sampling_rate: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL::stream_bidirectional_sampling_rate?
+
+              def stream_bidirectional_sampling_rate=: (
+                Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL::stream_bidirectional_sampling_rate
+              ) -> Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL::stream_bidirectional_sampling_rate
+
+              attr_reader stream_codec: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL::stream_codec?
+
+              def stream_codec=: (
+                Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL::stream_codec
+              ) -> Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL::stream_codec
+
+              attr_reader stream_establish_before_call_originate: bool?
+
+              def stream_establish_before_call_originate=: (bool) -> bool
+
+              attr_reader stream_track: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL::stream_track?
+
+              def stream_track=: (
+                Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL::stream_track
+              ) -> Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL::stream_track
+
+              attr_reader stream_url: String?
+
+              def stream_url=: (String) -> String
+
               attr_reader supervise_call_sid: String?
 
               def supervise_call_sid=: (String) -> String
@@ -385,6 +435,14 @@ module Telnyx
                 ?status_callback: String,
                 ?status_callback_event: String,
                 ?status_callback_method: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL::status_callback_method,
+                ?stream_auth_token: String,
+                ?stream_bidirectional_codec: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL::stream_bidirectional_codec,
+                ?stream_bidirectional_mode: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL::stream_bidirectional_mode,
+                ?stream_bidirectional_sampling_rate: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL::stream_bidirectional_sampling_rate,
+                ?stream_codec: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL::stream_codec,
+                ?stream_establish_before_call_originate: bool,
+                ?stream_track: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL::stream_track,
+                ?stream_url: String,
                 ?supervise_call_sid: String,
                 ?supervising_role: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL::supervising_role,
                 ?texml: String?,
@@ -441,6 +499,14 @@ module Telnyx
                 status_callback: String,
                 status_callback_event: String,
                 status_callback_method: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL::status_callback_method,
+                stream_auth_token: String,
+                stream_bidirectional_codec: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL::stream_bidirectional_codec,
+                stream_bidirectional_mode: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL::stream_bidirectional_mode,
+                stream_bidirectional_sampling_rate: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL::stream_bidirectional_sampling_rate,
+                stream_codec: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL::stream_codec,
+                stream_establish_before_call_originate: bool,
+                stream_track: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL::stream_track,
+                stream_url: String,
                 supervise_call_sid: String,
                 supervising_role: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL::supervising_role,
                 texml: String?,
@@ -602,6 +668,78 @@ module Telnyx
                 def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL::status_callback_method]
               end
 
+              type stream_bidirectional_codec =
+                :PCMU | :PCMA | :G722 | :OPUS | :"AMR-WB" | :L16
+
+              module StreamBidirectionalCodec
+                extend Telnyx::Internal::Type::Enum
+
+                PCMU: :PCMU
+                PCMA: :PCMA
+                G722: :G722
+                OPUS: :OPUS
+                AMR_WB: :"AMR-WB"
+                L16: :L16
+
+                def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL::stream_bidirectional_codec]
+              end
+
+              type stream_bidirectional_mode = :mp3 | :rtp
+
+              module StreamBidirectionalMode
+                extend Telnyx::Internal::Type::Enum
+
+                MP3: :mp3
+                RTP: :rtp
+
+                def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL::stream_bidirectional_mode]
+              end
+
+              type stream_bidirectional_sampling_rate =
+                8000 | 16000 | 22050 | 24000 | 48000
+
+              module StreamBidirectionalSamplingRate
+                extend Telnyx::Internal::Type::Enum
+
+                STREAM_BIDIRECTIONAL_SAMPLING_RATE_8000: 8000
+                STREAM_BIDIRECTIONAL_SAMPLING_RATE_16000: 16000
+                STREAM_BIDIRECTIONAL_SAMPLING_RATE_22050: 22050
+                STREAM_BIDIRECTIONAL_SAMPLING_RATE_24000: 24000
+                STREAM_BIDIRECTIONAL_SAMPLING_RATE_48000: 48000
+
+                def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL::stream_bidirectional_sampling_rate]
+              end
+
+              type stream_codec =
+                :PCMU | :PCMA | :G722 | :OPUS | :"AMR-WB" | :L16 | :default
+
+              module StreamCodec
+                extend Telnyx::Internal::Type::Enum
+
+                PCMU: :PCMU
+                PCMA: :PCMA
+                G722: :G722
+                OPUS: :OPUS
+                AMR_WB: :"AMR-WB"
+                L16: :L16
+                DEFAULT: :default
+
+                def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL::stream_codec]
+              end
+
+              type stream_track =
+                :inbound_track | :outbound_track | :both_tracks
+
+              module StreamTrack
+                extend Telnyx::Internal::Type::Enum
+
+                INBOUND_TRACK: :inbound_track
+                OUTBOUND_TRACK: :outbound_track
+                BOTH_TRACKS: :both_tracks
+
+                def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL::stream_track]
+              end
+
               type supervising_role = :barge | :whisper | :monitor
 
               module SupervisingRole
@@ -684,6 +822,14 @@ module Telnyx
                 status_callback: String,
                 status_callback_event: String,
                 status_callback_method: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml::status_callback_method,
+                stream_auth_token: String,
+                stream_bidirectional_codec: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml::stream_bidirectional_codec,
+                stream_bidirectional_mode: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml::stream_bidirectional_mode,
+                stream_bidirectional_sampling_rate: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml::stream_bidirectional_sampling_rate,
+                stream_codec: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml::stream_codec,
+                stream_establish_before_call_originate: bool,
+                stream_track: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml::stream_track,
+                stream_url: String,
                 supervise_call_sid: String,
                 supervising_role: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml::supervising_role,
                 time_limit: Integer,
@@ -903,6 +1049,48 @@ module Telnyx
                 Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml::status_callback_method
               ) -> Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml::status_callback_method
 
+              attr_reader stream_auth_token: String?
+
+              def stream_auth_token=: (String) -> String
+
+              attr_reader stream_bidirectional_codec: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml::stream_bidirectional_codec?
+
+              def stream_bidirectional_codec=: (
+                Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml::stream_bidirectional_codec
+              ) -> Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml::stream_bidirectional_codec
+
+              attr_reader stream_bidirectional_mode: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml::stream_bidirectional_mode?
+
+              def stream_bidirectional_mode=: (
+                Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml::stream_bidirectional_mode
+              ) -> Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml::stream_bidirectional_mode
+
+              attr_reader stream_bidirectional_sampling_rate: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml::stream_bidirectional_sampling_rate?
+
+              def stream_bidirectional_sampling_rate=: (
+                Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml::stream_bidirectional_sampling_rate
+              ) -> Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml::stream_bidirectional_sampling_rate
+
+              attr_reader stream_codec: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml::stream_codec?
+
+              def stream_codec=: (
+                Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml::stream_codec
+              ) -> Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml::stream_codec
+
+              attr_reader stream_establish_before_call_originate: bool?
+
+              def stream_establish_before_call_originate=: (bool) -> bool
+
+              attr_reader stream_track: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml::stream_track?
+
+              def stream_track=: (
+                Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml::stream_track
+              ) -> Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml::stream_track
+
+              attr_reader stream_url: String?
+
+              def stream_url=: (String) -> String
+
               attr_reader supervise_call_sid: String?
 
               def supervise_call_sid=: (String) -> String
@@ -985,6 +1173,14 @@ module Telnyx
                 ?status_callback: String,
                 ?status_callback_event: String,
                 ?status_callback_method: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml::status_callback_method,
+                ?stream_auth_token: String,
+                ?stream_bidirectional_codec: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml::stream_bidirectional_codec,
+                ?stream_bidirectional_mode: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml::stream_bidirectional_mode,
+                ?stream_bidirectional_sampling_rate: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml::stream_bidirectional_sampling_rate,
+                ?stream_codec: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml::stream_codec,
+                ?stream_establish_before_call_originate: bool,
+                ?stream_track: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml::stream_track,
+                ?stream_url: String,
                 ?supervise_call_sid: String,
                 ?supervising_role: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml::supervising_role,
                 ?time_limit: Integer,
@@ -1041,6 +1237,14 @@ module Telnyx
                 status_callback: String,
                 status_callback_event: String,
                 status_callback_method: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml::status_callback_method,
+                stream_auth_token: String,
+                stream_bidirectional_codec: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml::stream_bidirectional_codec,
+                stream_bidirectional_mode: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml::stream_bidirectional_mode,
+                stream_bidirectional_sampling_rate: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml::stream_bidirectional_sampling_rate,
+                stream_codec: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml::stream_codec,
+                stream_establish_before_call_originate: bool,
+                stream_track: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml::stream_track,
+                stream_url: String,
                 supervise_call_sid: String,
                 supervising_role: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml::supervising_role,
                 time_limit: Integer,
@@ -1202,6 +1406,78 @@ module Telnyx
                 def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml::status_callback_method]
               end
 
+              type stream_bidirectional_codec =
+                :PCMU | :PCMA | :G722 | :OPUS | :"AMR-WB" | :L16
+
+              module StreamBidirectionalCodec
+                extend Telnyx::Internal::Type::Enum
+
+                PCMU: :PCMU
+                PCMA: :PCMA
+                G722: :G722
+                OPUS: :OPUS
+                AMR_WB: :"AMR-WB"
+                L16: :L16
+
+                def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml::stream_bidirectional_codec]
+              end
+
+              type stream_bidirectional_mode = :mp3 | :rtp
+
+              module StreamBidirectionalMode
+                extend Telnyx::Internal::Type::Enum
+
+                MP3: :mp3
+                RTP: :rtp
+
+                def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml::stream_bidirectional_mode]
+              end
+
+              type stream_bidirectional_sampling_rate =
+                8000 | 16000 | 22050 | 24000 | 48000
+
+              module StreamBidirectionalSamplingRate
+                extend Telnyx::Internal::Type::Enum
+
+                STREAM_BIDIRECTIONAL_SAMPLING_RATE_8000: 8000
+                STREAM_BIDIRECTIONAL_SAMPLING_RATE_16000: 16000
+                STREAM_BIDIRECTIONAL_SAMPLING_RATE_22050: 22050
+                STREAM_BIDIRECTIONAL_SAMPLING_RATE_24000: 24000
+                STREAM_BIDIRECTIONAL_SAMPLING_RATE_48000: 48000
+
+                def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml::stream_bidirectional_sampling_rate]
+              end
+
+              type stream_codec =
+                :PCMU | :PCMA | :G722 | :OPUS | :"AMR-WB" | :L16 | :default
+
+              module StreamCodec
+                extend Telnyx::Internal::Type::Enum
+
+                PCMU: :PCMU
+                PCMA: :PCMA
+                G722: :G722
+                OPUS: :OPUS
+                AMR_WB: :"AMR-WB"
+                L16: :L16
+                DEFAULT: :default
+
+                def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml::stream_codec]
+              end
+
+              type stream_track =
+                :inbound_track | :outbound_track | :both_tracks
+
+              module StreamTrack
+                extend Telnyx::Internal::Type::Enum
+
+                INBOUND_TRACK: :inbound_track
+                OUTBOUND_TRACK: :outbound_track
+                BOTH_TRACKS: :both_tracks
+
+                def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml::stream_track]
+              end
+
               type supervising_role = :barge | :whisper | :monitor
 
               module SupervisingRole
@@ -1283,6 +1559,14 @@ module Telnyx
                 status_callback: String,
                 status_callback_event: String,
                 status_callback_method: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::status_callback_method,
+                stream_auth_token: String,
+                stream_bidirectional_codec: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::stream_bidirectional_codec,
+                stream_bidirectional_mode: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::stream_bidirectional_mode,
+                stream_bidirectional_sampling_rate: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::stream_bidirectional_sampling_rate,
+                stream_codec: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::stream_codec,
+                stream_establish_before_call_originate: bool,
+                stream_track: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::stream_track,
+                stream_url: String,
                 supervise_call_sid: String,
                 supervising_role: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::supervising_role,
                 texml: String?,
@@ -1501,6 +1785,48 @@ module Telnyx
                 Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::status_callback_method
               ) -> Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::status_callback_method
 
+              attr_reader stream_auth_token: String?
+
+              def stream_auth_token=: (String) -> String
+
+              attr_reader stream_bidirectional_codec: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::stream_bidirectional_codec?
+
+              def stream_bidirectional_codec=: (
+                Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::stream_bidirectional_codec
+              ) -> Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::stream_bidirectional_codec
+
+              attr_reader stream_bidirectional_mode: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::stream_bidirectional_mode?
+
+              def stream_bidirectional_mode=: (
+                Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::stream_bidirectional_mode
+              ) -> Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::stream_bidirectional_mode
+
+              attr_reader stream_bidirectional_sampling_rate: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::stream_bidirectional_sampling_rate?
+
+              def stream_bidirectional_sampling_rate=: (
+                Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::stream_bidirectional_sampling_rate
+              ) -> Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::stream_bidirectional_sampling_rate
+
+              attr_reader stream_codec: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::stream_codec?
+
+              def stream_codec=: (
+                Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::stream_codec
+              ) -> Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::stream_codec
+
+              attr_reader stream_establish_before_call_originate: bool?
+
+              def stream_establish_before_call_originate=: (bool) -> bool
+
+              attr_reader stream_track: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::stream_track?
+
+              def stream_track=: (
+                Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::stream_track
+              ) -> Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::stream_track
+
+              attr_reader stream_url: String?
+
+              def stream_url=: (String) -> String
+
               attr_reader supervise_call_sid: String?
 
               def supervise_call_sid=: (String) -> String
@@ -1584,6 +1910,14 @@ module Telnyx
                 ?status_callback: String,
                 ?status_callback_event: String,
                 ?status_callback_method: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::status_callback_method,
+                ?stream_auth_token: String,
+                ?stream_bidirectional_codec: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::stream_bidirectional_codec,
+                ?stream_bidirectional_mode: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::stream_bidirectional_mode,
+                ?stream_bidirectional_sampling_rate: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::stream_bidirectional_sampling_rate,
+                ?stream_codec: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::stream_codec,
+                ?stream_establish_before_call_originate: bool,
+                ?stream_track: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::stream_track,
+                ?stream_url: String,
                 ?supervise_call_sid: String,
                 ?supervising_role: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::supervising_role,
                 ?texml: String?,
@@ -1640,6 +1974,14 @@ module Telnyx
                 status_callback: String,
                 status_callback_event: String,
                 status_callback_method: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::status_callback_method,
+                stream_auth_token: String,
+                stream_bidirectional_codec: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::stream_bidirectional_codec,
+                stream_bidirectional_mode: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::stream_bidirectional_mode,
+                stream_bidirectional_sampling_rate: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::stream_bidirectional_sampling_rate,
+                stream_codec: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::stream_codec,
+                stream_establish_before_call_originate: bool,
+                stream_track: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::stream_track,
+                stream_url: String,
                 supervise_call_sid: String,
                 supervising_role: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::supervising_role,
                 texml: String?,
@@ -1800,6 +2142,78 @@ module Telnyx
                 POST: :POST
 
                 def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::status_callback_method]
+              end
+
+              type stream_bidirectional_codec =
+                :PCMU | :PCMA | :G722 | :OPUS | :"AMR-WB" | :L16
+
+              module StreamBidirectionalCodec
+                extend Telnyx::Internal::Type::Enum
+
+                PCMU: :PCMU
+                PCMA: :PCMA
+                G722: :G722
+                OPUS: :OPUS
+                AMR_WB: :"AMR-WB"
+                L16: :L16
+
+                def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::stream_bidirectional_codec]
+              end
+
+              type stream_bidirectional_mode = :mp3 | :rtp
+
+              module StreamBidirectionalMode
+                extend Telnyx::Internal::Type::Enum
+
+                MP3: :mp3
+                RTP: :rtp
+
+                def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::stream_bidirectional_mode]
+              end
+
+              type stream_bidirectional_sampling_rate =
+                8000 | 16000 | 22050 | 24000 | 48000
+
+              module StreamBidirectionalSamplingRate
+                extend Telnyx::Internal::Type::Enum
+
+                STREAM_BIDIRECTIONAL_SAMPLING_RATE_8000: 8000
+                STREAM_BIDIRECTIONAL_SAMPLING_RATE_16000: 16000
+                STREAM_BIDIRECTIONAL_SAMPLING_RATE_22050: 22050
+                STREAM_BIDIRECTIONAL_SAMPLING_RATE_24000: 24000
+                STREAM_BIDIRECTIONAL_SAMPLING_RATE_48000: 48000
+
+                def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::stream_bidirectional_sampling_rate]
+              end
+
+              type stream_codec =
+                :PCMU | :PCMA | :G722 | :OPUS | :"AMR-WB" | :L16 | :default
+
+              module StreamCodec
+                extend Telnyx::Internal::Type::Enum
+
+                PCMU: :PCMU
+                PCMA: :PCMA
+                G722: :G722
+                OPUS: :OPUS
+                AMR_WB: :"AMR-WB"
+                L16: :L16
+                DEFAULT: :default
+
+                def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::stream_codec]
+              end
+
+              type stream_track =
+                :inbound_track | :outbound_track | :both_tracks
+
+              module StreamTrack
+                extend Telnyx::Internal::Type::Enum
+
+                INBOUND_TRACK: :inbound_track
+                OUTBOUND_TRACK: :outbound_track
+                BOTH_TRACKS: :both_tracks
+
+                def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::stream_track]
               end
 
               type supervising_role = :barge | :whisper | :monitor

@@ -70,7 +70,19 @@ module Telnyx
 
         # When `true`, the injected messages immediately trigger an assistant
         # response/turn instead of waiting for the next natural turn or idle timeout. This
-        # may interrupt a user who is still speaking.
+        # may interrupt a user who is still speaking. How the turn starts depends on the
+        # last message in `messages`: if it is a `user` message, the assistant responds to
+        # that message as if the caller had said it, whether or not `trigger_response` is
+        # set. Any other last role (`system`, `developer`, `assistant`, `tool`) starts a
+        # turn with no new user input, as after a long silence. When `trigger_response` is
+        # not set, a payload that does not end in a `user` message is context only and
+        # does not start a turn. GPT Live models (`openai/gpt-live-*`) do not support a
+        # forced mid-session turn: injected `system`, `developer`, and `assistant` content
+        # is appended to the Live session's instructions and the model brings it into its
+        # next turn on its own; an injected `tool` record is not forwarded to the Live
+        # session, so it stays context only and never reaches the Live model. Any of
+        # `user`, `system`, `developer`, or `assistant` is the supported way to get
+        # content into the Live session.
         sig { returns(T.nilable(T::Boolean)) }
         attr_reader :trigger_response
 
@@ -108,7 +120,19 @@ module Telnyx
           messages: nil,
           # When `true`, the injected messages immediately trigger an assistant
           # response/turn instead of waiting for the next natural turn or idle timeout. This
-          # may interrupt a user who is still speaking.
+          # may interrupt a user who is still speaking. How the turn starts depends on the
+          # last message in `messages`: if it is a `user` message, the assistant responds to
+          # that message as if the caller had said it, whether or not `trigger_response` is
+          # set. Any other last role (`system`, `developer`, `assistant`, `tool`) starts a
+          # turn with no new user input, as after a long silence. When `trigger_response` is
+          # not set, a payload that does not end in a `user` message is context only and
+          # does not start a turn. GPT Live models (`openai/gpt-live-*`) do not support a
+          # forced mid-session turn: injected `system`, `developer`, and `assistant` content
+          # is appended to the Live session's instructions and the model brings it into its
+          # next turn on its own; an injected `tool` record is not forwarded to the Live
+          # session, so it stays context only and never reaches the Live model. Any of
+          # `user`, `system`, `developer`, or `assistant` is the supported way to get
+          # content into the Live session.
           trigger_response: nil,
           request_options: {}
         )

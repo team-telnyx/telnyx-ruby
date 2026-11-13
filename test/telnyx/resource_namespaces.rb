@@ -56,9 +56,6 @@ module Telnyx
         module Embeddings
         end
 
-        module FineTuning
-        end
-
         module Integrations
         end
 
@@ -216,9 +213,6 @@ module Telnyx
       end
 
       module Faxes
-      end
-
-      module FineTuning
       end
 
       module FqdnConnections

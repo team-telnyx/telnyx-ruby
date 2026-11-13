@@ -137,7 +137,7 @@ module Telnyx
             attr_writer :record_id
 
             # The source record kind this chunk came from (e.g. `voice`, `meeting_bot`,
-            # `message`).
+            # `message`, `email`, `whatsapp`).
             sig { returns(T.nilable(String)) }
             attr_reader :record_type
 
@@ -197,7 +197,7 @@ module Telnyx
               record_created_at: nil,
               record_id: nil,
               # The source record kind this chunk came from (e.g. `voice`, `meeting_bot`,
-              # `message`).
+              # `message`, `email`, `whatsapp`).
               record_type: nil,
               region: nil,
               # Relevance score (higher = more relevant) for ranked search. `0.0` for plain

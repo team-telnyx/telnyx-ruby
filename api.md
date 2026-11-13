@@ -394,17 +394,6 @@ Methods:
 - <code title="get /ai/embeddings/buckets">client.ai.embeddings.buckets.<a href="./lib/telnyx/resources/ai/embeddings/buckets.rb">list</a>()</code>
 - <code title="delete /ai/embeddings/buckets/{bucket_name}">client.ai.embeddings.buckets.<a href="./lib/telnyx/resources/ai/embeddings/buckets.rb">delete</a>(\*\*params)</code>
 
-## FineTuning
-
-### Jobs
-
-Methods:
-
-- <code title="post /ai/fine_tuning/jobs">client.ai.fine_tuning.jobs.<a href="./lib/telnyx/resources/ai/fine_tuning/jobs.rb">create</a>(\*\*params)</code>
-- <code title="get /ai/fine_tuning/jobs/{job_id}">client.ai.fine_tuning.jobs.<a href="./lib/telnyx/resources/ai/fine_tuning/jobs.rb">retrieve</a>(\*\*params)</code>
-- <code title="get /ai/fine_tuning/jobs">client.ai.fine_tuning.jobs.<a href="./lib/telnyx/resources/ai/fine_tuning/jobs.rb">list</a>()</code>
-- <code title="post /ai/fine_tuning/jobs/{job_id}/cancel">client.ai.fine_tuning.jobs.<a href="./lib/telnyx/resources/ai/fine_tuning/jobs.rb">cancel</a>(\*\*params)</code>
-
 ## Integrations
 
 Methods:
@@ -1554,7 +1543,7 @@ Methods:
 
 Methods:
 
-- <code title="post /v2/payment/stored_payment_transactions">client.payment.<a href="./lib/telnyx/resources/payment.rb">create_stored_payment_transaction</a>(\*\*params)</code>
+- <code title="post /payment/stored_payment_transactions">client.payment.<a href="./lib/telnyx/resources/payment.rb">create_stored_payment_transaction</a>(\*\*params)</code>
 
 ## AutoRechargePrefs
 
@@ -2556,9 +2545,9 @@ Methods:
 
 Methods:
 
-- <code title="get /v2/mobile_phone_numbers/{id}">client.mobile_phone_numbers.<a href="./lib/telnyx/resources/mobile_phone_numbers.rb">retrieve</a>(\*\*params)</code>
-- <code title="patch /v2/mobile_phone_numbers/{id}">client.mobile_phone_numbers.<a href="./lib/telnyx/resources/mobile_phone_numbers.rb">update</a>(\*\*params)</code>
-- <code title="get /v2/mobile_phone_numbers">client.mobile_phone_numbers.<a href="./lib/telnyx/resources/mobile_phone_numbers.rb">list</a>(\*\*params)</code>
+- <code title="get /mobile_phone_numbers/{id}">client.mobile_phone_numbers.<a href="./lib/telnyx/resources/mobile_phone_numbers.rb">retrieve</a>(\*\*params)</code>
+- <code title="patch /mobile_phone_numbers/{id}">client.mobile_phone_numbers.<a href="./lib/telnyx/resources/mobile_phone_numbers.rb">update</a>(\*\*params)</code>
+- <code title="get /mobile_phone_numbers">client.mobile_phone_numbers.<a href="./lib/telnyx/resources/mobile_phone_numbers.rb">list</a>(\*\*params)</code>
 
 ## Messaging
 
@@ -2571,11 +2560,11 @@ Methods:
 
 Methods:
 
-- <code title="post /v2/mobile_voice_connections">client.mobile_voice_connections.<a href="./lib/telnyx/resources/mobile_voice_connections.rb">create</a>(\*\*params)</code>
-- <code title="get /v2/mobile_voice_connections/{id}">client.mobile_voice_connections.<a href="./lib/telnyx/resources/mobile_voice_connections.rb">retrieve</a>(\*\*params)</code>
-- <code title="patch /v2/mobile_voice_connections/{id}">client.mobile_voice_connections.<a href="./lib/telnyx/resources/mobile_voice_connections.rb">update</a>(\*\*params)</code>
-- <code title="get /v2/mobile_voice_connections">client.mobile_voice_connections.<a href="./lib/telnyx/resources/mobile_voice_connections.rb">list</a>(\*\*params)</code>
-- <code title="delete /v2/mobile_voice_connections/{id}">client.mobile_voice_connections.<a href="./lib/telnyx/resources/mobile_voice_connections.rb">delete</a>(\*\*params)</code>
+- <code title="post /mobile_voice_connections">client.mobile_voice_connections.<a href="./lib/telnyx/resources/mobile_voice_connections.rb">create</a>(\*\*params)</code>
+- <code title="get /mobile_voice_connections/{id}">client.mobile_voice_connections.<a href="./lib/telnyx/resources/mobile_voice_connections.rb">retrieve</a>(\*\*params)</code>
+- <code title="patch /mobile_voice_connections/{id}">client.mobile_voice_connections.<a href="./lib/telnyx/resources/mobile_voice_connections.rb">update</a>(\*\*params)</code>
+- <code title="get /mobile_voice_connections">client.mobile_voice_connections.<a href="./lib/telnyx/resources/mobile_voice_connections.rb">list</a>(\*\*params)</code>
+- <code title="delete /mobile_voice_connections/{id}">client.mobile_voice_connections.<a href="./lib/telnyx/resources/mobile_voice_connections.rb">delete</a>(\*\*params)</code>
 
 # Messaging10dlc
 

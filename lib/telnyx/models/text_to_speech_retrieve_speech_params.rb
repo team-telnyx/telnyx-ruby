@@ -105,7 +105,6 @@ module Telnyx
         XAI = :xai
         HUMAIN = :humain
         SONIOX = :soniox
-        ASSEMBLYAI = :assemblyai
 
         # @!method self.values
         #   @return [Array<Symbol>]

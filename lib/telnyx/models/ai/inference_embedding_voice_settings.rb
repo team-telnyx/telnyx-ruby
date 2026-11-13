@@ -49,10 +49,8 @@ module Telnyx
 
         # @!attribute language
         #   Two-letter ISO 639-1 code of the language the voice speaks, for example `es`.
-        #   Only applicable to Soniox and AssemblyAI voices, which speak every language of
-        #   their model. AssemblyAI accepts `en`, `es`, `de`, `fr`, `it`, and `pt`, as a
-        #   literal code: a dynamic variable is rejected. When unset, the voice speaks
-        #   English.
+        #   Only applicable to Soniox voices, which speak every language of their model.
+        #   When unset, the voice speaks English.
         #
         #   @return [String, nil]
         optional :language, String, nil?: true

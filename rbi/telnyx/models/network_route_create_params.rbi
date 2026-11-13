@@ -11,11 +11,11 @@ module Telnyx
           T.any(Telnyx::NetworkRouteCreateParams, Telnyx::Internal::AnyHash)
         end
 
-      # The IPv4 subnet to route, such as a subnet behind the tunnel. It must be a
-      # canonical CIDR. Default, loopback, link-local, multicast, and shared address
-      # space (`100.64.0.0/10`) ranges are rejected. So are ranges that overlap the
-      # Tailscale Subnet Router ranges, `172.27.254.0/24` and `198.18.0.0/20`, or a
-      # subnet already on the Network.
+      # The IPv4 subnet to route, such as a subnet behind a tunnel or a WireGuard peer.
+      # It must be a canonical CIDR. Default, loopback, link-local, multicast, and
+      # shared address space (`100.64.0.0/10`) ranges are rejected. So are ranges that
+      # overlap the Tailscale Subnet Router ranges, `172.27.254.0/24` and
+      # `198.18.0.0/20`, or a subnet already on the Network.
       sig { returns(String) }
       attr_accessor :cidr
 
@@ -41,11 +41,11 @@ module Telnyx
         ).returns(T.attached_class)
       end
       def self.new(
-        # The IPv4 subnet to route, such as a subnet behind the tunnel. It must be a
-        # canonical CIDR. Default, loopback, link-local, multicast, and shared address
-        # space (`100.64.0.0/10`) ranges are rejected. So are ranges that overlap the
-        # Tailscale Subnet Router ranges, `172.27.254.0/24` and `198.18.0.0/20`, or a
-        # subnet already on the Network.
+        # The IPv4 subnet to route, such as a subnet behind a tunnel or a WireGuard peer.
+        # It must be a canonical CIDR. Default, loopback, link-local, multicast, and
+        # shared address space (`100.64.0.0/10`) ranges are rejected. So are ranges that
+        # overlap the Tailscale Subnet Router ranges, `172.27.254.0/24` and
+        # `198.18.0.0/20`, or a subnet already on the Network.
         cidr:,
         # The id of the Network to add the route to.
         network_id:,
@@ -77,7 +77,8 @@ module Telnyx
             )
           end
 
-        # The id of the tunnel.
+        # The id of the tunnel, or of a WireGuard peer on the Network's WireGuard
+        # Interface.
         sig { returns(String) }
         attr_accessor :id
 
@@ -95,7 +96,8 @@ module Telnyx
           ).returns(T.attached_class)
         end
         def self.new(
-          # The id of the tunnel.
+          # The id of the tunnel, or of a WireGuard peer on the Network's WireGuard
+          # Interface.
           id:,
           # The type of the next hop.
           type:
@@ -126,6 +128,11 @@ module Telnyx
           TUNNEL =
             T.let(
               :tunnel,
+              Telnyx::NetworkRouteCreateParams::NextHop::Type::TaggedSymbol
+            )
+          WIREGUARD_PEER =
+            T.let(
+              :wireguard_peer,
               Telnyx::NetworkRouteCreateParams::NextHop::Type::TaggedSymbol
             )
 

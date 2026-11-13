@@ -167,6 +167,11 @@ module Telnyx
               :"soniox/stt-rt-v4",
               Telnyx::Calls::TranscriptionEngineSonioxConfig::TranscriptionModel::TaggedSymbol
             )
+          SONIOX_STT_RT_V6 =
+            T.let(
+              :"soniox/stt-rt-v6",
+              Telnyx::Calls::TranscriptionEngineSonioxConfig::TranscriptionModel::TaggedSymbol
+            )
 
           sig do
             override.returns(

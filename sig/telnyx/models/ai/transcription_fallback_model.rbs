@@ -37,6 +37,7 @@ module Telnyx
           | :"xai/grok-stt"
           | :"soniox/stt-rt-v4"
           | :"soniox/stt-rt-v5"
+          | :"soniox/stt-rt-v6"
           | :"humain/realtime"
           | :"reson8/turns"
 
@@ -52,6 +53,7 @@ module Telnyx
           XAI_GROK_STT: :"xai/grok-stt"
           SONIOX_STT_RT_V4: :"soniox/stt-rt-v4"
           SONIOX_STT_RT_V5: :"soniox/stt-rt-v5"
+          SONIOX_STT_RT_V6: :"soniox/stt-rt-v6"
           HUMAIN_REALTIME: :"humain/realtime"
           RESON8_TURNS: :"reson8/turns"
 

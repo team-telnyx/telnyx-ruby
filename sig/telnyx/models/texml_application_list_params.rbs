@@ -49,26 +49,82 @@ module Telnyx
         request_options: Telnyx::RequestOptions
       }
 
-      type filter = { friendly_name: String, outbound_voice_profile_id: String }
+      type filter =
+        {
+          friendly_name: Telnyx::Models::TexmlApplicationListParams::Filter::friendly_name,
+          outbound_voice_profile_id: Telnyx::Models::TexmlApplicationListParams::Filter::outbound_voice_profile_id
+        }
 
       class Filter < Telnyx::Internal::Type::BaseModel
-        attr_reader friendly_name: String?
+        attr_reader friendly_name: Telnyx::Models::TexmlApplicationListParams::Filter::friendly_name?
 
-        def friendly_name=: (String) -> String
+        def friendly_name=: (
+          Telnyx::Models::TexmlApplicationListParams::Filter::friendly_name
+        ) -> Telnyx::Models::TexmlApplicationListParams::Filter::friendly_name
 
-        attr_reader outbound_voice_profile_id: String?
+        attr_reader outbound_voice_profile_id: Telnyx::Models::TexmlApplicationListParams::Filter::outbound_voice_profile_id?
 
-        def outbound_voice_profile_id=: (String) -> String
+        def outbound_voice_profile_id=: (
+          Telnyx::Models::TexmlApplicationListParams::Filter::outbound_voice_profile_id
+        ) -> Telnyx::Models::TexmlApplicationListParams::Filter::outbound_voice_profile_id
 
         def initialize: (
-          ?friendly_name: String,
-          ?outbound_voice_profile_id: String
+          ?friendly_name: Telnyx::Models::TexmlApplicationListParams::Filter::friendly_name,
+          ?outbound_voice_profile_id: Telnyx::Models::TexmlApplicationListParams::Filter::outbound_voice_profile_id
         ) -> void
 
         def to_hash: -> {
-          friendly_name: String,
-          outbound_voice_profile_id: String
+          friendly_name: Telnyx::Models::TexmlApplicationListParams::Filter::friendly_name,
+          outbound_voice_profile_id: Telnyx::Models::TexmlApplicationListParams::Filter::outbound_voice_profile_id
         }
+
+        type friendly_name =
+          String
+          | Telnyx::TexmlApplicationListParams::Filter::FriendlyName::UnionMember1
+
+        module FriendlyName
+          extend Telnyx::Internal::Type::Union
+
+          type union_member1 = { contains: String, eq: String }
+
+          class UnionMember1 < Telnyx::Internal::Type::BaseModel
+            attr_reader contains: String?
+
+            def contains=: (String) -> String
+
+            attr_reader eq: String?
+
+            def eq=: (String) -> String
+
+            def initialize: (?contains: String, ?eq: String) -> void
+
+            def to_hash: -> { contains: String, eq: String }
+          end
+
+          def self?.variants: -> ::Array[Telnyx::Models::TexmlApplicationListParams::Filter::friendly_name]
+        end
+
+        type outbound_voice_profile_id =
+          String
+          | Telnyx::TexmlApplicationListParams::Filter::OutboundVoiceProfileID::Eq
+
+        module OutboundVoiceProfileID
+          extend Telnyx::Internal::Type::Union
+
+          type eq = { eq: String }
+
+          class Eq < Telnyx::Internal::Type::BaseModel
+            attr_reader eq: String?
+
+            def eq=: (String) -> String
+
+            def initialize: (?eq: String) -> void
+
+            def to_hash: -> { eq: String }
+          end
+
+          def self?.variants: -> ::Array[Telnyx::Models::TexmlApplicationListParams::Filter::outbound_voice_profile_id]
+        end
       end
 
       type sort = :created_at | :friendly_name | :active

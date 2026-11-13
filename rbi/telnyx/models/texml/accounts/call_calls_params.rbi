@@ -608,6 +608,132 @@ module Telnyx
               end
               attr_writer :status_callback_method
 
+              # An authentication token for the WebSocket server. It is sent as the
+              # `x-telnyx-streaming-auth-token` header of the WebSocket handshake and repeated
+              # as `connected.x-telnyx-streaming-auth-token` in the `connected` event. Maximum
+              # length is 4000 characters. Requires `StreamUrl`.
+              sig { returns(T.nilable(String)) }
+              attr_reader :stream_auth_token
+
+              sig { params(stream_auth_token: String).void }
+              attr_writer :stream_auth_token
+
+              # Indicates the codec for bidirectional streaming RTP payloads. Used only with
+              # `StreamBidirectionalMode=rtp`. Case sensitive. Requires `StreamUrl`.
+              sig do
+                returns(
+                  T.nilable(
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::StreamBidirectionalCodec::OrSymbol
+                  )
+                )
+              end
+              attr_reader :stream_bidirectional_codec
+
+              sig do
+                params(
+                  stream_bidirectional_codec:
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::StreamBidirectionalCodec::OrSymbol
+                ).void
+              end
+              attr_writer :stream_bidirectional_codec
+
+              # Configures the method of bidirectional streaming: `mp3` or `rtp`. Requires
+              # `StreamUrl`.
+              sig do
+                returns(
+                  T.nilable(
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::StreamBidirectionalMode::OrSymbol
+                  )
+                )
+              end
+              attr_reader :stream_bidirectional_mode
+
+              sig do
+                params(
+                  stream_bidirectional_mode:
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::StreamBidirectionalMode::OrSymbol
+                ).void
+              end
+              attr_writer :stream_bidirectional_mode
+
+              # Audio sampling rate for bidirectional streaming, in Hz. Requires `StreamUrl`.
+              sig do
+                returns(
+                  T.nilable(
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::StreamBidirectionalSamplingRate::OrInteger
+                  )
+                )
+              end
+              attr_reader :stream_bidirectional_sampling_rate
+
+              sig do
+                params(
+                  stream_bidirectional_sampling_rate:
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::StreamBidirectionalSamplingRate::OrInteger
+                ).void
+              end
+              attr_writer :stream_bidirectional_sampling_rate
+
+              # Specifies the codec to be used for the streamed audio. When set to `default` or
+              # when transcoding is not possible, the codec from the call will be used. Requires
+              # `StreamUrl`.
+              sig do
+                returns(
+                  T.nilable(
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::StreamCodec::OrSymbol
+                  )
+                )
+              end
+              attr_reader :stream_codec
+
+              sig do
+                params(
+                  stream_codec:
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::StreamCodec::OrSymbol
+                ).void
+              end
+              attr_writer :stream_codec
+
+              # Establishes the WebSocket connection before the destination is dialed, so no
+              # audio is missed while the connection is set up. If the WebSocket connection
+              # can't be established, the call is not placed and the request fails with a `422`
+              # error. `StreamUrl` is required when this is `true`.
+              sig { returns(T.nilable(T::Boolean)) }
+              attr_reader :stream_establish_before_call_originate
+
+              sig do
+                params(stream_establish_before_call_originate: T::Boolean).void
+              end
+              attr_writer :stream_establish_before_call_originate
+
+              # Specifies which track should be streamed. Requires `StreamUrl`.
+              sig do
+                returns(
+                  T.nilable(
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::StreamTrack::OrSymbol
+                  )
+                )
+              end
+              attr_reader :stream_track
+
+              sig do
+                params(
+                  stream_track:
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::StreamTrack::OrSymbol
+                ).void
+              end
+              attr_writer :stream_track
+
+              # The destination WebSocket address where the call's media stream is delivered,
+              # for example `wss://www.example.com/websocket`. When set, a media stream is
+              # started on the outbound call. Required when any other `Stream*` parameter is
+              # set. Can't be combined with `SuperviseCallSid`.
+              sig { returns(T.nilable(String)) }
+              attr_reader :stream_url
+
+              sig { params(stream_url: String).void }
+              attr_writer :stream_url
+
               # The call control ID of the existing call to supervise. When provided, the
               # created leg will be added to the specified call in supervising mode. Status
               # callbacks and action callbacks will NOT be sent for the supervising leg.
@@ -765,6 +891,19 @@ module Telnyx
                   status_callback_event: String,
                   status_callback_method:
                     Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::StatusCallbackMethod::OrSymbol,
+                  stream_auth_token: String,
+                  stream_bidirectional_codec:
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::StreamBidirectionalCodec::OrSymbol,
+                  stream_bidirectional_mode:
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::StreamBidirectionalMode::OrSymbol,
+                  stream_bidirectional_sampling_rate:
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::StreamBidirectionalSamplingRate::OrInteger,
+                  stream_codec:
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::StreamCodec::OrSymbol,
+                  stream_establish_before_call_originate: T::Boolean,
+                  stream_track:
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::StreamTrack::OrSymbol,
+                  stream_url: String,
                   supervise_call_sid: String,
                   supervising_role:
                     Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::SupervisingRole::OrSymbol,
@@ -915,6 +1054,35 @@ module Telnyx
                 status_callback_event: nil,
                 # HTTP request type used for `StatusCallback`.
                 status_callback_method: nil,
+                # An authentication token for the WebSocket server. It is sent as the
+                # `x-telnyx-streaming-auth-token` header of the WebSocket handshake and repeated
+                # as `connected.x-telnyx-streaming-auth-token` in the `connected` event. Maximum
+                # length is 4000 characters. Requires `StreamUrl`.
+                stream_auth_token: nil,
+                # Indicates the codec for bidirectional streaming RTP payloads. Used only with
+                # `StreamBidirectionalMode=rtp`. Case sensitive. Requires `StreamUrl`.
+                stream_bidirectional_codec: nil,
+                # Configures the method of bidirectional streaming: `mp3` or `rtp`. Requires
+                # `StreamUrl`.
+                stream_bidirectional_mode: nil,
+                # Audio sampling rate for bidirectional streaming, in Hz. Requires `StreamUrl`.
+                stream_bidirectional_sampling_rate: nil,
+                # Specifies the codec to be used for the streamed audio. When set to `default` or
+                # when transcoding is not possible, the codec from the call will be used. Requires
+                # `StreamUrl`.
+                stream_codec: nil,
+                # Establishes the WebSocket connection before the destination is dialed, so no
+                # audio is missed while the connection is set up. If the WebSocket connection
+                # can't be established, the call is not placed and the request fails with a `422`
+                # error. `StreamUrl` is required when this is `true`.
+                stream_establish_before_call_originate: nil,
+                # Specifies which track should be streamed. Requires `StreamUrl`.
+                stream_track: nil,
+                # The destination WebSocket address where the call's media stream is delivered,
+                # for example `wss://www.example.com/websocket`. When set, a media stream is
+                # started on the outbound call. Required when any other `Stream*` parameter is
+                # set. Can't be combined with `SuperviseCallSid`.
+                stream_url: nil,
                 # The call control ID of the existing call to supervise. When provided, the
                 # created leg will be added to the specified call in supervising mode. Status
                 # callbacks and action callbacks will NOT be sent for the supervising leg.
@@ -1006,6 +1174,19 @@ module Telnyx
                     status_callback_event: String,
                     status_callback_method:
                       Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::StatusCallbackMethod::OrSymbol,
+                    stream_auth_token: String,
+                    stream_bidirectional_codec:
+                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::StreamBidirectionalCodec::OrSymbol,
+                    stream_bidirectional_mode:
+                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::StreamBidirectionalMode::OrSymbol,
+                    stream_bidirectional_sampling_rate:
+                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::StreamBidirectionalSamplingRate::OrInteger,
+                    stream_codec:
+                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::StreamCodec::OrSymbol,
+                    stream_establish_before_call_originate: T::Boolean,
+                    stream_track:
+                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::StreamTrack::OrSymbol,
+                    stream_url: String,
                     supervise_call_sid: String,
                     supervising_role:
                       Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::SupervisingRole::OrSymbol,
@@ -1510,6 +1691,250 @@ module Telnyx
                   override.returns(
                     T::Array[
                       Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::StatusCallbackMethod::TaggedSymbol
+                    ]
+                  )
+                end
+                def self.values
+                end
+              end
+
+              # Indicates the codec for bidirectional streaming RTP payloads. Used only with
+              # `StreamBidirectionalMode=rtp`. Case sensitive. Requires `StreamUrl`.
+              module StreamBidirectionalCodec
+                extend Telnyx::Internal::Type::Enum
+
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::StreamBidirectionalCodec
+                    )
+                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                PCMU =
+                  T.let(
+                    :PCMU,
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::StreamBidirectionalCodec::TaggedSymbol
+                  )
+                PCMA =
+                  T.let(
+                    :PCMA,
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::StreamBidirectionalCodec::TaggedSymbol
+                  )
+                G722 =
+                  T.let(
+                    :G722,
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::StreamBidirectionalCodec::TaggedSymbol
+                  )
+                OPUS =
+                  T.let(
+                    :OPUS,
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::StreamBidirectionalCodec::TaggedSymbol
+                  )
+                AMR_WB =
+                  T.let(
+                    :"AMR-WB",
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::StreamBidirectionalCodec::TaggedSymbol
+                  )
+                L16 =
+                  T.let(
+                    :L16,
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::StreamBidirectionalCodec::TaggedSymbol
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::StreamBidirectionalCodec::TaggedSymbol
+                    ]
+                  )
+                end
+                def self.values
+                end
+              end
+
+              # Configures the method of bidirectional streaming: `mp3` or `rtp`. Requires
+              # `StreamUrl`.
+              module StreamBidirectionalMode
+                extend Telnyx::Internal::Type::Enum
+
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::StreamBidirectionalMode
+                    )
+                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                MP3 =
+                  T.let(
+                    :mp3,
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::StreamBidirectionalMode::TaggedSymbol
+                  )
+                RTP =
+                  T.let(
+                    :rtp,
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::StreamBidirectionalMode::TaggedSymbol
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::StreamBidirectionalMode::TaggedSymbol
+                    ]
+                  )
+                end
+                def self.values
+                end
+              end
+
+              # Audio sampling rate for bidirectional streaming, in Hz. Requires `StreamUrl`.
+              module StreamBidirectionalSamplingRate
+                extend Telnyx::Internal::Type::Enum
+
+                TaggedInteger =
+                  T.type_alias do
+                    T.all(
+                      Integer,
+                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::StreamBidirectionalSamplingRate
+                    )
+                  end
+                OrInteger = T.type_alias { Integer }
+
+                STREAM_BIDIRECTIONAL_SAMPLING_RATE_8000 =
+                  T.let(
+                    8000,
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::StreamBidirectionalSamplingRate::TaggedInteger
+                  )
+                STREAM_BIDIRECTIONAL_SAMPLING_RATE_16000 =
+                  T.let(
+                    16_000,
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::StreamBidirectionalSamplingRate::TaggedInteger
+                  )
+                STREAM_BIDIRECTIONAL_SAMPLING_RATE_22050 =
+                  T.let(
+                    22_050,
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::StreamBidirectionalSamplingRate::TaggedInteger
+                  )
+                STREAM_BIDIRECTIONAL_SAMPLING_RATE_24000 =
+                  T.let(
+                    24_000,
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::StreamBidirectionalSamplingRate::TaggedInteger
+                  )
+                STREAM_BIDIRECTIONAL_SAMPLING_RATE_48000 =
+                  T.let(
+                    48_000,
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::StreamBidirectionalSamplingRate::TaggedInteger
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::StreamBidirectionalSamplingRate::TaggedInteger
+                    ]
+                  )
+                end
+                def self.values
+                end
+              end
+
+              # Specifies the codec to be used for the streamed audio. When set to `default` or
+              # when transcoding is not possible, the codec from the call will be used. Requires
+              # `StreamUrl`.
+              module StreamCodec
+                extend Telnyx::Internal::Type::Enum
+
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::StreamCodec
+                    )
+                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                PCMU =
+                  T.let(
+                    :PCMU,
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::StreamCodec::TaggedSymbol
+                  )
+                PCMA =
+                  T.let(
+                    :PCMA,
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::StreamCodec::TaggedSymbol
+                  )
+                G722 =
+                  T.let(
+                    :G722,
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::StreamCodec::TaggedSymbol
+                  )
+                OPUS =
+                  T.let(
+                    :OPUS,
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::StreamCodec::TaggedSymbol
+                  )
+                AMR_WB =
+                  T.let(
+                    :"AMR-WB",
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::StreamCodec::TaggedSymbol
+                  )
+                L16 =
+                  T.let(
+                    :L16,
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::StreamCodec::TaggedSymbol
+                  )
+                DEFAULT =
+                  T.let(
+                    :default,
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::StreamCodec::TaggedSymbol
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::StreamCodec::TaggedSymbol
+                    ]
+                  )
+                end
+                def self.values
+                end
+              end
+
+              # Specifies which track should be streamed. Requires `StreamUrl`.
+              module StreamTrack
+                extend Telnyx::Internal::Type::Enum
+
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::StreamTrack
+                    )
+                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                INBOUND_TRACK =
+                  T.let(
+                    :inbound_track,
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::StreamTrack::TaggedSymbol
+                  )
+                OUTBOUND_TRACK =
+                  T.let(
+                    :outbound_track,
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::StreamTrack::TaggedSymbol
+                  )
+                BOTH_TRACKS =
+                  T.let(
+                    :both_tracks,
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::StreamTrack::TaggedSymbol
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::StreamTrack::TaggedSymbol
                     ]
                   )
                 end
@@ -2167,6 +2592,132 @@ module Telnyx
               end
               attr_writer :status_callback_method
 
+              # An authentication token for the WebSocket server. It is sent as the
+              # `x-telnyx-streaming-auth-token` header of the WebSocket handshake and repeated
+              # as `connected.x-telnyx-streaming-auth-token` in the `connected` event. Maximum
+              # length is 4000 characters. Requires `StreamUrl`.
+              sig { returns(T.nilable(String)) }
+              attr_reader :stream_auth_token
+
+              sig { params(stream_auth_token: String).void }
+              attr_writer :stream_auth_token
+
+              # Indicates the codec for bidirectional streaming RTP payloads. Used only with
+              # `StreamBidirectionalMode=rtp`. Case sensitive. Requires `StreamUrl`.
+              sig do
+                returns(
+                  T.nilable(
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::StreamBidirectionalCodec::OrSymbol
+                  )
+                )
+              end
+              attr_reader :stream_bidirectional_codec
+
+              sig do
+                params(
+                  stream_bidirectional_codec:
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::StreamBidirectionalCodec::OrSymbol
+                ).void
+              end
+              attr_writer :stream_bidirectional_codec
+
+              # Configures the method of bidirectional streaming: `mp3` or `rtp`. Requires
+              # `StreamUrl`.
+              sig do
+                returns(
+                  T.nilable(
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::StreamBidirectionalMode::OrSymbol
+                  )
+                )
+              end
+              attr_reader :stream_bidirectional_mode
+
+              sig do
+                params(
+                  stream_bidirectional_mode:
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::StreamBidirectionalMode::OrSymbol
+                ).void
+              end
+              attr_writer :stream_bidirectional_mode
+
+              # Audio sampling rate for bidirectional streaming, in Hz. Requires `StreamUrl`.
+              sig do
+                returns(
+                  T.nilable(
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::StreamBidirectionalSamplingRate::OrInteger
+                  )
+                )
+              end
+              attr_reader :stream_bidirectional_sampling_rate
+
+              sig do
+                params(
+                  stream_bidirectional_sampling_rate:
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::StreamBidirectionalSamplingRate::OrInteger
+                ).void
+              end
+              attr_writer :stream_bidirectional_sampling_rate
+
+              # Specifies the codec to be used for the streamed audio. When set to `default` or
+              # when transcoding is not possible, the codec from the call will be used. Requires
+              # `StreamUrl`.
+              sig do
+                returns(
+                  T.nilable(
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::StreamCodec::OrSymbol
+                  )
+                )
+              end
+              attr_reader :stream_codec
+
+              sig do
+                params(
+                  stream_codec:
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::StreamCodec::OrSymbol
+                ).void
+              end
+              attr_writer :stream_codec
+
+              # Establishes the WebSocket connection before the destination is dialed, so no
+              # audio is missed while the connection is set up. If the WebSocket connection
+              # can't be established, the call is not placed and the request fails with a `422`
+              # error. `StreamUrl` is required when this is `true`.
+              sig { returns(T.nilable(T::Boolean)) }
+              attr_reader :stream_establish_before_call_originate
+
+              sig do
+                params(stream_establish_before_call_originate: T::Boolean).void
+              end
+              attr_writer :stream_establish_before_call_originate
+
+              # Specifies which track should be streamed. Requires `StreamUrl`.
+              sig do
+                returns(
+                  T.nilable(
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::StreamTrack::OrSymbol
+                  )
+                )
+              end
+              attr_reader :stream_track
+
+              sig do
+                params(
+                  stream_track:
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::StreamTrack::OrSymbol
+                ).void
+              end
+              attr_writer :stream_track
+
+              # The destination WebSocket address where the call's media stream is delivered,
+              # for example `wss://www.example.com/websocket`. When set, a media stream is
+              # started on the outbound call. Required when any other `Stream*` parameter is
+              # set. Can't be combined with `SuperviseCallSid`.
+              sig { returns(T.nilable(String)) }
+              attr_reader :stream_url
+
+              sig { params(stream_url: String).void }
+              attr_writer :stream_url
+
               # The call control ID of the existing call to supervise. When provided, the
               # created leg will be added to the specified call in supervising mode. Status
               # callbacks and action callbacks will NOT be sent for the supervising leg.
@@ -2324,6 +2875,19 @@ module Telnyx
                   status_callback_event: String,
                   status_callback_method:
                     Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::StatusCallbackMethod::OrSymbol,
+                  stream_auth_token: String,
+                  stream_bidirectional_codec:
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::StreamBidirectionalCodec::OrSymbol,
+                  stream_bidirectional_mode:
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::StreamBidirectionalMode::OrSymbol,
+                  stream_bidirectional_sampling_rate:
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::StreamBidirectionalSamplingRate::OrInteger,
+                  stream_codec:
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::StreamCodec::OrSymbol,
+                  stream_establish_before_call_originate: T::Boolean,
+                  stream_track:
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::StreamTrack::OrSymbol,
+                  stream_url: String,
                   supervise_call_sid: String,
                   supervising_role:
                     Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::SupervisingRole::OrSymbol,
@@ -2475,6 +3039,35 @@ module Telnyx
                 status_callback_event: nil,
                 # HTTP request type used for `StatusCallback`.
                 status_callback_method: nil,
+                # An authentication token for the WebSocket server. It is sent as the
+                # `x-telnyx-streaming-auth-token` header of the WebSocket handshake and repeated
+                # as `connected.x-telnyx-streaming-auth-token` in the `connected` event. Maximum
+                # length is 4000 characters. Requires `StreamUrl`.
+                stream_auth_token: nil,
+                # Indicates the codec for bidirectional streaming RTP payloads. Used only with
+                # `StreamBidirectionalMode=rtp`. Case sensitive. Requires `StreamUrl`.
+                stream_bidirectional_codec: nil,
+                # Configures the method of bidirectional streaming: `mp3` or `rtp`. Requires
+                # `StreamUrl`.
+                stream_bidirectional_mode: nil,
+                # Audio sampling rate for bidirectional streaming, in Hz. Requires `StreamUrl`.
+                stream_bidirectional_sampling_rate: nil,
+                # Specifies the codec to be used for the streamed audio. When set to `default` or
+                # when transcoding is not possible, the codec from the call will be used. Requires
+                # `StreamUrl`.
+                stream_codec: nil,
+                # Establishes the WebSocket connection before the destination is dialed, so no
+                # audio is missed while the connection is set up. If the WebSocket connection
+                # can't be established, the call is not placed and the request fails with a `422`
+                # error. `StreamUrl` is required when this is `true`.
+                stream_establish_before_call_originate: nil,
+                # Specifies which track should be streamed. Requires `StreamUrl`.
+                stream_track: nil,
+                # The destination WebSocket address where the call's media stream is delivered,
+                # for example `wss://www.example.com/websocket`. When set, a media stream is
+                # started on the outbound call. Required when any other `Stream*` parameter is
+                # set. Can't be combined with `SuperviseCallSid`.
+                stream_url: nil,
                 # The call control ID of the existing call to supervise. When provided, the
                 # created leg will be added to the specified call in supervising mode. Status
                 # callbacks and action callbacks will NOT be sent for the supervising leg.
@@ -2566,6 +3159,19 @@ module Telnyx
                     status_callback_event: String,
                     status_callback_method:
                       Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::StatusCallbackMethod::OrSymbol,
+                    stream_auth_token: String,
+                    stream_bidirectional_codec:
+                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::StreamBidirectionalCodec::OrSymbol,
+                    stream_bidirectional_mode:
+                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::StreamBidirectionalMode::OrSymbol,
+                    stream_bidirectional_sampling_rate:
+                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::StreamBidirectionalSamplingRate::OrInteger,
+                    stream_codec:
+                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::StreamCodec::OrSymbol,
+                    stream_establish_before_call_originate: T::Boolean,
+                    stream_track:
+                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::StreamTrack::OrSymbol,
+                    stream_url: String,
                     supervise_call_sid: String,
                     supervising_role:
                       Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::SupervisingRole::OrSymbol,
@@ -3070,6 +3676,250 @@ module Telnyx
                   override.returns(
                     T::Array[
                       Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::StatusCallbackMethod::TaggedSymbol
+                    ]
+                  )
+                end
+                def self.values
+                end
+              end
+
+              # Indicates the codec for bidirectional streaming RTP payloads. Used only with
+              # `StreamBidirectionalMode=rtp`. Case sensitive. Requires `StreamUrl`.
+              module StreamBidirectionalCodec
+                extend Telnyx::Internal::Type::Enum
+
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::StreamBidirectionalCodec
+                    )
+                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                PCMU =
+                  T.let(
+                    :PCMU,
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::StreamBidirectionalCodec::TaggedSymbol
+                  )
+                PCMA =
+                  T.let(
+                    :PCMA,
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::StreamBidirectionalCodec::TaggedSymbol
+                  )
+                G722 =
+                  T.let(
+                    :G722,
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::StreamBidirectionalCodec::TaggedSymbol
+                  )
+                OPUS =
+                  T.let(
+                    :OPUS,
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::StreamBidirectionalCodec::TaggedSymbol
+                  )
+                AMR_WB =
+                  T.let(
+                    :"AMR-WB",
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::StreamBidirectionalCodec::TaggedSymbol
+                  )
+                L16 =
+                  T.let(
+                    :L16,
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::StreamBidirectionalCodec::TaggedSymbol
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::StreamBidirectionalCodec::TaggedSymbol
+                    ]
+                  )
+                end
+                def self.values
+                end
+              end
+
+              # Configures the method of bidirectional streaming: `mp3` or `rtp`. Requires
+              # `StreamUrl`.
+              module StreamBidirectionalMode
+                extend Telnyx::Internal::Type::Enum
+
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::StreamBidirectionalMode
+                    )
+                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                MP3 =
+                  T.let(
+                    :mp3,
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::StreamBidirectionalMode::TaggedSymbol
+                  )
+                RTP =
+                  T.let(
+                    :rtp,
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::StreamBidirectionalMode::TaggedSymbol
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::StreamBidirectionalMode::TaggedSymbol
+                    ]
+                  )
+                end
+                def self.values
+                end
+              end
+
+              # Audio sampling rate for bidirectional streaming, in Hz. Requires `StreamUrl`.
+              module StreamBidirectionalSamplingRate
+                extend Telnyx::Internal::Type::Enum
+
+                TaggedInteger =
+                  T.type_alias do
+                    T.all(
+                      Integer,
+                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::StreamBidirectionalSamplingRate
+                    )
+                  end
+                OrInteger = T.type_alias { Integer }
+
+                STREAM_BIDIRECTIONAL_SAMPLING_RATE_8000 =
+                  T.let(
+                    8000,
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::StreamBidirectionalSamplingRate::TaggedInteger
+                  )
+                STREAM_BIDIRECTIONAL_SAMPLING_RATE_16000 =
+                  T.let(
+                    16_000,
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::StreamBidirectionalSamplingRate::TaggedInteger
+                  )
+                STREAM_BIDIRECTIONAL_SAMPLING_RATE_22050 =
+                  T.let(
+                    22_050,
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::StreamBidirectionalSamplingRate::TaggedInteger
+                  )
+                STREAM_BIDIRECTIONAL_SAMPLING_RATE_24000 =
+                  T.let(
+                    24_000,
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::StreamBidirectionalSamplingRate::TaggedInteger
+                  )
+                STREAM_BIDIRECTIONAL_SAMPLING_RATE_48000 =
+                  T.let(
+                    48_000,
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::StreamBidirectionalSamplingRate::TaggedInteger
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::StreamBidirectionalSamplingRate::TaggedInteger
+                    ]
+                  )
+                end
+                def self.values
+                end
+              end
+
+              # Specifies the codec to be used for the streamed audio. When set to `default` or
+              # when transcoding is not possible, the codec from the call will be used. Requires
+              # `StreamUrl`.
+              module StreamCodec
+                extend Telnyx::Internal::Type::Enum
+
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::StreamCodec
+                    )
+                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                PCMU =
+                  T.let(
+                    :PCMU,
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::StreamCodec::TaggedSymbol
+                  )
+                PCMA =
+                  T.let(
+                    :PCMA,
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::StreamCodec::TaggedSymbol
+                  )
+                G722 =
+                  T.let(
+                    :G722,
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::StreamCodec::TaggedSymbol
+                  )
+                OPUS =
+                  T.let(
+                    :OPUS,
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::StreamCodec::TaggedSymbol
+                  )
+                AMR_WB =
+                  T.let(
+                    :"AMR-WB",
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::StreamCodec::TaggedSymbol
+                  )
+                L16 =
+                  T.let(
+                    :L16,
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::StreamCodec::TaggedSymbol
+                  )
+                DEFAULT =
+                  T.let(
+                    :default,
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::StreamCodec::TaggedSymbol
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::StreamCodec::TaggedSymbol
+                    ]
+                  )
+                end
+                def self.values
+                end
+              end
+
+              # Specifies which track should be streamed. Requires `StreamUrl`.
+              module StreamTrack
+                extend Telnyx::Internal::Type::Enum
+
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::StreamTrack
+                    )
+                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                INBOUND_TRACK =
+                  T.let(
+                    :inbound_track,
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::StreamTrack::TaggedSymbol
+                  )
+                OUTBOUND_TRACK =
+                  T.let(
+                    :outbound_track,
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::StreamTrack::TaggedSymbol
+                  )
+                BOTH_TRACKS =
+                  T.let(
+                    :both_tracks,
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::StreamTrack::TaggedSymbol
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::StreamTrack::TaggedSymbol
                     ]
                   )
                 end
@@ -3722,6 +4572,132 @@ module Telnyx
               end
               attr_writer :status_callback_method
 
+              # An authentication token for the WebSocket server. It is sent as the
+              # `x-telnyx-streaming-auth-token` header of the WebSocket handshake and repeated
+              # as `connected.x-telnyx-streaming-auth-token` in the `connected` event. Maximum
+              # length is 4000 characters. Requires `StreamUrl`.
+              sig { returns(T.nilable(String)) }
+              attr_reader :stream_auth_token
+
+              sig { params(stream_auth_token: String).void }
+              attr_writer :stream_auth_token
+
+              # Indicates the codec for bidirectional streaming RTP payloads. Used only with
+              # `StreamBidirectionalMode=rtp`. Case sensitive. Requires `StreamUrl`.
+              sig do
+                returns(
+                  T.nilable(
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::StreamBidirectionalCodec::OrSymbol
+                  )
+                )
+              end
+              attr_reader :stream_bidirectional_codec
+
+              sig do
+                params(
+                  stream_bidirectional_codec:
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::StreamBidirectionalCodec::OrSymbol
+                ).void
+              end
+              attr_writer :stream_bidirectional_codec
+
+              # Configures the method of bidirectional streaming: `mp3` or `rtp`. Requires
+              # `StreamUrl`.
+              sig do
+                returns(
+                  T.nilable(
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::StreamBidirectionalMode::OrSymbol
+                  )
+                )
+              end
+              attr_reader :stream_bidirectional_mode
+
+              sig do
+                params(
+                  stream_bidirectional_mode:
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::StreamBidirectionalMode::OrSymbol
+                ).void
+              end
+              attr_writer :stream_bidirectional_mode
+
+              # Audio sampling rate for bidirectional streaming, in Hz. Requires `StreamUrl`.
+              sig do
+                returns(
+                  T.nilable(
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::StreamBidirectionalSamplingRate::OrInteger
+                  )
+                )
+              end
+              attr_reader :stream_bidirectional_sampling_rate
+
+              sig do
+                params(
+                  stream_bidirectional_sampling_rate:
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::StreamBidirectionalSamplingRate::OrInteger
+                ).void
+              end
+              attr_writer :stream_bidirectional_sampling_rate
+
+              # Specifies the codec to be used for the streamed audio. When set to `default` or
+              # when transcoding is not possible, the codec from the call will be used. Requires
+              # `StreamUrl`.
+              sig do
+                returns(
+                  T.nilable(
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::StreamCodec::OrSymbol
+                  )
+                )
+              end
+              attr_reader :stream_codec
+
+              sig do
+                params(
+                  stream_codec:
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::StreamCodec::OrSymbol
+                ).void
+              end
+              attr_writer :stream_codec
+
+              # Establishes the WebSocket connection before the destination is dialed, so no
+              # audio is missed while the connection is set up. If the WebSocket connection
+              # can't be established, the call is not placed and the request fails with a `422`
+              # error. `StreamUrl` is required when this is `true`.
+              sig { returns(T.nilable(T::Boolean)) }
+              attr_reader :stream_establish_before_call_originate
+
+              sig do
+                params(stream_establish_before_call_originate: T::Boolean).void
+              end
+              attr_writer :stream_establish_before_call_originate
+
+              # Specifies which track should be streamed. Requires `StreamUrl`.
+              sig do
+                returns(
+                  T.nilable(
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::StreamTrack::OrSymbol
+                  )
+                )
+              end
+              attr_reader :stream_track
+
+              sig do
+                params(
+                  stream_track:
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::StreamTrack::OrSymbol
+                ).void
+              end
+              attr_writer :stream_track
+
+              # The destination WebSocket address where the call's media stream is delivered,
+              # for example `wss://www.example.com/websocket`. When set, a media stream is
+              # started on the outbound call. Required when any other `Stream*` parameter is
+              # set. Can't be combined with `SuperviseCallSid`.
+              sig { returns(T.nilable(String)) }
+              attr_reader :stream_url
+
+              sig { params(stream_url: String).void }
+              attr_writer :stream_url
+
               # The call control ID of the existing call to supervise. When provided, the
               # created leg will be added to the specified call in supervising mode. Status
               # callbacks and action callbacks will NOT be sent for the supervising leg.
@@ -3881,6 +4857,19 @@ module Telnyx
                   status_callback_event: String,
                   status_callback_method:
                     Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::StatusCallbackMethod::OrSymbol,
+                  stream_auth_token: String,
+                  stream_bidirectional_codec:
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::StreamBidirectionalCodec::OrSymbol,
+                  stream_bidirectional_mode:
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::StreamBidirectionalMode::OrSymbol,
+                  stream_bidirectional_sampling_rate:
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::StreamBidirectionalSamplingRate::OrInteger,
+                  stream_codec:
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::StreamCodec::OrSymbol,
+                  stream_establish_before_call_originate: T::Boolean,
+                  stream_track:
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::StreamTrack::OrSymbol,
+                  stream_url: String,
                   supervise_call_sid: String,
                   supervising_role:
                     Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::SupervisingRole::OrSymbol,
@@ -4030,6 +5019,35 @@ module Telnyx
                 status_callback_event: nil,
                 # HTTP request type used for `StatusCallback`.
                 status_callback_method: nil,
+                # An authentication token for the WebSocket server. It is sent as the
+                # `x-telnyx-streaming-auth-token` header of the WebSocket handshake and repeated
+                # as `connected.x-telnyx-streaming-auth-token` in the `connected` event. Maximum
+                # length is 4000 characters. Requires `StreamUrl`.
+                stream_auth_token: nil,
+                # Indicates the codec for bidirectional streaming RTP payloads. Used only with
+                # `StreamBidirectionalMode=rtp`. Case sensitive. Requires `StreamUrl`.
+                stream_bidirectional_codec: nil,
+                # Configures the method of bidirectional streaming: `mp3` or `rtp`. Requires
+                # `StreamUrl`.
+                stream_bidirectional_mode: nil,
+                # Audio sampling rate for bidirectional streaming, in Hz. Requires `StreamUrl`.
+                stream_bidirectional_sampling_rate: nil,
+                # Specifies the codec to be used for the streamed audio. When set to `default` or
+                # when transcoding is not possible, the codec from the call will be used. Requires
+                # `StreamUrl`.
+                stream_codec: nil,
+                # Establishes the WebSocket connection before the destination is dialed, so no
+                # audio is missed while the connection is set up. If the WebSocket connection
+                # can't be established, the call is not placed and the request fails with a `422`
+                # error. `StreamUrl` is required when this is `true`.
+                stream_establish_before_call_originate: nil,
+                # Specifies which track should be streamed. Requires `StreamUrl`.
+                stream_track: nil,
+                # The destination WebSocket address where the call's media stream is delivered,
+                # for example `wss://www.example.com/websocket`. When set, a media stream is
+                # started on the outbound call. Required when any other `Stream*` parameter is
+                # set. Can't be combined with `SuperviseCallSid`.
+                stream_url: nil,
                 # The call control ID of the existing call to supervise. When provided, the
                 # created leg will be added to the specified call in supervising mode. Status
                 # callbacks and action callbacks will NOT be sent for the supervising leg.
@@ -4121,6 +5139,19 @@ module Telnyx
                     status_callback_event: String,
                     status_callback_method:
                       Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::StatusCallbackMethod::OrSymbol,
+                    stream_auth_token: String,
+                    stream_bidirectional_codec:
+                      Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::StreamBidirectionalCodec::OrSymbol,
+                    stream_bidirectional_mode:
+                      Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::StreamBidirectionalMode::OrSymbol,
+                    stream_bidirectional_sampling_rate:
+                      Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::StreamBidirectionalSamplingRate::OrInteger,
+                    stream_codec:
+                      Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::StreamCodec::OrSymbol,
+                    stream_establish_before_call_originate: T::Boolean,
+                    stream_track:
+                      Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::StreamTrack::OrSymbol,
+                    stream_url: String,
                     supervise_call_sid: String,
                     supervising_role:
                       Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::SupervisingRole::OrSymbol,
@@ -4626,6 +5657,250 @@ module Telnyx
                   override.returns(
                     T::Array[
                       Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::StatusCallbackMethod::TaggedSymbol
+                    ]
+                  )
+                end
+                def self.values
+                end
+              end
+
+              # Indicates the codec for bidirectional streaming RTP payloads. Used only with
+              # `StreamBidirectionalMode=rtp`. Case sensitive. Requires `StreamUrl`.
+              module StreamBidirectionalCodec
+                extend Telnyx::Internal::Type::Enum
+
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::StreamBidirectionalCodec
+                    )
+                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                PCMU =
+                  T.let(
+                    :PCMU,
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::StreamBidirectionalCodec::TaggedSymbol
+                  )
+                PCMA =
+                  T.let(
+                    :PCMA,
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::StreamBidirectionalCodec::TaggedSymbol
+                  )
+                G722 =
+                  T.let(
+                    :G722,
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::StreamBidirectionalCodec::TaggedSymbol
+                  )
+                OPUS =
+                  T.let(
+                    :OPUS,
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::StreamBidirectionalCodec::TaggedSymbol
+                  )
+                AMR_WB =
+                  T.let(
+                    :"AMR-WB",
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::StreamBidirectionalCodec::TaggedSymbol
+                  )
+                L16 =
+                  T.let(
+                    :L16,
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::StreamBidirectionalCodec::TaggedSymbol
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::StreamBidirectionalCodec::TaggedSymbol
+                    ]
+                  )
+                end
+                def self.values
+                end
+              end
+
+              # Configures the method of bidirectional streaming: `mp3` or `rtp`. Requires
+              # `StreamUrl`.
+              module StreamBidirectionalMode
+                extend Telnyx::Internal::Type::Enum
+
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::StreamBidirectionalMode
+                    )
+                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                MP3 =
+                  T.let(
+                    :mp3,
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::StreamBidirectionalMode::TaggedSymbol
+                  )
+                RTP =
+                  T.let(
+                    :rtp,
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::StreamBidirectionalMode::TaggedSymbol
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::StreamBidirectionalMode::TaggedSymbol
+                    ]
+                  )
+                end
+                def self.values
+                end
+              end
+
+              # Audio sampling rate for bidirectional streaming, in Hz. Requires `StreamUrl`.
+              module StreamBidirectionalSamplingRate
+                extend Telnyx::Internal::Type::Enum
+
+                TaggedInteger =
+                  T.type_alias do
+                    T.all(
+                      Integer,
+                      Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::StreamBidirectionalSamplingRate
+                    )
+                  end
+                OrInteger = T.type_alias { Integer }
+
+                STREAM_BIDIRECTIONAL_SAMPLING_RATE_8000 =
+                  T.let(
+                    8000,
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::StreamBidirectionalSamplingRate::TaggedInteger
+                  )
+                STREAM_BIDIRECTIONAL_SAMPLING_RATE_16000 =
+                  T.let(
+                    16_000,
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::StreamBidirectionalSamplingRate::TaggedInteger
+                  )
+                STREAM_BIDIRECTIONAL_SAMPLING_RATE_22050 =
+                  T.let(
+                    22_050,
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::StreamBidirectionalSamplingRate::TaggedInteger
+                  )
+                STREAM_BIDIRECTIONAL_SAMPLING_RATE_24000 =
+                  T.let(
+                    24_000,
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::StreamBidirectionalSamplingRate::TaggedInteger
+                  )
+                STREAM_BIDIRECTIONAL_SAMPLING_RATE_48000 =
+                  T.let(
+                    48_000,
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::StreamBidirectionalSamplingRate::TaggedInteger
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::StreamBidirectionalSamplingRate::TaggedInteger
+                    ]
+                  )
+                end
+                def self.values
+                end
+              end
+
+              # Specifies the codec to be used for the streamed audio. When set to `default` or
+              # when transcoding is not possible, the codec from the call will be used. Requires
+              # `StreamUrl`.
+              module StreamCodec
+                extend Telnyx::Internal::Type::Enum
+
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::StreamCodec
+                    )
+                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                PCMU =
+                  T.let(
+                    :PCMU,
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::StreamCodec::TaggedSymbol
+                  )
+                PCMA =
+                  T.let(
+                    :PCMA,
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::StreamCodec::TaggedSymbol
+                  )
+                G722 =
+                  T.let(
+                    :G722,
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::StreamCodec::TaggedSymbol
+                  )
+                OPUS =
+                  T.let(
+                    :OPUS,
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::StreamCodec::TaggedSymbol
+                  )
+                AMR_WB =
+                  T.let(
+                    :"AMR-WB",
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::StreamCodec::TaggedSymbol
+                  )
+                L16 =
+                  T.let(
+                    :L16,
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::StreamCodec::TaggedSymbol
+                  )
+                DEFAULT =
+                  T.let(
+                    :default,
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::StreamCodec::TaggedSymbol
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::StreamCodec::TaggedSymbol
+                    ]
+                  )
+                end
+                def self.values
+                end
+              end
+
+              # Specifies which track should be streamed. Requires `StreamUrl`.
+              module StreamTrack
+                extend Telnyx::Internal::Type::Enum
+
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::StreamTrack
+                    )
+                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                INBOUND_TRACK =
+                  T.let(
+                    :inbound_track,
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::StreamTrack::TaggedSymbol
+                  )
+                OUTBOUND_TRACK =
+                  T.let(
+                    :outbound_track,
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::StreamTrack::TaggedSymbol
+                  )
+                BOTH_TRACKS =
+                  T.let(
+                    :both_tracks,
+                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::StreamTrack::TaggedSymbol
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::StreamTrack::TaggedSymbol
                     ]
                   )
                 end

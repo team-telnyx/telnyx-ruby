@@ -16,11 +16,12 @@ module Telnyx
         # `transcription.model`: both streaming (`deepgram/flux`, `deepgram/nova-3`,
         # `deepgram/nova-2`, `assemblyai/universal-3-6-pro` or its legacy aliases
         # `assemblyai/universal-3-5-pro` and `assemblyai/universal-streaming`,
-        # `xai/grok-stt`, `soniox/stt-rt-v4`, `soniox/stt-rt-v5`, `humain/realtime`,
-        # `reson8/turns`) or both non-streaming (`azure/fast`, `nvidia/parakeet-v3`,
-        # `omi-health/omi-med-stt-v1`, `cohere/ar-stt`, `distil-whisper/distil-large-v2`,
-        # `openai/whisper-large-v3-turbo`, `telnyx/basira`). It can be the same model as
-        # `transcription.model` on a different `language`.
+        # `xai/grok-stt`, `soniox/stt-rt-v4`, `soniox/stt-rt-v5`, `soniox/stt-rt-v6`,
+        # `humain/realtime`, `reson8/turns`) or both non-streaming (`azure/fast`,
+        # `nvidia/parakeet-v3`, `omi-health/omi-med-stt-v1`, `cohere/ar-stt`,
+        # `distil-whisper/distil-large-v2`, `openai/whisper-large-v3-turbo`,
+        # `telnyx/basira`). It can be the same model as `transcription.model` on a
+        # different `language`.
         sig { returns(Telnyx::AI::TranscriptionChallenger::Model::OrSymbol) }
         attr_accessor :model
 
@@ -91,11 +92,12 @@ module Telnyx
           # `transcription.model`: both streaming (`deepgram/flux`, `deepgram/nova-3`,
           # `deepgram/nova-2`, `assemblyai/universal-3-6-pro` or its legacy aliases
           # `assemblyai/universal-3-5-pro` and `assemblyai/universal-streaming`,
-          # `xai/grok-stt`, `soniox/stt-rt-v4`, `soniox/stt-rt-v5`, `humain/realtime`,
-          # `reson8/turns`) or both non-streaming (`azure/fast`, `nvidia/parakeet-v3`,
-          # `omi-health/omi-med-stt-v1`, `cohere/ar-stt`, `distil-whisper/distil-large-v2`,
-          # `openai/whisper-large-v3-turbo`, `telnyx/basira`). It can be the same model as
-          # `transcription.model` on a different `language`.
+          # `xai/grok-stt`, `soniox/stt-rt-v4`, `soniox/stt-rt-v5`, `soniox/stt-rt-v6`,
+          # `humain/realtime`, `reson8/turns`) or both non-streaming (`azure/fast`,
+          # `nvidia/parakeet-v3`, `omi-health/omi-med-stt-v1`, `cohere/ar-stt`,
+          # `distil-whisper/distil-large-v2`, `openai/whisper-large-v3-turbo`,
+          # `telnyx/basira`). It can be the same model as `transcription.model` on a
+          # different `language`.
           model:,
           # The language this model transcribes. Omit it or set it to `null` to use the
           # language of `transcription.model`. The request is rejected when this model
@@ -147,11 +149,12 @@ module Telnyx
         # `transcription.model`: both streaming (`deepgram/flux`, `deepgram/nova-3`,
         # `deepgram/nova-2`, `assemblyai/universal-3-6-pro` or its legacy aliases
         # `assemblyai/universal-3-5-pro` and `assemblyai/universal-streaming`,
-        # `xai/grok-stt`, `soniox/stt-rt-v4`, `soniox/stt-rt-v5`, `humain/realtime`,
-        # `reson8/turns`) or both non-streaming (`azure/fast`, `nvidia/parakeet-v3`,
-        # `omi-health/omi-med-stt-v1`, `cohere/ar-stt`, `distil-whisper/distil-large-v2`,
-        # `openai/whisper-large-v3-turbo`, `telnyx/basira`). It can be the same model as
-        # `transcription.model` on a different `language`.
+        # `xai/grok-stt`, `soniox/stt-rt-v4`, `soniox/stt-rt-v5`, `soniox/stt-rt-v6`,
+        # `humain/realtime`, `reson8/turns`) or both non-streaming (`azure/fast`,
+        # `nvidia/parakeet-v3`, `omi-health/omi-med-stt-v1`, `cohere/ar-stt`,
+        # `distil-whisper/distil-large-v2`, `openai/whisper-large-v3-turbo`,
+        # `telnyx/basira`). It can be the same model as `transcription.model` on a
+        # different `language`.
         module Model
           extend Telnyx::Internal::Type::Enum
 
@@ -209,6 +212,11 @@ module Telnyx
           SONIOX_STT_RT_V5 =
             T.let(
               :"soniox/stt-rt-v5",
+              Telnyx::AI::TranscriptionChallenger::Model::TaggedSymbol
+            )
+          SONIOX_STT_RT_V6 =
+            T.let(
+              :"soniox/stt-rt-v6",
               Telnyx::AI::TranscriptionChallenger::Model::TaggedSymbol
             )
           NVIDIA_PARAKEET_V3 =
