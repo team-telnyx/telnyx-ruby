@@ -207,6 +207,18 @@ module Telnyx
         #   @return [Integer, nil]
         optional :record_max_length, Integer
 
+        # @!attribute record_redaction
+        #   Applies to the recording started with `record`. Silences spoken details of the
+        #   given kinds in the recording: `pci` (card number, expiry date, security code),
+        #   `pii` (personal details such as names, phone numbers, addresses and other
+        #   identifying numbers) and `phi` (health details such as medications, doses and
+        #   conditions). Redaction works on English speech only. Redacted recordings are
+        #   charged at the Deepgram speech-to-text rate.
+        #
+        #   @return [Array<Symbol, Telnyx::Models::Calls::ActionTransferParams::RecordRedaction>, nil]
+        optional :record_redaction,
+                 -> { Telnyx::Internal::Type::ArrayOf[enum: Telnyx::Calls::ActionTransferParams::RecordRedaction] }
+
         # @!attribute record_timeout_secs
         #   The number of seconds that Telnyx will wait for the recording to be stopped if
         #   silence is detected when `record` is specified. The timer only starts when the
@@ -357,7 +369,7 @@ module Telnyx
         #   @return [Symbol, Telnyx::Models::Calls::ActionTransferParams::WebhookURLsMethod, nil]
         optional :webhook_urls_method, enum: -> { Telnyx::Calls::ActionTransferParams::WebhookURLsMethod }
 
-        # @!method initialize(call_control_id:, to:, answering_machine_detection: nil, answering_machine_detection_config: nil, audio_url: nil, client_state: nil, command_id: nil, custom_headers: nil, diversion: nil, early_media: nil, from: nil, from_display_name: nil, media_encryption: nil, media_name: nil, mute_dtmf: nil, park_after_unbridge: nil, preferred_codecs: nil, privacy: nil, record: nil, record_channels: nil, record_custom_file_name: nil, record_format: nil, record_max_length: nil, record_timeout_secs: nil, record_track: nil, record_trim: nil, route_to_mobile: nil, send_digits_on_answer: nil, sip_auth_password: nil, sip_auth_username: nil, sip_headers: nil, sip_region: nil, sip_transport_protocol: nil, sound_modifications: nil, target_leg_client_state: nil, time_limit_secs: nil, timeout_secs: nil, webhook_retries_policies: nil, webhook_url: nil, webhook_url_method: nil, webhook_urls: nil, webhook_urls_method: nil, request_options: {})
+        # @!method initialize(call_control_id:, to:, answering_machine_detection: nil, answering_machine_detection_config: nil, audio_url: nil, client_state: nil, command_id: nil, custom_headers: nil, diversion: nil, early_media: nil, from: nil, from_display_name: nil, media_encryption: nil, media_name: nil, mute_dtmf: nil, park_after_unbridge: nil, preferred_codecs: nil, privacy: nil, record: nil, record_channels: nil, record_custom_file_name: nil, record_format: nil, record_max_length: nil, record_redaction: nil, record_timeout_secs: nil, record_track: nil, record_trim: nil, route_to_mobile: nil, send_digits_on_answer: nil, sip_auth_password: nil, sip_auth_username: nil, sip_headers: nil, sip_region: nil, sip_transport_protocol: nil, sound_modifications: nil, target_leg_client_state: nil, time_limit_secs: nil, timeout_secs: nil, webhook_retries_policies: nil, webhook_url: nil, webhook_url_method: nil, webhook_urls: nil, webhook_urls_method: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::Calls::ActionTransferParams} for more details.
         #
@@ -406,6 +418,8 @@ module Telnyx
         #   @param record_format [Symbol, Telnyx::Models::Calls::ActionTransferParams::RecordFormat] Defines the format of the recording ('wav' or 'mp3') when `record` is specified.
         #
         #   @param record_max_length [Integer] Defines the maximum length for the recording in seconds when `record` is specifi
+        #
+        #   @param record_redaction [Array<Symbol, Telnyx::Models::Calls::ActionTransferParams::RecordRedaction>] Applies to the recording started with `record`. Silences spoken details of the g
         #
         #   @param record_timeout_secs [Integer] The number of seconds that Telnyx will wait for the recording to be stopped if s
         #
@@ -750,6 +764,17 @@ module Telnyx
 
           WAV = :wav
           MP3 = :mp3
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
+
+        module RecordRedaction
+          extend Telnyx::Internal::Type::Enum
+
+          PCI = :pci
+          PII = :pii
+          PHI = :phi
 
           # @!method self.values
           #   @return [Array<Symbol>]

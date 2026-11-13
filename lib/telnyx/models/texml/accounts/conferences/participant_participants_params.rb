@@ -104,6 +104,17 @@ module Telnyx
                      },
                      api_name: :ConferenceRecord
 
+            # @!attribute conference_recording_redaction
+            #   Silences spoken details of the given kinds in the recording: one or more of
+            #   `pci` (card number, expiry date, security code), `pii` (personal details such as
+            #   names, phone numbers, addresses and other identifying numbers) and `phi` (health
+            #   details such as medications, doses and conditions), separated by commas, for
+            #   example `pci,pii`. Redaction works on English speech only. Redacted recordings
+            #   are charged at the Deepgram speech-to-text rate.
+            #
+            #   @return [String, nil]
+            optional :conference_recording_redaction, String, api_name: :ConferenceRecordingRedaction
+
             # @!attribute conference_recording_status_callback
             #   The URL the conference recording callbacks will be sent to.
             #
@@ -490,7 +501,7 @@ module Telnyx
             #   @return [String, nil]
             optional :wait_url, String, api_name: :WaitUrl
 
-            # @!method initialize(account_sid:, conference_sid:, amd_status_callback: nil, amd_status_callback_method: nil, application_sid: nil, beep: nil, caller_id: nil, call_sid_to_coach: nil, cancel_playback_on_detect_message_end: nil, cancel_playback_on_machine_detection: nil, coaching: nil, conference_record: nil, conference_recording_status_callback: nil, conference_recording_status_callback_event: nil, conference_recording_status_callback_method: nil, conference_recording_timeout: nil, conference_status_callback: nil, conference_status_callback_event: nil, conference_status_callback_method: nil, conference_trim: nil, custom_headers: nil, early_media: nil, end_conference_on_exit: nil, from: nil, label: nil, machine_detection: nil, machine_detection_beep_max_frequency: nil, machine_detection_beep_min_frequency: nil, machine_detection_beep_min_tone_duration: nil, machine_detection_beep_profile: nil, machine_detection_beep_spectral_confirmation: nil, machine_detection_beep_spectral_min_purity: nil, machine_detection_beep_spectral_reject_fax_cng: nil, machine_detection_beep_spectral_window: nil, machine_detection_silence_timeout: nil, machine_detection_speech_end_threshold: nil, machine_detection_speech_threshold: nil, machine_detection_timeout: nil, max_participants: nil, muted: nil, preferred_codecs: nil, record: nil, recording_channels: nil, recording_status_callback: nil, recording_status_callback_event: nil, recording_status_callback_method: nil, recording_track: nil, sip_auth_password: nil, sip_auth_username: nil, start_conference_on_enter: nil, status_callback: nil, status_callback_event: nil, status_callback_method: nil, time_limit: nil, timeout_seconds: nil, to: nil, trim: nil, wait_url: nil, request_options: {})
+            # @!method initialize(account_sid:, conference_sid:, amd_status_callback: nil, amd_status_callback_method: nil, application_sid: nil, beep: nil, caller_id: nil, call_sid_to_coach: nil, cancel_playback_on_detect_message_end: nil, cancel_playback_on_machine_detection: nil, coaching: nil, conference_record: nil, conference_recording_redaction: nil, conference_recording_status_callback: nil, conference_recording_status_callback_event: nil, conference_recording_status_callback_method: nil, conference_recording_timeout: nil, conference_status_callback: nil, conference_status_callback_event: nil, conference_status_callback_method: nil, conference_trim: nil, custom_headers: nil, early_media: nil, end_conference_on_exit: nil, from: nil, label: nil, machine_detection: nil, machine_detection_beep_max_frequency: nil, machine_detection_beep_min_frequency: nil, machine_detection_beep_min_tone_duration: nil, machine_detection_beep_profile: nil, machine_detection_beep_spectral_confirmation: nil, machine_detection_beep_spectral_min_purity: nil, machine_detection_beep_spectral_reject_fax_cng: nil, machine_detection_beep_spectral_window: nil, machine_detection_silence_timeout: nil, machine_detection_speech_end_threshold: nil, machine_detection_speech_threshold: nil, machine_detection_timeout: nil, max_participants: nil, muted: nil, preferred_codecs: nil, record: nil, recording_channels: nil, recording_status_callback: nil, recording_status_callback_event: nil, recording_status_callback_method: nil, recording_track: nil, sip_auth_password: nil, sip_auth_username: nil, start_conference_on_enter: nil, status_callback: nil, status_callback_event: nil, status_callback_method: nil, time_limit: nil, timeout_seconds: nil, to: nil, trim: nil, wait_url: nil, request_options: {})
             #   Some parameter documentations has been truncated, see
             #   {Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams}
             #   for more details.
@@ -518,6 +529,8 @@ module Telnyx
             #   @param coaching [Boolean] Whether the participant is coaching another call. When `true`, `CallSidToCoach`
             #
             #   @param conference_record [Symbol, Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::ConferenceRecord] Whether to record the conference the participant is joining. Defualts to `do-not
+            #
+            #   @param conference_recording_redaction [String] Silences spoken details of the given kinds in the recording: one or more of `pci
             #
             #   @param conference_recording_status_callback [String] The URL the conference recording callbacks will be sent to.
             #

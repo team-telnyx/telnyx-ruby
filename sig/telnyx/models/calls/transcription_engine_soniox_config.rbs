@@ -64,12 +64,13 @@ module Telnyx
           def self?.values: -> ::Array[Telnyx::Models::Calls::TranscriptionEngineSonioxConfig::transcription_engine]
         end
 
-        type transcription_model = :"soniox/stt-rt-v4"
+        type transcription_model = :"soniox/stt-rt-v4" | :"soniox/stt-rt-v6"
 
         module TranscriptionModel
           extend Telnyx::Internal::Type::Enum
 
           SONIOX_STT_RT_V4: :"soniox/stt-rt-v4"
+          SONIOX_STT_RT_V6: :"soniox/stt-rt-v6"
 
           def self?.values: -> ::Array[Telnyx::Models::Calls::TranscriptionEngineSonioxConfig::transcription_model]
         end

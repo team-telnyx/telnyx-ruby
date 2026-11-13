@@ -153,6 +153,7 @@ module Telnyx
                 coaching: T::Boolean,
                 conference_record:
                   Telnyx::Texml::Accounts::Conferences::ParticipantParticipantsParams::ConferenceRecord::OrSymbol,
+                conference_recording_redaction: String,
                 conference_recording_status_callback: String,
                 conference_recording_status_callback_event: String,
                 conference_recording_status_callback_method:
@@ -261,6 +262,13 @@ module Telnyx
               # Defualts to `do-not-record`. The boolean values `true` and `false` are
               # synonymous with `record-from-start` and `do-not-record` respectively.
               conference_record: nil,
+              # Body param: Silences spoken details of the given kinds in the recording: one or
+              # more of `pci` (card number, expiry date, security code), `pii` (personal details
+              # such as names, phone numbers, addresses and other identifying numbers) and `phi`
+              # (health details such as medications, doses and conditions), separated by commas,
+              # for example `pci,pii`. Redaction works on English speech only. Redacted
+              # recordings are charged at the Deepgram speech-to-text rate.
+              conference_recording_redaction: nil,
               # Body param: The URL the conference recording callbacks will be sent to.
               conference_recording_status_callback: nil,
               # Body param: The changes to the conference recording's state that should generate

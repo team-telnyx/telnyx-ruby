@@ -59,18 +59,19 @@ module Telnyx
 
       class Filter < Telnyx::Internal::Type::BaseModel
         # @!attribute friendly_name
-        #   If present, applications with <code>friendly_name</code> containing the given
-        #   value will be returned. Matching is not case-sensitive. Requires at least three
-        #   characters.
+        #   If present, applications with <code>friendly_name</code> exactly matching the
+        #   given value will be returned. Matching is case-sensitive.
         #
-        #   @return [String, nil]
-        optional :friendly_name, String
+        #   @return [String, Telnyx::Models::TexmlApplicationListParams::Filter::FriendlyName::UnionMember1, nil]
+        optional :friendly_name, union: -> { Telnyx::TexmlApplicationListParams::Filter::FriendlyName }
 
         # @!attribute outbound_voice_profile_id
-        #   Identifies the associated outbound voice profile.
+        #   If present, only applications associated with the given outbound voice profile
+        #   will be returned. Matching is exact.
         #
-        #   @return [String, nil]
-        optional :outbound_voice_profile_id, String
+        #   @return [String, Telnyx::Models::TexmlApplicationListParams::Filter::OutboundVoiceProfileID::Eq, nil]
+        optional :outbound_voice_profile_id,
+                 union: -> { Telnyx::TexmlApplicationListParams::Filter::OutboundVoiceProfileID }
 
         # @!method initialize(friendly_name: nil, outbound_voice_profile_id: nil)
         #   Some parameter documentations has been truncated, see
@@ -79,9 +80,76 @@ module Telnyx
         #   Consolidated filter parameter (deepObject style). Originally:
         #   filter[outbound_voice_profile_id], filter[friendly_name]
         #
-        #   @param friendly_name [String] If present, applications with <code>friendly_name</code> containing the given va
+        #   @param friendly_name [String, Telnyx::Models::TexmlApplicationListParams::Filter::FriendlyName::UnionMember1] If present, applications with <code>friendly_name</code> exactly matching the gi
         #
-        #   @param outbound_voice_profile_id [String] Identifies the associated outbound voice profile.
+        #   @param outbound_voice_profile_id [String, Telnyx::Models::TexmlApplicationListParams::Filter::OutboundVoiceProfileID::Eq] If present, only applications associated with the given outbound voice profile w
+
+        # If present, applications with <code>friendly_name</code> exactly matching the
+        # given value will be returned. Matching is case-sensitive.
+        #
+        # @see Telnyx::Models::TexmlApplicationListParams::Filter#friendly_name
+        module FriendlyName
+          extend Telnyx::Internal::Type::Union
+
+          # If present, applications with <code>friendly_name</code> exactly matching the given value will be returned. Matching is case-sensitive.
+          variant String
+
+          variant -> { Telnyx::TexmlApplicationListParams::Filter::FriendlyName::UnionMember1 }
+
+          class UnionMember1 < Telnyx::Internal::Type::BaseModel
+            # @!attribute contains
+            #   If present, applications with <code>friendly_name</code> containing the given
+            #   value will be returned. Matching is not case-sensitive.
+            #
+            #   @return [String, nil]
+            optional :contains, String
+
+            # @!attribute eq
+            #   Exact match for friendly_name. Matching is case-sensitive.
+            #
+            #   @return [String, nil]
+            optional :eq, String
+
+            # @!method initialize(contains: nil, eq: nil)
+            #   Some parameter documentations has been truncated, see
+            #   {Telnyx::Models::TexmlApplicationListParams::Filter::FriendlyName::UnionMember1}
+            #   for more details.
+            #
+            #   @param contains [String] If present, applications with <code>friendly_name</code> containing the given va
+            #
+            #   @param eq [String] Exact match for friendly_name. Matching is case-sensitive.
+          end
+
+          # @!method self.variants
+          #   @return [Array(String, Telnyx::Models::TexmlApplicationListParams::Filter::FriendlyName::UnionMember1)]
+        end
+
+        # If present, only applications associated with the given outbound voice profile
+        # will be returned. Matching is exact.
+        #
+        # @see Telnyx::Models::TexmlApplicationListParams::Filter#outbound_voice_profile_id
+        module OutboundVoiceProfileID
+          extend Telnyx::Internal::Type::Union
+
+          # If present, only applications associated with the given outbound voice profile will be returned. Matching is exact.
+          variant String
+
+          variant -> { Telnyx::TexmlApplicationListParams::Filter::OutboundVoiceProfileID::Eq }
+
+          class Eq < Telnyx::Internal::Type::BaseModel
+            # @!attribute eq
+            #   Exact match for the associated outbound voice profile.
+            #
+            #   @return [String, nil]
+            optional :eq, String
+
+            # @!method initialize(eq: nil)
+            #   @param eq [String] Exact match for the associated outbound voice profile.
+          end
+
+          # @!method self.variants
+          #   @return [Array(String, Telnyx::Models::TexmlApplicationListParams::Filter::OutboundVoiceProfileID::Eq)]
+        end
       end
 
       # Specifies the sort order for results. By default sorting direction is ascending.

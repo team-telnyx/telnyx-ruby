@@ -69,6 +69,32 @@ module Telnyx
         sig { params(play_beep: T::Boolean).void }
         attr_writer :play_beep
 
+        # Silences spoken details of the given kinds in the recording: `pci` (card number,
+        # expiry date, security code), `pii` (personal details such as names, phone
+        # numbers, addresses and other identifying numbers) and `phi` (health details such
+        # as medications, doses and conditions). Redaction works on English speech only.
+        # Redacted recordings are charged at the Deepgram speech-to-text rate.
+        sig do
+          returns(
+            T.nilable(
+              T::Array[
+                Telnyx::Conferences::ActionRecordStartParams::Redaction::OrSymbol
+              ]
+            )
+          )
+        end
+        attr_reader :redaction
+
+        sig do
+          params(
+            redaction:
+              T::Array[
+                Telnyx::Conferences::ActionRecordStartParams::Redaction::OrSymbol
+              ]
+          ).void
+        end
+        attr_writer :redaction
+
         # Region where the conference data is located. Defaults to the region defined in
         # user's data locality settings (Europe or US).
         sig do
@@ -109,6 +135,10 @@ module Telnyx
             command_id: String,
             custom_file_name: String,
             play_beep: T::Boolean,
+            redaction:
+              T::Array[
+                Telnyx::Conferences::ActionRecordStartParams::Redaction::OrSymbol
+              ],
             region: Telnyx::Conferences::ConferenceRegion::OrSymbol,
             trim: Telnyx::Conferences::ActionRecordStartParams::Trim::OrSymbol,
             request_options: Telnyx::RequestOptions::OrHash
@@ -130,6 +160,12 @@ module Telnyx
           custom_file_name: nil,
           # If enabled, a beep sound will be played at the start of a recording.
           play_beep: nil,
+          # Silences spoken details of the given kinds in the recording: `pci` (card number,
+          # expiry date, security code), `pii` (personal details such as names, phone
+          # numbers, addresses and other identifying numbers) and `phi` (health details such
+          # as medications, doses and conditions). Redaction works on English speech only.
+          # Redacted recordings are charged at the Deepgram speech-to-text rate.
+          redaction: nil,
           # Region where the conference data is located. Defaults to the region defined in
           # user's data locality settings (Europe or US).
           region: nil,
@@ -151,6 +187,10 @@ module Telnyx
               command_id: String,
               custom_file_name: String,
               play_beep: T::Boolean,
+              redaction:
+                T::Array[
+                  Telnyx::Conferences::ActionRecordStartParams::Redaction::OrSymbol
+                ],
               region: Telnyx::Conferences::ConferenceRegion::OrSymbol,
               trim:
                 Telnyx::Conferences::ActionRecordStartParams::Trim::OrSymbol,
@@ -226,6 +266,45 @@ module Telnyx
             override.returns(
               T::Array[
                 Telnyx::Conferences::ActionRecordStartParams::Channels::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
+        end
+
+        module Redaction
+          extend Telnyx::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(
+                Symbol,
+                Telnyx::Conferences::ActionRecordStartParams::Redaction
+              )
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          PCI =
+            T.let(
+              :pci,
+              Telnyx::Conferences::ActionRecordStartParams::Redaction::TaggedSymbol
+            )
+          PII =
+            T.let(
+              :pii,
+              Telnyx::Conferences::ActionRecordStartParams::Redaction::TaggedSymbol
+            )
+          PHI =
+            T.let(
+              :phi,
+              Telnyx::Conferences::ActionRecordStartParams::Redaction::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                Telnyx::Conferences::ActionRecordStartParams::Redaction::TaggedSymbol
               ]
             )
           end

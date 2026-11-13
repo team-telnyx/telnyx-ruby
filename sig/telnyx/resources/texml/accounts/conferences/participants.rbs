@@ -49,6 +49,7 @@ module Telnyx
               ?cancel_playback_on_machine_detection: bool,
               ?coaching: bool,
               ?conference_record: Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::conference_record,
+              ?conference_recording_redaction: String,
               ?conference_recording_status_callback: String,
               ?conference_recording_status_callback_event: String,
               ?conference_recording_status_callback_method: Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::conference_recording_status_callback_method,

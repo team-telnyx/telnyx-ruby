@@ -422,6 +422,11 @@ module Telnyx
             :"soniox/stt-rt-v4",
             Telnyx::SpeechToTextRetrieveTranscriptionParams::Model::TaggedSymbol
           )
+        SONIOX_STT_RT_V6 =
+          T.let(
+            :"soniox/stt-rt-v6",
+            Telnyx::SpeechToTextRetrieveTranscriptionParams::Model::TaggedSymbol
+          )
         NVIDIA_PARAKEET_V3 =
           T.let(
             :"nvidia/parakeet-v3",

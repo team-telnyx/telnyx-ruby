@@ -122,6 +122,8 @@ module Telnyx
           INVALID_CREDENTIALS_JSON = :"Invalid credentials json"
           UNSUPPORTED_BACKEND = :"Unsupported backend"
           INTERNAL_SERVER_ERROR = :"Internal server error"
+          RECORDING_REDACTION_FAILED_SO_THE_RECORDING_WAS_NOT_SAVED =
+            :"Recording redaction failed, so the recording was not saved."
 
           # @!method self.values
           #   @return [Array<Symbol>]

@@ -9,6 +9,7 @@ module Telnyx
               account_sid: String,
               ?play_beep: bool,
               ?recording_channels: Telnyx::Models::Texml::Accounts::Calls::RecordingsJsonRecordingsJsonParams::recording_channels,
+              ?recording_redaction: String,
               ?recording_status_callback: String,
               ?recording_status_callback_event: String,
               ?recording_status_callback_method: Telnyx::Models::Texml::Accounts::Calls::RecordingsJsonRecordingsJsonParams::recording_status_callback_method,

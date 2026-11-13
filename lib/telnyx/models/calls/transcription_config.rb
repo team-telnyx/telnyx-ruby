@@ -11,9 +11,9 @@ module Telnyx
         #   `deepgram/flux`, supported values are: `auto` (Telnyx language detection
         #   controls the language hint), `multi` (no language hint), and language-specific
         #   hints `en`, `es`, `fr`, `de`, `hi`, `ru`, `pt`, `ja`, `it`, and `nl`. For
-        #   `soniox/stt-rt-v4`, `auto` omits the language hint and lets Soniox auto-detect;
-        #   ISO 639-1 codes (e.g. `en`, `es`) bias detection toward that language. For
-        #   `assemblyai/universal-3-6-pro` (and its legacy aliases
+        #   `soniox/stt-rt-v4` and `soniox/stt-rt-v6`, `auto` omits the language hint and
+        #   lets Soniox auto-detect; ISO 639-1 codes (e.g. `en`, `es`) bias detection toward
+        #   that language. For `assemblyai/universal-3-6-pro` (and its legacy aliases
         #   `assemblyai/universal-3-5-pro` and `assemblyai/universal-streaming`), `auto` (or
         #   unset) enables native multilingual code-switching; language codes (`en`, `es`,
         #   `de`, `fr`, `pt`, `it`, `tr`, `nl`, `sv`, `no`, `da`, `fi`, `hi`, `vi`, `ar`,
@@ -52,8 +52,8 @@ module Telnyx
         #     `assemblyai/universal-streaming` are still accepted and run the same
         #     Universal-3.6 Pro model.
         #   - `xai/grok-stt` for live streaming transcription.
-        #   - `soniox/stt-rt-v4` for live streaming multilingual transcription with
-        #     automatic language detection.
+        #   - `soniox/stt-rt-v4` and `soniox/stt-rt-v6` for live streaming multilingual
+        #     transcription with automatic language detection.
         #   - `nvidia/parakeet-v3` for multilingual transcription with automatic language
         #     detection.
         #   - `omi-health/omi-med-stt-v1` for English-only medical transcription
@@ -102,8 +102,8 @@ module Telnyx
         #   `assemblyai/universal-streaming` are still accepted and run the same
         #   Universal-3.6 Pro model.
         # - `xai/grok-stt` for live streaming transcription.
-        # - `soniox/stt-rt-v4` for live streaming multilingual transcription with
-        #   automatic language detection.
+        # - `soniox/stt-rt-v4` and `soniox/stt-rt-v6` for live streaming multilingual
+        #   transcription with automatic language detection.
         # - `nvidia/parakeet-v3` for multilingual transcription with automatic language
         #   detection.
         # - `omi-health/omi-med-stt-v1` for English-only medical transcription
@@ -137,6 +137,7 @@ module Telnyx
           ASSEMBLYAI_UNIVERSAL_STREAMING = :"assemblyai/universal-streaming"
           XAI_GROK_STT = :"xai/grok-stt"
           SONIOX_STT_RT_V4 = :"soniox/stt-rt-v4"
+          SONIOX_STT_RT_V6 = :"soniox/stt-rt-v6"
           NVIDIA_PARAKEET_V3 = :"nvidia/parakeet-v3"
           OMI_HEALTH_OMI_MED_STT_V1 = :"omi-health/omi-med-stt-v1"
           HUMAIN_REALTIME = :"humain/realtime"

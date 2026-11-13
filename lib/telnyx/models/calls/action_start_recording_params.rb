@@ -69,6 +69,17 @@ module Telnyx
         #   @return [Symbol, Telnyx::Models::Calls::ActionStartRecordingParams::RecordingTrack, nil]
         optional :recording_track, enum: -> { Telnyx::Calls::ActionStartRecordingParams::RecordingTrack }
 
+        # @!attribute redaction
+        #   Silences spoken details of the given kinds in the recording: `pci` (card number,
+        #   expiry date, security code), `pii` (personal details such as names, phone
+        #   numbers, addresses and other identifying numbers) and `phi` (health details such
+        #   as medications, doses and conditions). Redaction works on English speech only.
+        #   Redacted recordings are charged at the Deepgram speech-to-text rate.
+        #
+        #   @return [Array<Symbol, Telnyx::Models::Calls::ActionStartRecordingParams::Redaction>, nil]
+        optional :redaction,
+                 -> { Telnyx::Internal::Type::ArrayOf[enum: Telnyx::Calls::ActionStartRecordingParams::Redaction] }
+
         # @!attribute timeout_secs
         #   The number of seconds that Telnyx will wait for the recording to be stopped if
         #   silence is detected. The timer only starts when the speech is detected. Please
@@ -87,7 +98,8 @@ module Telnyx
         # @!attribute transcription_engine
         #   Engine to use for speech recognition. `A` - `Google`, `B` - `Telnyx`,
         #   `deepgram/nova-3` - `Deepgram Nova-3`. Note: `deepgram/nova-3` supports only
-        #   `en` and `en-{Region}` languages.
+        #   `en` and `en-{Region}` languages. When `redaction` is set, leave this out or set
+        #   a Deepgram engine.
         #
         #   @return [Symbol, Telnyx::Models::Calls::ActionStartRecordingParams::TranscriptionEngine, nil]
         optional :transcription_engine,
@@ -135,7 +147,7 @@ module Telnyx
         #   @return [Symbol, Telnyx::Models::Calls::ActionStartRecordingParams::Trim, nil]
         optional :trim, enum: -> { Telnyx::Calls::ActionStartRecordingParams::Trim }
 
-        # @!method initialize(call_control_id:, channels:, format_:, client_state: nil, command_id: nil, custom_file_name: nil, max_length: nil, play_beep: nil, recording_track: nil, timeout_secs: nil, transcription: nil, transcription_engine: nil, transcription_language: nil, transcription_max_speaker_count: nil, transcription_min_speaker_count: nil, transcription_profanity_filter: nil, transcription_speaker_diarization: nil, trim: nil, request_options: {})
+        # @!method initialize(call_control_id:, channels:, format_:, client_state: nil, command_id: nil, custom_file_name: nil, max_length: nil, play_beep: nil, recording_track: nil, redaction: nil, timeout_secs: nil, transcription: nil, transcription_engine: nil, transcription_language: nil, transcription_max_speaker_count: nil, transcription_min_speaker_count: nil, transcription_profanity_filter: nil, transcription_speaker_diarization: nil, trim: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::Calls::ActionStartRecordingParams} for more details.
         #
@@ -156,6 +168,8 @@ module Telnyx
         #   @param play_beep [Boolean] If enabled, a beep sound will be played at the start of a recording.
         #
         #   @param recording_track [Symbol, Telnyx::Models::Calls::ActionStartRecordingParams::RecordingTrack] The audio track to be recorded. Can be either `both`, `inbound` or `outbound`. I
+        #
+        #   @param redaction [Array<Symbol, Telnyx::Models::Calls::ActionStartRecordingParams::Redaction>] Silences spoken details of the given kinds in the recording: `pci` (card number,
         #
         #   @param timeout_secs [Integer] The number of seconds that Telnyx will wait for the recording to be stopped if s
         #
@@ -215,9 +229,21 @@ module Telnyx
           #   @return [Array<Symbol>]
         end
 
+        module Redaction
+          extend Telnyx::Internal::Type::Enum
+
+          PCI = :pci
+          PII = :pii
+          PHI = :phi
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
+
         # Engine to use for speech recognition. `A` - `Google`, `B` - `Telnyx`,
         # `deepgram/nova-3` - `Deepgram Nova-3`. Note: `deepgram/nova-3` supports only
-        # `en` and `en-{Region}` languages.
+        # `en` and `en-{Region}` languages. When `redaction` is set, leave this out or set
+        # a Deepgram engine.
         module TranscriptionEngine
           extend Telnyx::Internal::Type::Enum
 

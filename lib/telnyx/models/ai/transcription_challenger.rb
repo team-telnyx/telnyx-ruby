@@ -9,11 +9,12 @@ module Telnyx
         #   `transcription.model`: both streaming (`deepgram/flux`, `deepgram/nova-3`,
         #   `deepgram/nova-2`, `assemblyai/universal-3-6-pro` or its legacy aliases
         #   `assemblyai/universal-3-5-pro` and `assemblyai/universal-streaming`,
-        #   `xai/grok-stt`, `soniox/stt-rt-v4`, `soniox/stt-rt-v5`, `humain/realtime`,
-        #   `reson8/turns`) or both non-streaming (`azure/fast`, `nvidia/parakeet-v3`,
-        #   `omi-health/omi-med-stt-v1`, `cohere/ar-stt`, `distil-whisper/distil-large-v2`,
-        #   `openai/whisper-large-v3-turbo`, `telnyx/basira`). It can be the same model as
-        #   `transcription.model` on a different `language`.
+        #   `xai/grok-stt`, `soniox/stt-rt-v4`, `soniox/stt-rt-v5`, `soniox/stt-rt-v6`,
+        #   `humain/realtime`, `reson8/turns`) or both non-streaming (`azure/fast`,
+        #   `nvidia/parakeet-v3`, `omi-health/omi-med-stt-v1`, `cohere/ar-stt`,
+        #   `distil-whisper/distil-large-v2`, `openai/whisper-large-v3-turbo`,
+        #   `telnyx/basira`). It can be the same model as `transcription.model` on a
+        #   different `language`.
         #
         #   @return [Symbol, Telnyx::Models::AI::TranscriptionChallenger::Model]
         required :model, enum: -> { Telnyx::AI::TranscriptionChallenger::Model }
@@ -79,11 +80,12 @@ module Telnyx
         # `transcription.model`: both streaming (`deepgram/flux`, `deepgram/nova-3`,
         # `deepgram/nova-2`, `assemblyai/universal-3-6-pro` or its legacy aliases
         # `assemblyai/universal-3-5-pro` and `assemblyai/universal-streaming`,
-        # `xai/grok-stt`, `soniox/stt-rt-v4`, `soniox/stt-rt-v5`, `humain/realtime`,
-        # `reson8/turns`) or both non-streaming (`azure/fast`, `nvidia/parakeet-v3`,
-        # `omi-health/omi-med-stt-v1`, `cohere/ar-stt`, `distil-whisper/distil-large-v2`,
-        # `openai/whisper-large-v3-turbo`, `telnyx/basira`). It can be the same model as
-        # `transcription.model` on a different `language`.
+        # `xai/grok-stt`, `soniox/stt-rt-v4`, `soniox/stt-rt-v5`, `soniox/stt-rt-v6`,
+        # `humain/realtime`, `reson8/turns`) or both non-streaming (`azure/fast`,
+        # `nvidia/parakeet-v3`, `omi-health/omi-med-stt-v1`, `cohere/ar-stt`,
+        # `distil-whisper/distil-large-v2`, `openai/whisper-large-v3-turbo`,
+        # `telnyx/basira`). It can be the same model as `transcription.model` on a
+        # different `language`.
         #
         # @see Telnyx::Models::AI::TranscriptionChallenger#model
         module Model
@@ -99,6 +101,7 @@ module Telnyx
           XAI_GROK_STT = :"xai/grok-stt"
           SONIOX_STT_RT_V4 = :"soniox/stt-rt-v4"
           SONIOX_STT_RT_V5 = :"soniox/stt-rt-v5"
+          SONIOX_STT_RT_V6 = :"soniox/stt-rt-v6"
           NVIDIA_PARAKEET_V3 = :"nvidia/parakeet-v3"
           OMI_HEALTH_OMI_MED_STT_V1 = :"omi-health/omi-med-stt-v1"
           HUMAIN_REALTIME = :"humain/realtime"

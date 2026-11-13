@@ -64,7 +64,7 @@ module Telnyx
 
             # @!attribute record_type
             #   The source record kind this chunk came from (e.g. `voice`, `meeting_bot`,
-            #   `message`).
+            #   `message`, `email`, `whatsapp`).
             #
             #   @return [String, nil]
             optional :record_type, String

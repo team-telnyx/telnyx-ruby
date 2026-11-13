@@ -5,10 +5,10 @@ module Telnyx
     module AI
       class TranscriptionSettingsConfig < Telnyx::Internal::Type::BaseModel
         # @!attribute context
-        #   Available only for soniox/stt-rt-v4 and soniox/stt-rt-v5. A comma-separated list
-        #   of terms to boost for recognition during transcription, for staff names,
-        #   building names, or other domain-specific vocabulary. This field may be templated
-        #   with
+        #   Available only for soniox/stt-rt-v4, soniox/stt-rt-v5, and soniox/stt-rt-v6. A
+        #   comma-separated list of terms to boost for recognition during transcription, for
+        #   staff names, building names, or other domain-specific vocabulary. This field may
+        #   be templated with
         #   [dynamic variables](https://developers.telnyx.com/docs/inference/ai-assistants/dynamic-variables)
         #   using mustache syntax (e.g. `Telnyx,{{customer_name}},VoIP`). Variables are
         #   resolved at call time before the value is sent to Soniox.
@@ -25,8 +25,8 @@ module Telnyx
         optional :eager_eot_threshold, Float
 
         # @!attribute enable_endpoint_detection
-        #   Available only for soniox/stt-rt-v4 and soniox/stt-rt-v5. When true, Soniox
-        #   emits end-of-utterance events at the cadence configured by
+        #   Available only for soniox/stt-rt-v4, soniox/stt-rt-v5, and soniox/stt-rt-v6.
+        #   When true, Soniox emits end-of-utterance events at the cadence configured by
         #   `max_endpoint_delay_ms`.
         #
         #   @return [Boolean, nil]
@@ -57,8 +57,9 @@ module Telnyx
         optional :eot_timeout_ms, Integer
 
         # @!attribute interim_results
-        #   Available only for soniox/stt-rt-v4 and soniox/stt-rt-v5. When true, Soniox
-        #   streams interim (non-final) results in addition to finalized transcripts.
+        #   Available only for soniox/stt-rt-v4, soniox/stt-rt-v5, and soniox/stt-rt-v6.
+        #   When true, Soniox streams interim (non-final) results in addition to finalized
+        #   transcripts.
         #
         #   @return [Boolean, nil]
         optional :interim_results, Telnyx::Internal::Type::Boolean
@@ -79,17 +80,17 @@ module Telnyx
         optional :keyterm, String
 
         # @!attribute language_hints
-        #   Available only for soniox/stt-rt-v4 and soniox/stt-rt-v5. A list of ISO 639-1
-        #   language codes (e.g. `["nl", "fr"]`) to pin recognition to multiple languages at
-        #   once, overriding the single hint derived from `language`.
+        #   Available only for soniox/stt-rt-v4, soniox/stt-rt-v5, and soniox/stt-rt-v6. A
+        #   list of ISO 639-1 language codes (e.g. `["nl", "fr"]`) to pin recognition to
+        #   multiple languages at once, overriding the single hint derived from `language`.
         #
         #   @return [Array<String>, nil]
         optional :language_hints, Telnyx::Internal::Type::ArrayOf[String]
 
         # @!attribute max_endpoint_delay_ms
-        #   Available only for soniox/stt-rt-v4 and soniox/stt-rt-v5. Maximum silence (in
-        #   milliseconds) before Soniox emits an end-of-utterance event. Only honored when
-        #   `enable_endpoint_detection` is true.
+        #   Available only for soniox/stt-rt-v4, soniox/stt-rt-v5, and soniox/stt-rt-v6.
+        #   Maximum silence (in milliseconds) before Soniox emits an end-of-utterance event.
+        #   Only honored when `enable_endpoint_detection` is true.
         #
         #   @return [Integer, nil]
         optional :max_endpoint_delay_ms, Integer
@@ -146,11 +147,11 @@ module Telnyx
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::AI::TranscriptionSettingsConfig} for more details.
         #
-        #   @param context [String] Available only for soniox/stt-rt-v4 and soniox/stt-rt-v5. A comma-separated list
+        #   @param context [String] Available only for soniox/stt-rt-v4, soniox/stt-rt-v5, and soniox/stt-rt-v6. A c
         #
         #   @param eager_eot_threshold [Float] Available only for deepgram/flux. Confidence threshold for eager end of turn det
         #
-        #   @param enable_endpoint_detection [Boolean] Available only for soniox/stt-rt-v4 and soniox/stt-rt-v5. When true, Soniox emit
+        #   @param enable_endpoint_detection [Boolean] Available only for soniox/stt-rt-v4, soniox/stt-rt-v5, and soniox/stt-rt-v6. Whe
         #
         #   @param end_of_turn_confidence_threshold [Float] Deprecated and ignored. Accepted for backwards compatibility. AssemblyAI turn de
         #
@@ -158,13 +159,13 @@ module Telnyx
         #
         #   @param eot_timeout_ms [Integer] Available only for deepgram/flux. Maximum milliseconds of silence before forcing
         #
-        #   @param interim_results [Boolean] Available only for soniox/stt-rt-v4 and soniox/stt-rt-v5. When true, Soniox stre
+        #   @param interim_results [Boolean] Available only for soniox/stt-rt-v4, soniox/stt-rt-v5, and soniox/stt-rt-v6. Whe
         #
         #   @param keyterm [String] A comma-separated list of key terms to boost for recognition during transcriptio
         #
-        #   @param language_hints [Array<String>] Available only for soniox/stt-rt-v4 and soniox/stt-rt-v5. A list of ISO 639-1 la
+        #   @param language_hints [Array<String>] Available only for soniox/stt-rt-v4, soniox/stt-rt-v5, and soniox/stt-rt-v6. A l
         #
-        #   @param max_endpoint_delay_ms [Integer] Available only for soniox/stt-rt-v4 and soniox/stt-rt-v5. Maximum silence (in mi
+        #   @param max_endpoint_delay_ms [Integer] Available only for soniox/stt-rt-v4, soniox/stt-rt-v5, and soniox/stt-rt-v6. Max
         #
         #   @param max_turn_silence [Integer] Available only for assemblyai/universal-3-6-pro (and its legacy aliases assembly
         #

@@ -30,9 +30,6 @@ module Telnyx
       sig { returns(Telnyx::Resources::AI::Embeddings) }
       attr_reader :embeddings
 
-      sig { returns(Telnyx::Resources::AI::FineTuning) }
-      attr_reader :fine_tuning
-
       sig { returns(Telnyx::Resources::AI::Integrations) }
       attr_reader :integrations
 

@@ -42,8 +42,8 @@ module Telnyx
           attr_writer :record_type
 
           # The type of Telnyx data attached as a source. `bucket` requires an additional
-          # `bucket_id`. Only `voice` is searchable today; `meeting_bot`, `message`, and
-          # `bucket` attach but are not yet searchable (Coming soon).
+          # `bucket_id`. `voice`, `meeting_bot`, `message`, `email`, and `whatsapp` are
+          # searchable today; `bucket` attaches but is not yet searchable (Coming soon).
           sig do
             returns(
               T.nilable(Telnyx::AI::Collections::SourceType::TaggedSymbol)
@@ -82,8 +82,8 @@ module Telnyx
             # Identifies the record type. Always `ai_collection_source`.
             record_type: nil,
             # The type of Telnyx data attached as a source. `bucket` requires an additional
-            # `bucket_id`. Only `voice` is searchable today; `meeting_bot`, `message`, and
-            # `bucket` attach but are not yet searchable (Coming soon).
+            # `bucket_id`. `voice`, `meeting_bot`, `message`, `email`, and `whatsapp` are
+            # searchable today; `bucket` attaches but is not yet searchable (Coming soon).
             source_type: nil,
             status: nil
           )

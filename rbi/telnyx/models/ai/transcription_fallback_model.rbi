@@ -17,7 +17,7 @@ module Telnyx
         # `deepgram/nova-3`, `deepgram/nova-2`, `assemblyai/universal-3-6-pro` (or its
         # legacy aliases `assemblyai/universal-3-5-pro` and
         # `assemblyai/universal-streaming`), `xai/grok-stt`, `soniox/stt-rt-v4`,
-        # `soniox/stt-rt-v5`, `humain/realtime`, or `reson8/turns`.
+        # `soniox/stt-rt-v5`, `soniox/stt-rt-v6`, `humain/realtime`, or `reson8/turns`.
         sig { returns(Telnyx::AI::TranscriptionFallbackModel::Model::OrSymbol) }
         attr_accessor :model
 
@@ -57,7 +57,7 @@ module Telnyx
           # `deepgram/nova-3`, `deepgram/nova-2`, `assemblyai/universal-3-6-pro` (or its
           # legacy aliases `assemblyai/universal-3-5-pro` and
           # `assemblyai/universal-streaming`), `xai/grok-stt`, `soniox/stt-rt-v4`,
-          # `soniox/stt-rt-v5`, `humain/realtime`, or `reson8/turns`.
+          # `soniox/stt-rt-v5`, `soniox/stt-rt-v6`, `humain/realtime`, or `reson8/turns`.
           model:,
           # The language the fallback transcribes. Omit it or set it to `null` to use the
           # language of `transcription.model`. The request is rejected when the fallback
@@ -89,7 +89,7 @@ module Telnyx
         # `deepgram/nova-3`, `deepgram/nova-2`, `assemblyai/universal-3-6-pro` (or its
         # legacy aliases `assemblyai/universal-3-5-pro` and
         # `assemblyai/universal-streaming`), `xai/grok-stt`, `soniox/stt-rt-v4`,
-        # `soniox/stt-rt-v5`, `humain/realtime`, or `reson8/turns`.
+        # `soniox/stt-rt-v5`, `soniox/stt-rt-v6`, `humain/realtime`, or `reson8/turns`.
         module Model
           extend Telnyx::Internal::Type::Enum
 
@@ -142,6 +142,11 @@ module Telnyx
           SONIOX_STT_RT_V5 =
             T.let(
               :"soniox/stt-rt-v5",
+              Telnyx::AI::TranscriptionFallbackModel::Model::TaggedSymbol
+            )
+          SONIOX_STT_RT_V6 =
+            T.let(
+              :"soniox/stt-rt-v6",
               Telnyx::AI::TranscriptionFallbackModel::Model::TaggedSymbol
             )
           HUMAIN_REALTIME =

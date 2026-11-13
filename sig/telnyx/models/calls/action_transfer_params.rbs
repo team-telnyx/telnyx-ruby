@@ -26,6 +26,7 @@ module Telnyx
           record_custom_file_name: String,
           record_format: Telnyx::Models::Calls::ActionTransferParams::record_format,
           record_max_length: Integer,
+          record_redaction: ::Array[Telnyx::Models::Calls::ActionTransferParams::record_redaction],
           record_timeout_secs: Integer,
           record_track: Telnyx::Models::Calls::ActionTransferParams::record_track,
           record_trim: Telnyx::Models::Calls::ActionTransferParams::record_trim,
@@ -158,6 +159,12 @@ module Telnyx
 
         def record_max_length=: (Integer) -> Integer
 
+        attr_reader record_redaction: ::Array[Telnyx::Models::Calls::ActionTransferParams::record_redaction]?
+
+        def record_redaction=: (
+          ::Array[Telnyx::Models::Calls::ActionTransferParams::record_redaction]
+        ) -> ::Array[Telnyx::Models::Calls::ActionTransferParams::record_redaction]
+
         attr_reader record_timeout_secs: Integer?
 
         def record_timeout_secs=: (Integer) -> Integer
@@ -278,6 +285,7 @@ module Telnyx
           ?record_custom_file_name: String,
           ?record_format: Telnyx::Models::Calls::ActionTransferParams::record_format,
           ?record_max_length: Integer,
+          ?record_redaction: ::Array[Telnyx::Models::Calls::ActionTransferParams::record_redaction],
           ?record_timeout_secs: Integer,
           ?record_track: Telnyx::Models::Calls::ActionTransferParams::record_track,
           ?record_trim: Telnyx::Models::Calls::ActionTransferParams::record_trim,
@@ -324,6 +332,7 @@ module Telnyx
           record_custom_file_name: String,
           record_format: Telnyx::Models::Calls::ActionTransferParams::record_format,
           record_max_length: Integer,
+          record_redaction: ::Array[Telnyx::Models::Calls::ActionTransferParams::record_redaction],
           record_timeout_secs: Integer,
           record_track: Telnyx::Models::Calls::ActionTransferParams::record_track,
           record_trim: Telnyx::Models::Calls::ActionTransferParams::record_trim,
@@ -593,6 +602,18 @@ module Telnyx
           MP3: :mp3
 
           def self?.values: -> ::Array[Telnyx::Models::Calls::ActionTransferParams::record_format]
+        end
+
+        type record_redaction = :pci | :pii | :phi
+
+        module RecordRedaction
+          extend Telnyx::Internal::Type::Enum
+
+          PCI: :pci
+          PII: :pii
+          PHI: :phi
+
+          def self?.values: -> ::Array[Telnyx::Models::Calls::ActionTransferParams::record_redaction]
         end
 
         type record_track = :both | :inbound | :outbound

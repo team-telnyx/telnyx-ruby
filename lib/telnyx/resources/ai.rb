@@ -30,9 +30,6 @@ module Telnyx
       # @return [Telnyx::Resources::AI::Embeddings]
       attr_reader :embeddings
 
-      # @return [Telnyx::Resources::AI::FineTuning]
-      attr_reader :fine_tuning
-
       # @return [Telnyx::Resources::AI::Integrations]
       attr_reader :integrations
 
@@ -233,7 +230,6 @@ module Telnyx
         @collections = Telnyx::Resources::AI::Collections.new(client: client)
         @conversations = Telnyx::Resources::AI::Conversations.new(client: client)
         @embeddings = Telnyx::Resources::AI::Embeddings.new(client: client)
-        @fine_tuning = Telnyx::Resources::AI::FineTuning.new(client: client)
         @integrations = Telnyx::Resources::AI::Integrations.new(client: client)
         @mcp_servers = Telnyx::Resources::AI::McpServers.new(client: client)
         @missions = Telnyx::Resources::AI::Missions.new(client: client)

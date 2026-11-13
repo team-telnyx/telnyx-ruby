@@ -116,11 +116,6 @@ module Telnyx
             :soniox,
             Telnyx::TextToSpeechListVoicesParams::Provider::TaggedSymbol
           )
-        ASSEMBLYAI =
-          T.let(
-            :assemblyai,
-            Telnyx::TextToSpeechListVoicesParams::Provider::TaggedSymbol
-          )
 
         sig do
           override.returns(
