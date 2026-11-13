@@ -12,6 +12,7 @@ module Telnyx
           max_length: Integer,
           play_beep: bool,
           recording_track: Telnyx::Models::Calls::ActionStartRecordingParams::recording_track,
+          redaction: ::Array[Telnyx::Models::Calls::ActionStartRecordingParams::redaction],
           timeout_secs: Integer,
           transcription: bool,
           transcription_engine: Telnyx::Models::Calls::ActionStartRecordingParams::transcription_engine,
@@ -59,6 +60,12 @@ module Telnyx
         def recording_track=: (
           Telnyx::Models::Calls::ActionStartRecordingParams::recording_track
         ) -> Telnyx::Models::Calls::ActionStartRecordingParams::recording_track
+
+        attr_reader redaction: ::Array[Telnyx::Models::Calls::ActionStartRecordingParams::redaction]?
+
+        def redaction=: (
+          ::Array[Telnyx::Models::Calls::ActionStartRecordingParams::redaction]
+        ) -> ::Array[Telnyx::Models::Calls::ActionStartRecordingParams::redaction]
 
         attr_reader timeout_secs: Integer?
 
@@ -112,6 +119,7 @@ module Telnyx
           ?max_length: Integer,
           ?play_beep: bool,
           ?recording_track: Telnyx::Models::Calls::ActionStartRecordingParams::recording_track,
+          ?redaction: ::Array[Telnyx::Models::Calls::ActionStartRecordingParams::redaction],
           ?timeout_secs: Integer,
           ?transcription: bool,
           ?transcription_engine: Telnyx::Models::Calls::ActionStartRecordingParams::transcription_engine,
@@ -134,6 +142,7 @@ module Telnyx
           max_length: Integer,
           play_beep: bool,
           recording_track: Telnyx::Models::Calls::ActionStartRecordingParams::recording_track,
+          redaction: ::Array[Telnyx::Models::Calls::ActionStartRecordingParams::redaction],
           timeout_secs: Integer,
           transcription: bool,
           transcription_engine: Telnyx::Models::Calls::ActionStartRecordingParams::transcription_engine,
@@ -178,6 +187,18 @@ module Telnyx
           OUTBOUND: :outbound
 
           def self?.values: -> ::Array[Telnyx::Models::Calls::ActionStartRecordingParams::recording_track]
+        end
+
+        type redaction = :pci | :pii | :phi
+
+        module Redaction
+          extend Telnyx::Internal::Type::Enum
+
+          PCI: :pci
+          PII: :pii
+          PHI: :phi
+
+          def self?.values: -> ::Array[Telnyx::Models::Calls::ActionStartRecordingParams::redaction]
         end
 
         type transcription_engine = :A | :B | :"deepgram/nova-3"

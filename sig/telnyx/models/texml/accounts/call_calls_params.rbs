@@ -72,6 +72,7 @@ module Telnyx
                 preferred_codecs: String,
                 record: bool,
                 recording_channels: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL::recording_channels,
+                recording_redaction: String,
                 recording_status_callback: String,
                 recording_status_callback_event: String,
                 recording_status_callback_method: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL::recording_status_callback_method,
@@ -255,6 +256,10 @@ module Telnyx
                 Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL::recording_channels
               ) -> Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL::recording_channels
 
+              attr_reader recording_redaction: String?
+
+              def recording_redaction=: (String) -> String
+
               attr_reader recording_status_callback: String?
 
               def recording_status_callback=: (String) -> String
@@ -423,6 +428,7 @@ module Telnyx
                 ?preferred_codecs: String,
                 ?record: bool,
                 ?recording_channels: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL::recording_channels,
+                ?recording_redaction: String,
                 ?recording_status_callback: String,
                 ?recording_status_callback_event: String,
                 ?recording_status_callback_method: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL::recording_status_callback_method,
@@ -487,6 +493,7 @@ module Telnyx
                 preferred_codecs: String,
                 record: bool,
                 recording_channels: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL::recording_channels,
+                recording_redaction: String,
                 recording_status_callback: String,
                 recording_status_callback_event: String,
                 recording_status_callback_method: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL::recording_status_callback_method,
@@ -810,6 +817,7 @@ module Telnyx
                 preferred_codecs: String,
                 record: bool,
                 recording_channels: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml::recording_channels,
+                recording_redaction: String,
                 recording_status_callback: String,
                 recording_status_callback_event: String,
                 recording_status_callback_method: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml::recording_status_callback_method,
@@ -993,6 +1001,10 @@ module Telnyx
                 Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml::recording_channels
               ) -> Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml::recording_channels
 
+              attr_reader recording_redaction: String?
+
+              def recording_redaction=: (String) -> String
+
               attr_reader recording_status_callback: String?
 
               def recording_status_callback=: (String) -> String
@@ -1161,6 +1173,7 @@ module Telnyx
                 ?preferred_codecs: String,
                 ?record: bool,
                 ?recording_channels: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml::recording_channels,
+                ?recording_redaction: String,
                 ?recording_status_callback: String,
                 ?recording_status_callback_event: String,
                 ?recording_status_callback_method: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml::recording_status_callback_method,
@@ -1225,6 +1238,7 @@ module Telnyx
                 preferred_codecs: String,
                 record: bool,
                 recording_channels: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml::recording_channels,
+                recording_redaction: String,
                 recording_status_callback: String,
                 recording_status_callback_event: String,
                 recording_status_callback_method: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml::recording_status_callback_method,
@@ -1547,6 +1561,7 @@ module Telnyx
                 preferred_codecs: String,
                 record: bool,
                 recording_channels: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::recording_channels,
+                recording_redaction: String,
                 recording_status_callback: String,
                 recording_status_callback_event: String,
                 recording_status_callback_method: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::recording_status_callback_method,
@@ -1729,6 +1744,10 @@ module Telnyx
                 Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::recording_channels
               ) -> Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::recording_channels
 
+              attr_reader recording_redaction: String?
+
+              def recording_redaction=: (String) -> String
+
               attr_reader recording_status_callback: String?
 
               def recording_status_callback=: (String) -> String
@@ -1898,6 +1917,7 @@ module Telnyx
                 ?preferred_codecs: String,
                 ?record: bool,
                 ?recording_channels: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::recording_channels,
+                ?recording_redaction: String,
                 ?recording_status_callback: String,
                 ?recording_status_callback_event: String,
                 ?recording_status_callback_method: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::recording_status_callback_method,
@@ -1962,6 +1982,7 @@ module Telnyx
                 preferred_codecs: String,
                 record: bool,
                 recording_channels: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::recording_channels,
+                recording_redaction: String,
                 recording_status_callback: String,
                 recording_status_callback_event: String,
                 recording_status_callback_method: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::recording_status_callback_method,

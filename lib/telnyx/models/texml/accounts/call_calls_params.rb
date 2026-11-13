@@ -328,6 +328,17 @@ module Telnyx
                        },
                        api_name: :RecordingChannels
 
+              # @!attribute recording_redaction
+              #   Silences spoken details of the given kinds in the recording: one or more of
+              #   `pci` (card number, expiry date, security code), `pii` (personal details such as
+              #   names, phone numbers, addresses and other identifying numbers) and `phi` (health
+              #   details such as medications, doses and conditions), separated by commas, for
+              #   example `pci,pii`. Redaction works on English speech only. Redacted recordings
+              #   are charged at the Deepgram speech-to-text rate.
+              #
+              #   @return [String, nil]
+              optional :recording_redaction, String, api_name: :RecordingRedaction
+
               # @!attribute recording_status_callback
               #   The URL the recording callbacks will be sent to.
               #
@@ -560,7 +571,7 @@ module Telnyx
                        enum: -> { Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::URLMethod },
                        api_name: :UrlMethod
 
-              # @!method initialize(url:, application_sid: nil, async_amd: nil, async_amd_status_callback: nil, async_amd_status_callback_method: nil, caller_id: nil, cancel_playback_on_detect_message_end: nil, cancel_playback_on_machine_detection: nil, custom_headers: nil, deepfake_detection: nil, deepfake_detection_callback_method: nil, deepfake_detection_callback_url: nil, detection_mode: nil, fallback_url: nil, from: nil, machine_detection: nil, machine_detection_beep_max_frequency: nil, machine_detection_beep_min_frequency: nil, machine_detection_beep_min_tone_duration: nil, machine_detection_beep_profile: nil, machine_detection_beep_spectral_confirmation: nil, machine_detection_beep_spectral_min_purity: nil, machine_detection_beep_spectral_reject_fax_cng: nil, machine_detection_beep_spectral_window: nil, machine_detection_prompt_end_timeout: nil, machine_detection_silence_timeout: nil, machine_detection_speech_end_threshold: nil, machine_detection_speech_threshold: nil, machine_detection_timeout: nil, media_encryption: nil, preferred_codecs: nil, record: nil, recording_channels: nil, recording_status_callback: nil, recording_status_callback_event: nil, recording_status_callback_method: nil, recording_timeout: nil, recording_track: nil, send_recording_url: nil, sip_auth_password: nil, sip_auth_username: nil, sip_region: nil, status_callback: nil, status_callback_event: nil, status_callback_method: nil, stream_auth_token: nil, stream_bidirectional_codec: nil, stream_bidirectional_mode: nil, stream_bidirectional_sampling_rate: nil, stream_codec: nil, stream_establish_before_call_originate: nil, stream_track: nil, stream_url: nil, supervise_call_sid: nil, supervising_role: nil, texml: nil, time_limit: nil, timeout: nil, to: nil, trim: nil, url_method: nil)
+              # @!method initialize(url:, application_sid: nil, async_amd: nil, async_amd_status_callback: nil, async_amd_status_callback_method: nil, caller_id: nil, cancel_playback_on_detect_message_end: nil, cancel_playback_on_machine_detection: nil, custom_headers: nil, deepfake_detection: nil, deepfake_detection_callback_method: nil, deepfake_detection_callback_url: nil, detection_mode: nil, fallback_url: nil, from: nil, machine_detection: nil, machine_detection_beep_max_frequency: nil, machine_detection_beep_min_frequency: nil, machine_detection_beep_min_tone_duration: nil, machine_detection_beep_profile: nil, machine_detection_beep_spectral_confirmation: nil, machine_detection_beep_spectral_min_purity: nil, machine_detection_beep_spectral_reject_fax_cng: nil, machine_detection_beep_spectral_window: nil, machine_detection_prompt_end_timeout: nil, machine_detection_silence_timeout: nil, machine_detection_speech_end_threshold: nil, machine_detection_speech_threshold: nil, machine_detection_timeout: nil, media_encryption: nil, preferred_codecs: nil, record: nil, recording_channels: nil, recording_redaction: nil, recording_status_callback: nil, recording_status_callback_event: nil, recording_status_callback_method: nil, recording_timeout: nil, recording_track: nil, send_recording_url: nil, sip_auth_password: nil, sip_auth_username: nil, sip_region: nil, status_callback: nil, status_callback_event: nil, status_callback_method: nil, stream_auth_token: nil, stream_bidirectional_codec: nil, stream_bidirectional_mode: nil, stream_bidirectional_sampling_rate: nil, stream_codec: nil, stream_establish_before_call_originate: nil, stream_track: nil, stream_url: nil, supervise_call_sid: nil, supervising_role: nil, texml: nil, time_limit: nil, timeout: nil, to: nil, trim: nil, url_method: nil)
               #   Some parameter documentations has been truncated, see
               #   {Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL} for more
               #   details.
@@ -630,6 +641,8 @@ module Telnyx
               #   @param record [Boolean] Whether to record the entire participant's call leg. Defaults to `false`.
               #
               #   @param recording_channels [Symbol, Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL::RecordingChannels] The number of channels in the final recording. Defaults to `mono`.
+              #
+              #   @param recording_redaction [String] Silences spoken details of the given kinds in the recording: one or more of `pci
               #
               #   @param recording_status_callback [String] The URL the recording callbacks will be sent to.
               #
@@ -1304,6 +1317,17 @@ module Telnyx
                        },
                        api_name: :RecordingChannels
 
+              # @!attribute recording_redaction
+              #   Silences spoken details of the given kinds in the recording: one or more of
+              #   `pci` (card number, expiry date, security code), `pii` (personal details such as
+              #   names, phone numbers, addresses and other identifying numbers) and `phi` (health
+              #   details such as medications, doses and conditions), separated by commas, for
+              #   example `pci,pii`. Redaction works on English speech only. Redacted recordings
+              #   are charged at the Deepgram speech-to-text rate.
+              #
+              #   @return [String, nil]
+              optional :recording_redaction, String, api_name: :RecordingRedaction
+
               # @!attribute recording_status_callback
               #   The URL the recording callbacks will be sent to.
               #
@@ -1538,7 +1562,7 @@ module Telnyx
                        enum: -> { Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::URLMethod },
                        api_name: :UrlMethod
 
-              # @!method initialize(texml:, application_sid: nil, async_amd: nil, async_amd_status_callback: nil, async_amd_status_callback_method: nil, caller_id: nil, cancel_playback_on_detect_message_end: nil, cancel_playback_on_machine_detection: nil, custom_headers: nil, deepfake_detection: nil, deepfake_detection_callback_method: nil, deepfake_detection_callback_url: nil, detection_mode: nil, fallback_url: nil, from: nil, machine_detection: nil, machine_detection_beep_max_frequency: nil, machine_detection_beep_min_frequency: nil, machine_detection_beep_min_tone_duration: nil, machine_detection_beep_profile: nil, machine_detection_beep_spectral_confirmation: nil, machine_detection_beep_spectral_min_purity: nil, machine_detection_beep_spectral_reject_fax_cng: nil, machine_detection_beep_spectral_window: nil, machine_detection_prompt_end_timeout: nil, machine_detection_silence_timeout: nil, machine_detection_speech_end_threshold: nil, machine_detection_speech_threshold: nil, machine_detection_timeout: nil, media_encryption: nil, preferred_codecs: nil, record: nil, recording_channels: nil, recording_status_callback: nil, recording_status_callback_event: nil, recording_status_callback_method: nil, recording_timeout: nil, recording_track: nil, send_recording_url: nil, sip_auth_password: nil, sip_auth_username: nil, sip_region: nil, status_callback: nil, status_callback_event: nil, status_callback_method: nil, stream_auth_token: nil, stream_bidirectional_codec: nil, stream_bidirectional_mode: nil, stream_bidirectional_sampling_rate: nil, stream_codec: nil, stream_establish_before_call_originate: nil, stream_track: nil, stream_url: nil, supervise_call_sid: nil, supervising_role: nil, time_limit: nil, timeout: nil, to: nil, trim: nil, url: nil, url_method: nil)
+              # @!method initialize(texml:, application_sid: nil, async_amd: nil, async_amd_status_callback: nil, async_amd_status_callback_method: nil, caller_id: nil, cancel_playback_on_detect_message_end: nil, cancel_playback_on_machine_detection: nil, custom_headers: nil, deepfake_detection: nil, deepfake_detection_callback_method: nil, deepfake_detection_callback_url: nil, detection_mode: nil, fallback_url: nil, from: nil, machine_detection: nil, machine_detection_beep_max_frequency: nil, machine_detection_beep_min_frequency: nil, machine_detection_beep_min_tone_duration: nil, machine_detection_beep_profile: nil, machine_detection_beep_spectral_confirmation: nil, machine_detection_beep_spectral_min_purity: nil, machine_detection_beep_spectral_reject_fax_cng: nil, machine_detection_beep_spectral_window: nil, machine_detection_prompt_end_timeout: nil, machine_detection_silence_timeout: nil, machine_detection_speech_end_threshold: nil, machine_detection_speech_threshold: nil, machine_detection_timeout: nil, media_encryption: nil, preferred_codecs: nil, record: nil, recording_channels: nil, recording_redaction: nil, recording_status_callback: nil, recording_status_callback_event: nil, recording_status_callback_method: nil, recording_timeout: nil, recording_track: nil, send_recording_url: nil, sip_auth_password: nil, sip_auth_username: nil, sip_region: nil, status_callback: nil, status_callback_event: nil, status_callback_method: nil, stream_auth_token: nil, stream_bidirectional_codec: nil, stream_bidirectional_mode: nil, stream_bidirectional_sampling_rate: nil, stream_codec: nil, stream_establish_before_call_originate: nil, stream_track: nil, stream_url: nil, supervise_call_sid: nil, supervising_role: nil, time_limit: nil, timeout: nil, to: nil, trim: nil, url: nil, url_method: nil)
               #   Some parameter documentations has been truncated, see
               #   {Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml} for more
               #   details.
@@ -1608,6 +1632,8 @@ module Telnyx
               #   @param record [Boolean] Whether to record the entire participant's call leg. Defaults to `false`.
               #
               #   @param recording_channels [Symbol, Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml::RecordingChannels] The number of channels in the final recording. Defaults to `mono`.
+              #
+              #   @param recording_redaction [String] Silences spoken details of the given kinds in the recording: one or more of `pci
               #
               #   @param recording_status_callback [String] The URL the recording callbacks will be sent to.
               #
@@ -2277,6 +2303,17 @@ module Telnyx
                        },
                        api_name: :RecordingChannels
 
+              # @!attribute recording_redaction
+              #   Silences spoken details of the given kinds in the recording: one or more of
+              #   `pci` (card number, expiry date, security code), `pii` (personal details such as
+              #   names, phone numbers, addresses and other identifying numbers) and `phi` (health
+              #   details such as medications, doses and conditions), separated by commas, for
+              #   example `pci,pii`. Redaction works on English speech only. Redacted recordings
+              #   are charged at the Deepgram speech-to-text rate.
+              #
+              #   @return [String, nil]
+              optional :recording_redaction, String, api_name: :RecordingRedaction
+
               # @!attribute recording_status_callback
               #   The URL the recording callbacks will be sent to.
               #
@@ -2526,7 +2563,7 @@ module Telnyx
                        },
                        api_name: :UrlMethod
 
-              # @!method initialize(application_sid: nil, async_amd: nil, async_amd_status_callback: nil, async_amd_status_callback_method: nil, caller_id: nil, cancel_playback_on_detect_message_end: nil, cancel_playback_on_machine_detection: nil, custom_headers: nil, deepfake_detection: nil, deepfake_detection_callback_method: nil, deepfake_detection_callback_url: nil, detection_mode: nil, fallback_url: nil, from: nil, machine_detection: nil, machine_detection_beep_max_frequency: nil, machine_detection_beep_min_frequency: nil, machine_detection_beep_min_tone_duration: nil, machine_detection_beep_profile: nil, machine_detection_beep_spectral_confirmation: nil, machine_detection_beep_spectral_min_purity: nil, machine_detection_beep_spectral_reject_fax_cng: nil, machine_detection_beep_spectral_window: nil, machine_detection_prompt_end_timeout: nil, machine_detection_silence_timeout: nil, machine_detection_speech_end_threshold: nil, machine_detection_speech_threshold: nil, machine_detection_timeout: nil, media_encryption: nil, preferred_codecs: nil, record: nil, recording_channels: nil, recording_status_callback: nil, recording_status_callback_event: nil, recording_status_callback_method: nil, recording_timeout: nil, recording_track: nil, send_recording_url: nil, sip_auth_password: nil, sip_auth_username: nil, sip_region: nil, status_callback: nil, status_callback_event: nil, status_callback_method: nil, stream_auth_token: nil, stream_bidirectional_codec: nil, stream_bidirectional_mode: nil, stream_bidirectional_sampling_rate: nil, stream_codec: nil, stream_establish_before_call_originate: nil, stream_track: nil, stream_url: nil, supervise_call_sid: nil, supervising_role: nil, texml: nil, time_limit: nil, timeout: nil, to: nil, trim: nil, url: nil, url_method: nil)
+              # @!method initialize(application_sid: nil, async_amd: nil, async_amd_status_callback: nil, async_amd_status_callback_method: nil, caller_id: nil, cancel_playback_on_detect_message_end: nil, cancel_playback_on_machine_detection: nil, custom_headers: nil, deepfake_detection: nil, deepfake_detection_callback_method: nil, deepfake_detection_callback_url: nil, detection_mode: nil, fallback_url: nil, from: nil, machine_detection: nil, machine_detection_beep_max_frequency: nil, machine_detection_beep_min_frequency: nil, machine_detection_beep_min_tone_duration: nil, machine_detection_beep_profile: nil, machine_detection_beep_spectral_confirmation: nil, machine_detection_beep_spectral_min_purity: nil, machine_detection_beep_spectral_reject_fax_cng: nil, machine_detection_beep_spectral_window: nil, machine_detection_prompt_end_timeout: nil, machine_detection_silence_timeout: nil, machine_detection_speech_end_threshold: nil, machine_detection_speech_threshold: nil, machine_detection_timeout: nil, media_encryption: nil, preferred_codecs: nil, record: nil, recording_channels: nil, recording_redaction: nil, recording_status_callback: nil, recording_status_callback_event: nil, recording_status_callback_method: nil, recording_timeout: nil, recording_track: nil, send_recording_url: nil, sip_auth_password: nil, sip_auth_username: nil, sip_region: nil, status_callback: nil, status_callback_event: nil, status_callback_method: nil, stream_auth_token: nil, stream_bidirectional_codec: nil, stream_bidirectional_mode: nil, stream_bidirectional_sampling_rate: nil, stream_codec: nil, stream_establish_before_call_originate: nil, stream_track: nil, stream_url: nil, supervise_call_sid: nil, supervising_role: nil, texml: nil, time_limit: nil, timeout: nil, to: nil, trim: nil, url: nil, url_method: nil)
               #   Some parameter documentations has been truncated, see
               #   {Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault} for
               #   more details.
@@ -2594,6 +2631,8 @@ module Telnyx
               #   @param record [Boolean] Whether to record the entire participant's call leg. Defaults to `false`.
               #
               #   @param recording_channels [Symbol, Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::RecordingChannels] The number of channels in the final recording. Defaults to `mono`.
+              #
+              #   @param recording_redaction [String] Silences spoken details of the given kinds in the recording: one or more of `pci
               #
               #   @param recording_status_callback [String] The URL the recording callbacks will be sent to.
               #

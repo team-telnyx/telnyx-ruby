@@ -15,6 +15,7 @@ module Telnyx
                 play_beep: T::Boolean,
                 recording_channels:
                   Telnyx::Texml::Accounts::Calls::RecordingsJsonRecordingsJsonParams::RecordingChannels::OrSymbol,
+                recording_redaction: String,
                 recording_status_callback: String,
                 recording_status_callback_event: String,
                 recording_status_callback_method:
@@ -42,6 +43,13 @@ module Telnyx
               # Body param: When `dual`, final audio file has the first leg on channel A, and
               # the rest on channel B. `single` mixes both tracks into a single channel.
               recording_channels: nil,
+              # Body param: Silences spoken details of the given kinds in the recording: one or
+              # more of `pci` (card number, expiry date, security code), `pii` (personal details
+              # such as names, phone numbers, addresses and other identifying numbers) and `phi`
+              # (health details such as medications, doses and conditions), separated by commas,
+              # for example `pci,pii`. Redaction works on English speech only. Redacted
+              # recordings are charged at the Deepgram speech-to-text rate.
+              recording_redaction: nil,
               # Body param: Url where status callbacks will be sent.
               recording_status_callback: nil,
               # Body param: The changes to the recording's state that should generate a call to

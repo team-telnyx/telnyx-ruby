@@ -13,7 +13,7 @@ module Telnyx
             #
             # Starts recording with specified parameters for call idientified by call_sid.
             #
-            # @overload recordings_json(call_sid, account_sid:, play_beep: nil, recording_channels: nil, recording_status_callback: nil, recording_status_callback_event: nil, recording_status_callback_method: nil, recording_track: nil, send_recording_url: nil, request_options: {})
+            # @overload recordings_json(call_sid, account_sid:, play_beep: nil, recording_channels: nil, recording_redaction: nil, recording_status_callback: nil, recording_status_callback_event: nil, recording_status_callback_method: nil, recording_track: nil, send_recording_url: nil, request_options: {})
             #
             # @param call_sid [String] Path param: The CallSid that identifies the call to update.
             #
@@ -22,6 +22,8 @@ module Telnyx
             # @param play_beep [Boolean] Body param: Whether to play a beep when recording is started.
             #
             # @param recording_channels [Symbol, Telnyx::Models::Texml::Accounts::Calls::RecordingsJsonRecordingsJsonParams::RecordingChannels] Body param: When `dual`, final audio file has the first leg on channel A, and th
+            #
+            # @param recording_redaction [String] Body param: Silences spoken details of the given kinds in the recording: one or
             #
             # @param recording_status_callback [String] Body param: Url where status callbacks will be sent.
             #

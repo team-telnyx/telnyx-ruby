@@ -394,7 +394,7 @@ module Telnyx
         #
         # - `conference.recording.saved`
         #
-        # @overload record_start(id, format_:, channels: nil, command_id: nil, custom_file_name: nil, play_beep: nil, region: nil, trim: nil, request_options: {})
+        # @overload record_start(id, format_:, channels: nil, command_id: nil, custom_file_name: nil, play_beep: nil, redaction: nil, region: nil, trim: nil, request_options: {})
         #
         # @param id [String] Specifies the conference to record by id or name
         #
@@ -407,6 +407,8 @@ module Telnyx
         # @param custom_file_name [String] The custom recording file name to be used instead of the default `call_leg_id`.
         #
         # @param play_beep [Boolean] If enabled, a beep sound will be played at the start of a recording.
+        #
+        # @param redaction [Array<Symbol, Telnyx::Models::Conferences::ActionRecordStartParams::Redaction>] Silences spoken details of the given kinds in the recording: `pci` (card number,
         #
         # @param region [Symbol, Telnyx::Models::Conferences::ConferenceRegion] Region where the conference data is located. Defaults to the region defined in u
         #

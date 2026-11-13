@@ -81,7 +81,7 @@ module Telnyx
         # When the `record` parameter is set to `record-from-answer`, the response will
         # include a `recording_id` field.
         #
-        # @overload answer(call_control_id, assistant: nil, billing_group_id: nil, client_state: nil, command_id: nil, conversation_relay_config: nil, custom_headers: nil, deepfake_detection: nil, preferred_codecs: nil, record: nil, record_channels: nil, record_custom_file_name: nil, record_format: nil, record_max_length: nil, record_timeout_secs: nil, record_track: nil, record_trim: nil, send_silence_when_idle: nil, sip_headers: nil, sound_modifications: nil, stream_bidirectional_codec: nil, stream_bidirectional_mode: nil, stream_bidirectional_target_legs: nil, stream_codec: nil, stream_track: nil, stream_url: nil, transcription: nil, transcription_config: nil, webhook_retries_policies: nil, webhook_url: nil, webhook_url_method: nil, webhook_urls: nil, webhook_urls_method: nil, request_options: {})
+        # @overload answer(call_control_id, assistant: nil, billing_group_id: nil, client_state: nil, command_id: nil, conversation_relay_config: nil, custom_headers: nil, deepfake_detection: nil, preferred_codecs: nil, record: nil, record_channels: nil, record_custom_file_name: nil, record_format: nil, record_max_length: nil, record_redaction: nil, record_timeout_secs: nil, record_track: nil, record_trim: nil, send_silence_when_idle: nil, sip_headers: nil, sound_modifications: nil, stream_bidirectional_codec: nil, stream_bidirectional_mode: nil, stream_bidirectional_target_legs: nil, stream_codec: nil, stream_track: nil, stream_url: nil, transcription: nil, transcription_config: nil, webhook_retries_policies: nil, webhook_url: nil, webhook_url_method: nil, webhook_urls: nil, webhook_urls_method: nil, request_options: {})
         #
         # @param call_control_id [String] Unique identifier and token for controlling the call
         #
@@ -110,6 +110,8 @@ module Telnyx
         # @param record_format [Symbol, Telnyx::Models::Calls::ActionAnswerParams::RecordFormat] Defines the format of the recording ('wav' or 'mp3') when `record` is specified.
         #
         # @param record_max_length [Integer] Defines the maximum length for the recording in seconds when `record` is specifi
+        #
+        # @param record_redaction [Array<Symbol, Telnyx::Models::Calls::ActionAnswerParams::RecordRedaction>] Applies to the recording started with `record`. Silences spoken details of the g
         #
         # @param record_timeout_secs [Integer] The number of seconds that Telnyx will wait for the recording to be stopped if s
         #
@@ -176,7 +178,7 @@ module Telnyx
         # - `call.bridged` for Leg A
         # - `call.bridged` for Leg B
         #
-        # @overload bridge(call_control_id_to_bridge, call_control_id_to_bridge_with:, client_state: nil, command_id: nil, hold_after_unbridge: nil, mute_dtmf: nil, park_after_unbridge: nil, play_ringtone: nil, prevent_double_bridge: nil, queue: nil, record: nil, record_channels: nil, record_custom_file_name: nil, record_format: nil, record_max_length: nil, record_timeout_secs: nil, record_track: nil, record_trim: nil, ringtone: nil, video_room_context: nil, video_room_id: nil, request_options: {})
+        # @overload bridge(call_control_id_to_bridge, call_control_id_to_bridge_with:, client_state: nil, command_id: nil, hold_after_unbridge: nil, mute_dtmf: nil, park_after_unbridge: nil, play_ringtone: nil, prevent_double_bridge: nil, queue: nil, record: nil, record_channels: nil, record_custom_file_name: nil, record_format: nil, record_max_length: nil, record_redaction: nil, record_timeout_secs: nil, record_track: nil, record_trim: nil, ringtone: nil, video_room_context: nil, video_room_id: nil, request_options: {})
         #
         # @param call_control_id_to_bridge [String] Unique identifier and token for controlling the call
         #
@@ -208,6 +210,8 @@ module Telnyx
         # @param record_format [Symbol, Telnyx::Models::Calls::ActionBridgeParams::RecordFormat] Defines the format of the recording ('wav' or 'mp3') when `record` is specified.
         #
         # @param record_max_length [Integer] Defines the maximum length for the recording in seconds when `record` is specifi
+        #
+        # @param record_redaction [Array<Symbol, Telnyx::Models::Calls::ActionBridgeParams::RecordRedaction>] Applies to the recording started with `record`. Silences spoken details of the g
         #
         # @param record_timeout_secs [Integer] The number of seconds that Telnyx will wait for the recording to be stopped if s
         #
@@ -1279,7 +1283,7 @@ module Telnyx
         # - `call.recording.transcription.saved`
         # - `call.recording.error`
         #
-        # @overload start_recording(call_control_id, channels:, format_:, client_state: nil, command_id: nil, custom_file_name: nil, max_length: nil, play_beep: nil, recording_track: nil, timeout_secs: nil, transcription: nil, transcription_engine: nil, transcription_language: nil, transcription_max_speaker_count: nil, transcription_min_speaker_count: nil, transcription_profanity_filter: nil, transcription_speaker_diarization: nil, trim: nil, request_options: {})
+        # @overload start_recording(call_control_id, channels:, format_:, client_state: nil, command_id: nil, custom_file_name: nil, max_length: nil, play_beep: nil, recording_track: nil, redaction: nil, timeout_secs: nil, transcription: nil, transcription_engine: nil, transcription_language: nil, transcription_max_speaker_count: nil, transcription_min_speaker_count: nil, transcription_profanity_filter: nil, transcription_speaker_diarization: nil, trim: nil, request_options: {})
         #
         # @param call_control_id [String] Unique identifier and token for controlling the call
         #
@@ -1298,6 +1302,8 @@ module Telnyx
         # @param play_beep [Boolean] If enabled, a beep sound will be played at the start of a recording.
         #
         # @param recording_track [Symbol, Telnyx::Models::Calls::ActionStartRecordingParams::RecordingTrack] The audio track to be recorded. Can be either `both`, `inbound` or `outbound`. I
+        #
+        # @param redaction [Array<Symbol, Telnyx::Models::Calls::ActionStartRecordingParams::Redaction>] Silences spoken details of the given kinds in the recording: `pci` (card number,
         #
         # @param timeout_secs [Integer] The number of seconds that Telnyx will wait for the recording to be stopped if s
         #
@@ -1855,7 +1861,7 @@ module Telnyx
         #   `answering_machine_detection=premium_ios_call_screening_detection` was
         #   requested and an Apple Call Screening tone was detected
         #
-        # @overload transfer(call_control_id, to:, answering_machine_detection: nil, answering_machine_detection_config: nil, audio_url: nil, client_state: nil, command_id: nil, custom_headers: nil, diversion: nil, early_media: nil, from: nil, from_display_name: nil, media_encryption: nil, media_name: nil, mute_dtmf: nil, park_after_unbridge: nil, preferred_codecs: nil, privacy: nil, record: nil, record_channels: nil, record_custom_file_name: nil, record_format: nil, record_max_length: nil, record_timeout_secs: nil, record_track: nil, record_trim: nil, route_to_mobile: nil, send_digits_on_answer: nil, sip_auth_password: nil, sip_auth_username: nil, sip_headers: nil, sip_region: nil, sip_transport_protocol: nil, sound_modifications: nil, target_leg_client_state: nil, time_limit_secs: nil, timeout_secs: nil, webhook_retries_policies: nil, webhook_url: nil, webhook_url_method: nil, webhook_urls: nil, webhook_urls_method: nil, request_options: {})
+        # @overload transfer(call_control_id, to:, answering_machine_detection: nil, answering_machine_detection_config: nil, audio_url: nil, client_state: nil, command_id: nil, custom_headers: nil, diversion: nil, early_media: nil, from: nil, from_display_name: nil, media_encryption: nil, media_name: nil, mute_dtmf: nil, park_after_unbridge: nil, preferred_codecs: nil, privacy: nil, record: nil, record_channels: nil, record_custom_file_name: nil, record_format: nil, record_max_length: nil, record_redaction: nil, record_timeout_secs: nil, record_track: nil, record_trim: nil, route_to_mobile: nil, send_digits_on_answer: nil, sip_auth_password: nil, sip_auth_username: nil, sip_headers: nil, sip_region: nil, sip_transport_protocol: nil, sound_modifications: nil, target_leg_client_state: nil, time_limit_secs: nil, timeout_secs: nil, webhook_retries_policies: nil, webhook_url: nil, webhook_url_method: nil, webhook_urls: nil, webhook_urls_method: nil, request_options: {})
         #
         # @param call_control_id [String] Unique identifier and token for controlling the call
         #
@@ -1902,6 +1908,8 @@ module Telnyx
         # @param record_format [Symbol, Telnyx::Models::Calls::ActionTransferParams::RecordFormat] Defines the format of the recording ('wav' or 'mp3') when `record` is specified.
         #
         # @param record_max_length [Integer] Defines the maximum length for the recording in seconds when `record` is specifi
+        #
+        # @param record_redaction [Array<Symbol, Telnyx::Models::Calls::ActionTransferParams::RecordRedaction>] Applies to the recording started with `record`. Silences spoken details of the g
         #
         # @param record_timeout_secs [Integer] The number of seconds that Telnyx will wait for the recording to be stopped if s
         #

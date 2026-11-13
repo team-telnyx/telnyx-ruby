@@ -9,6 +9,7 @@ module Telnyx
           command_id: String,
           custom_file_name: String,
           play_beep: bool,
+          redaction: ::Array[Telnyx::Models::Conferences::ActionRecordStartParams::redaction],
           region: Telnyx::Models::Conferences::conference_region,
           trim: Telnyx::Models::Conferences::ActionRecordStartParams::trim
         }
@@ -40,6 +41,12 @@ module Telnyx
 
         def play_beep=: (bool) -> bool
 
+        attr_reader redaction: ::Array[Telnyx::Models::Conferences::ActionRecordStartParams::redaction]?
+
+        def redaction=: (
+          ::Array[Telnyx::Models::Conferences::ActionRecordStartParams::redaction]
+        ) -> ::Array[Telnyx::Models::Conferences::ActionRecordStartParams::redaction]
+
         attr_reader region: Telnyx::Models::Conferences::conference_region?
 
         def region=: (
@@ -59,6 +66,7 @@ module Telnyx
           ?command_id: String,
           ?custom_file_name: String,
           ?play_beep: bool,
+          ?redaction: ::Array[Telnyx::Models::Conferences::ActionRecordStartParams::redaction],
           ?region: Telnyx::Models::Conferences::conference_region,
           ?trim: Telnyx::Models::Conferences::ActionRecordStartParams::trim,
           ?request_options: Telnyx::request_opts
@@ -71,6 +79,7 @@ module Telnyx
           command_id: String,
           custom_file_name: String,
           play_beep: bool,
+          redaction: ::Array[Telnyx::Models::Conferences::ActionRecordStartParams::redaction],
           region: Telnyx::Models::Conferences::conference_region,
           trim: Telnyx::Models::Conferences::ActionRecordStartParams::trim,
           request_options: Telnyx::RequestOptions
@@ -96,6 +105,18 @@ module Telnyx
           DUAL: :dual
 
           def self?.values: -> ::Array[Telnyx::Models::Conferences::ActionRecordStartParams::channels]
+        end
+
+        type redaction = :pci | :pii | :phi
+
+        module Redaction
+          extend Telnyx::Internal::Type::Enum
+
+          PCI: :pci
+          PII: :pii
+          PHI: :phi
+
+          def self?.values: -> ::Array[Telnyx::Models::Conferences::ActionRecordStartParams::redaction]
         end
 
         type trim = :"trim-silence"

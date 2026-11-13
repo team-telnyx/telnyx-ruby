@@ -116,6 +116,10 @@ module Telnyx
             record_format:
               Telnyx::Calls::ActionAnswerParams::RecordFormat::OrSymbol,
             record_max_length: Integer,
+            record_redaction:
+              T::Array[
+                Telnyx::Calls::ActionAnswerParams::RecordRedaction::OrSymbol
+              ],
             record_timeout_secs: Integer,
             record_track:
               Telnyx::Calls::ActionAnswerParams::RecordTrack::OrSymbol,
@@ -200,6 +204,13 @@ module Telnyx
           # specified. The minimum value is 0. The maximum value is 43200. The default value
           # is 0 (infinite).
           record_max_length: nil,
+          # Applies to the recording started with `record`. Silences spoken details of the
+          # given kinds in the recording: `pci` (card number, expiry date, security code),
+          # `pii` (personal details such as names, phone numbers, addresses and other
+          # identifying numbers) and `phi` (health details such as medications, doses and
+          # conditions). Redaction works on English speech only. Redacted recordings are
+          # charged at the Deepgram speech-to-text rate.
+          record_redaction: nil,
           # The number of seconds that Telnyx will wait for the recording to be stopped if
           # silence is detected when `record` is specified. The timer only starts when the
           # speech is detected. Please note that call transcription is used to detect
@@ -284,6 +295,10 @@ module Telnyx
             record_format:
               Telnyx::Calls::ActionBridgeParams::RecordFormat::OrSymbol,
             record_max_length: Integer,
+            record_redaction:
+              T::Array[
+                Telnyx::Calls::ActionBridgeParams::RecordRedaction::OrSymbol
+              ],
             record_timeout_secs: Integer,
             record_track:
               Telnyx::Calls::ActionBridgeParams::RecordTrack::OrSymbol,
@@ -343,6 +358,13 @@ module Telnyx
           # specified. The minimum value is 0. The maximum value is 43200. The default value
           # is 0 (infinite).
           record_max_length: nil,
+          # Applies to the recording started with `record`. Silences spoken details of the
+          # given kinds in the recording: `pci` (card number, expiry date, security code),
+          # `pii` (personal details such as names, phone numbers, addresses and other
+          # identifying numbers) and `phi` (health details such as medications, doses and
+          # conditions). Redaction works on English speech only. Redacted recordings are
+          # charged at the Deepgram speech-to-text rate.
+          record_redaction: nil,
           # The number of seconds that Telnyx will wait for the recording to be stopped if
           # silence is detected when `record` is specified. The timer only starts when the
           # speech is detected. Please note that call transcription is used to detect
@@ -1831,6 +1853,10 @@ module Telnyx
             play_beep: T::Boolean,
             recording_track:
               Telnyx::Calls::ActionStartRecordingParams::RecordingTrack::OrSymbol,
+            redaction:
+              T::Array[
+                Telnyx::Calls::ActionStartRecordingParams::Redaction::OrSymbol
+              ],
             timeout_secs: Integer,
             transcription: T::Boolean,
             transcription_engine:
@@ -1872,6 +1898,12 @@ module Telnyx
           # If only single track is specified (`inbound`, `outbound`), `channels`
           # configuration is ignored and it will be recorded as mono (single channel).
           recording_track: nil,
+          # Silences spoken details of the given kinds in the recording: `pci` (card number,
+          # expiry date, security code), `pii` (personal details such as names, phone
+          # numbers, addresses and other identifying numbers) and `phi` (health details such
+          # as medications, doses and conditions). Redaction works on English speech only.
+          # Redacted recordings are charged at the Deepgram speech-to-text rate.
+          redaction: nil,
           # The number of seconds that Telnyx will wait for the recording to be stopped if
           # silence is detected. The timer only starts when the speech is detected. Please
           # note that call transcription is used to detect silence and the related charge
@@ -1881,7 +1913,8 @@ module Telnyx
           transcription: nil,
           # Engine to use for speech recognition. `A` - `Google`, `B` - `Telnyx`,
           # `deepgram/nova-3` - `Deepgram Nova-3`. Note: `deepgram/nova-3` supports only
-          # `en` and `en-{Region}` languages.
+          # `en` and `en-{Region}` languages. When `redaction` is set, leave this out or set
+          # a Deepgram engine.
           transcription_engine: nil,
           # Language code for transcription. Note: Not all languages are supported by all
           # transcription engines (google, telnyx, deepgram). See engine-specific
@@ -2417,6 +2450,10 @@ module Telnyx
             record_format:
               Telnyx::Calls::ActionTransferParams::RecordFormat::OrSymbol,
             record_max_length: Integer,
+            record_redaction:
+              T::Array[
+                Telnyx::Calls::ActionTransferParams::RecordRedaction::OrSymbol
+              ],
             record_timeout_secs: Integer,
             record_track:
               Telnyx::Calls::ActionTransferParams::RecordTrack::OrSymbol,
@@ -2556,6 +2593,13 @@ module Telnyx
           # specified. The minimum value is 0. The maximum value is 43200. The default value
           # is 0 (infinite).
           record_max_length: nil,
+          # Applies to the recording started with `record`. Silences spoken details of the
+          # given kinds in the recording: `pci` (card number, expiry date, security code),
+          # `pii` (personal details such as names, phone numbers, addresses and other
+          # identifying numbers) and `phi` (health details such as medications, doses and
+          # conditions). Redaction works on English speech only. Redacted recordings are
+          # charged at the Deepgram speech-to-text rate.
+          record_redaction: nil,
           # The number of seconds that Telnyx will wait for the recording to be stopped if
           # silence is detected when `record` is specified. The timer only starts when the
           # speech is detected. Please note that call transcription is used to detect

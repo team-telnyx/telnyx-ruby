@@ -91,6 +91,32 @@ module Telnyx
         end
         attr_writer :recording_track
 
+        # Silences spoken details of the given kinds in the recording: `pci` (card number,
+        # expiry date, security code), `pii` (personal details such as names, phone
+        # numbers, addresses and other identifying numbers) and `phi` (health details such
+        # as medications, doses and conditions). Redaction works on English speech only.
+        # Redacted recordings are charged at the Deepgram speech-to-text rate.
+        sig do
+          returns(
+            T.nilable(
+              T::Array[
+                Telnyx::Calls::ActionStartRecordingParams::Redaction::OrSymbol
+              ]
+            )
+          )
+        end
+        attr_reader :redaction
+
+        sig do
+          params(
+            redaction:
+              T::Array[
+                Telnyx::Calls::ActionStartRecordingParams::Redaction::OrSymbol
+              ]
+          ).void
+        end
+        attr_writer :redaction
+
         # The number of seconds that Telnyx will wait for the recording to be stopped if
         # silence is detected. The timer only starts when the speech is detected. Please
         # note that call transcription is used to detect silence and the related charge
@@ -110,7 +136,8 @@ module Telnyx
 
         # Engine to use for speech recognition. `A` - `Google`, `B` - `Telnyx`,
         # `deepgram/nova-3` - `Deepgram Nova-3`. Note: `deepgram/nova-3` supports only
-        # `en` and `en-{Region}` languages.
+        # `en` and `en-{Region}` languages. When `redaction` is set, leave this out or set
+        # a Deepgram engine.
         sig do
           returns(
             T.nilable(
@@ -208,6 +235,10 @@ module Telnyx
             play_beep: T::Boolean,
             recording_track:
               Telnyx::Calls::ActionStartRecordingParams::RecordingTrack::OrSymbol,
+            redaction:
+              T::Array[
+                Telnyx::Calls::ActionStartRecordingParams::Redaction::OrSymbol
+              ],
             timeout_secs: Integer,
             transcription: T::Boolean,
             transcription_engine:
@@ -248,6 +279,12 @@ module Telnyx
           # If only single track is specified (`inbound`, `outbound`), `channels`
           # configuration is ignored and it will be recorded as mono (single channel).
           recording_track: nil,
+          # Silences spoken details of the given kinds in the recording: `pci` (card number,
+          # expiry date, security code), `pii` (personal details such as names, phone
+          # numbers, addresses and other identifying numbers) and `phi` (health details such
+          # as medications, doses and conditions). Redaction works on English speech only.
+          # Redacted recordings are charged at the Deepgram speech-to-text rate.
+          redaction: nil,
           # The number of seconds that Telnyx will wait for the recording to be stopped if
           # silence is detected. The timer only starts when the speech is detected. Please
           # note that call transcription is used to detect silence and the related charge
@@ -257,7 +294,8 @@ module Telnyx
           transcription: nil,
           # Engine to use for speech recognition. `A` - `Google`, `B` - `Telnyx`,
           # `deepgram/nova-3` - `Deepgram Nova-3`. Note: `deepgram/nova-3` supports only
-          # `en` and `en-{Region}` languages.
+          # `en` and `en-{Region}` languages. When `redaction` is set, leave this out or set
+          # a Deepgram engine.
           transcription_engine: nil,
           # Language code for transcription. Note: Not all languages are supported by all
           # transcription engines (google, telnyx, deepgram). See engine-specific
@@ -295,6 +333,10 @@ module Telnyx
               play_beep: T::Boolean,
               recording_track:
                 Telnyx::Calls::ActionStartRecordingParams::RecordingTrack::OrSymbol,
+              redaction:
+                T::Array[
+                  Telnyx::Calls::ActionStartRecordingParams::Redaction::OrSymbol
+                ],
               timeout_secs: Integer,
               transcription: T::Boolean,
               transcription_engine:
@@ -421,9 +463,49 @@ module Telnyx
           end
         end
 
+        module Redaction
+          extend Telnyx::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(
+                Symbol,
+                Telnyx::Calls::ActionStartRecordingParams::Redaction
+              )
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          PCI =
+            T.let(
+              :pci,
+              Telnyx::Calls::ActionStartRecordingParams::Redaction::TaggedSymbol
+            )
+          PII =
+            T.let(
+              :pii,
+              Telnyx::Calls::ActionStartRecordingParams::Redaction::TaggedSymbol
+            )
+          PHI =
+            T.let(
+              :phi,
+              Telnyx::Calls::ActionStartRecordingParams::Redaction::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                Telnyx::Calls::ActionStartRecordingParams::Redaction::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
+        end
+
         # Engine to use for speech recognition. `A` - `Google`, `B` - `Telnyx`,
         # `deepgram/nova-3` - `Deepgram Nova-3`. Note: `deepgram/nova-3` supports only
-        # `en` and `en-{Region}` languages.
+        # `en` and `en-{Region}` languages. When `redaction` is set, leave this out or set
+        # a Deepgram engine.
         module TranscriptionEngine
           extend Telnyx::Internal::Type::Enum
 

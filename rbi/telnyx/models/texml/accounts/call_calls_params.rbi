@@ -474,6 +474,18 @@ module Telnyx
               end
               attr_writer :recording_channels
 
+              # Silences spoken details of the given kinds in the recording: one or more of
+              # `pci` (card number, expiry date, security code), `pii` (personal details such as
+              # names, phone numbers, addresses and other identifying numbers) and `phi` (health
+              # details such as medications, doses and conditions), separated by commas, for
+              # example `pci,pii`. Redaction works on English speech only. Redacted recordings
+              # are charged at the Deepgram speech-to-text rate.
+              sig { returns(T.nilable(String)) }
+              attr_reader :recording_redaction
+
+              sig { params(recording_redaction: String).void }
+              attr_writer :recording_redaction
+
               # The URL the recording callbacks will be sent to.
               sig { returns(T.nilable(String)) }
               attr_reader :recording_status_callback
@@ -875,6 +887,7 @@ module Telnyx
                   record: T::Boolean,
                   recording_channels:
                     Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::RecordingChannels::OrSymbol,
+                  recording_redaction: String,
                   recording_status_callback: String,
                   recording_status_callback_event: String,
                   recording_status_callback_method:
@@ -1024,6 +1037,13 @@ module Telnyx
                 record: nil,
                 # The number of channels in the final recording. Defaults to `mono`.
                 recording_channels: nil,
+                # Silences spoken details of the given kinds in the recording: one or more of
+                # `pci` (card number, expiry date, security code), `pii` (personal details such as
+                # names, phone numbers, addresses and other identifying numbers) and `phi` (health
+                # details such as medications, doses and conditions), separated by commas, for
+                # example `pci,pii`. Redaction works on English speech only. Redacted recordings
+                # are charged at the Deepgram speech-to-text rate.
+                recording_redaction: nil,
                 # The URL the recording callbacks will be sent to.
                 recording_status_callback: nil,
                 # The changes to the recording's state that should generate a call to
@@ -1158,6 +1178,7 @@ module Telnyx
                     record: T::Boolean,
                     recording_channels:
                       Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::RecordingChannels::OrSymbol,
+                    recording_redaction: String,
                     recording_status_callback: String,
                     recording_status_callback_event: String,
                     recording_status_callback_method:
@@ -2458,6 +2479,18 @@ module Telnyx
               end
               attr_writer :recording_channels
 
+              # Silences spoken details of the given kinds in the recording: one or more of
+              # `pci` (card number, expiry date, security code), `pii` (personal details such as
+              # names, phone numbers, addresses and other identifying numbers) and `phi` (health
+              # details such as medications, doses and conditions), separated by commas, for
+              # example `pci,pii`. Redaction works on English speech only. Redacted recordings
+              # are charged at the Deepgram speech-to-text rate.
+              sig { returns(T.nilable(String)) }
+              attr_reader :recording_redaction
+
+              sig { params(recording_redaction: String).void }
+              attr_writer :recording_redaction
+
               # The URL the recording callbacks will be sent to.
               sig { returns(T.nilable(String)) }
               attr_reader :recording_status_callback
@@ -2859,6 +2892,7 @@ module Telnyx
                   record: T::Boolean,
                   recording_channels:
                     Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::RecordingChannels::OrSymbol,
+                  recording_redaction: String,
                   recording_status_callback: String,
                   recording_status_callback_event: String,
                   recording_status_callback_method:
@@ -3009,6 +3043,13 @@ module Telnyx
                 record: nil,
                 # The number of channels in the final recording. Defaults to `mono`.
                 recording_channels: nil,
+                # Silences spoken details of the given kinds in the recording: one or more of
+                # `pci` (card number, expiry date, security code), `pii` (personal details such as
+                # names, phone numbers, addresses and other identifying numbers) and `phi` (health
+                # details such as medications, doses and conditions), separated by commas, for
+                # example `pci,pii`. Redaction works on English speech only. Redacted recordings
+                # are charged at the Deepgram speech-to-text rate.
+                recording_redaction: nil,
                 # The URL the recording callbacks will be sent to.
                 recording_status_callback: nil,
                 # The changes to the recording's state that should generate a call to
@@ -3143,6 +3184,7 @@ module Telnyx
                     record: T::Boolean,
                     recording_channels:
                       Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::RecordingChannels::OrSymbol,
+                    recording_redaction: String,
                     recording_status_callback: String,
                     recording_status_callback_event: String,
                     recording_status_callback_method:
@@ -4438,6 +4480,18 @@ module Telnyx
               end
               attr_writer :recording_channels
 
+              # Silences spoken details of the given kinds in the recording: one or more of
+              # `pci` (card number, expiry date, security code), `pii` (personal details such as
+              # names, phone numbers, addresses and other identifying numbers) and `phi` (health
+              # details such as medications, doses and conditions), separated by commas, for
+              # example `pci,pii`. Redaction works on English speech only. Redacted recordings
+              # are charged at the Deepgram speech-to-text rate.
+              sig { returns(T.nilable(String)) }
+              attr_reader :recording_redaction
+
+              sig { params(recording_redaction: String).void }
+              attr_writer :recording_redaction
+
               # The URL the recording callbacks will be sent to.
               sig { returns(T.nilable(String)) }
               attr_reader :recording_status_callback
@@ -4841,6 +4895,7 @@ module Telnyx
                   record: T::Boolean,
                   recording_channels:
                     Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::RecordingChannels::OrSymbol,
+                  recording_redaction: String,
                   recording_status_callback: String,
                   recording_status_callback_event: String,
                   recording_status_callback_method:
@@ -4989,6 +5044,13 @@ module Telnyx
                 record: nil,
                 # The number of channels in the final recording. Defaults to `mono`.
                 recording_channels: nil,
+                # Silences spoken details of the given kinds in the recording: one or more of
+                # `pci` (card number, expiry date, security code), `pii` (personal details such as
+                # names, phone numbers, addresses and other identifying numbers) and `phi` (health
+                # details such as medications, doses and conditions), separated by commas, for
+                # example `pci,pii`. Redaction works on English speech only. Redacted recordings
+                # are charged at the Deepgram speech-to-text rate.
+                recording_redaction: nil,
                 # The URL the recording callbacks will be sent to.
                 recording_status_callback: nil,
                 # The changes to the recording's state that should generate a call to
@@ -5123,6 +5185,7 @@ module Telnyx
                     record: T::Boolean,
                     recording_channels:
                       Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::RecordingChannels::OrSymbol,
+                    recording_redaction: String,
                     recording_status_callback: String,
                     recording_status_callback_event: String,
                     recording_status_callback_method:
