@@ -37,6 +37,17 @@ module Telnyx
                      },
                      api_name: :RecordingChannels
 
+            # @!attribute recording_redaction
+            #   Silences spoken details of the given kinds in the recording: one or more of
+            #   `pci` (card number, expiry date, security code), `pii` (personal details such as
+            #   names, phone numbers, addresses and other identifying numbers) and `phi` (health
+            #   details such as medications, doses and conditions), separated by commas, for
+            #   example `pci,pii`. Redaction works on English speech only. Redacted recordings
+            #   are charged at the Deepgram speech-to-text rate.
+            #
+            #   @return [String, nil]
+            optional :recording_redaction, String, api_name: :RecordingRedaction
+
             # @!attribute recording_status_callback
             #   Url where status callbacks will be sent.
             #
@@ -77,7 +88,7 @@ module Telnyx
             #   @return [Boolean, nil]
             optional :send_recording_url, Telnyx::Internal::Type::Boolean, api_name: :SendRecordingUrl
 
-            # @!method initialize(account_sid:, call_sid:, play_beep: nil, recording_channels: nil, recording_status_callback: nil, recording_status_callback_event: nil, recording_status_callback_method: nil, recording_track: nil, send_recording_url: nil, request_options: {})
+            # @!method initialize(account_sid:, call_sid:, play_beep: nil, recording_channels: nil, recording_redaction: nil, recording_status_callback: nil, recording_status_callback_event: nil, recording_status_callback_method: nil, recording_track: nil, send_recording_url: nil, request_options: {})
             #   Some parameter documentations has been truncated, see
             #   {Telnyx::Models::Texml::Accounts::Calls::RecordingsJsonRecordingsJsonParams} for
             #   more details.
@@ -89,6 +100,8 @@ module Telnyx
             #   @param play_beep [Boolean] Whether to play a beep when recording is started.
             #
             #   @param recording_channels [Symbol, Telnyx::Models::Texml::Accounts::Calls::RecordingsJsonRecordingsJsonParams::RecordingChannels] When `dual`, final audio file has the first leg on channel A, and the rest on ch
+            #
+            #   @param recording_redaction [String] Silences spoken details of the given kinds in the recording: one or more of `pci
             #
             #   @param recording_status_callback [String] Url where status callbacks will be sent.
             #

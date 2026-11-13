@@ -219,7 +219,7 @@ module Telnyx
         # @!attribute voice_settings
         #   The settings associated with the voice selected
         #
-        #   @return [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::InworldVoiceSettings, Telnyx::Models::XaiVoiceSettings, Telnyx::Models::Calls::SonioxVoiceSettings, Telnyx::Models::Calls::AssemblyAIVoiceSettings, nil]
+        #   @return [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::InworldVoiceSettings, Telnyx::Models::XaiVoiceSettings, Telnyx::Models::Calls::SonioxVoiceSettings, nil]
         optional :voice_settings, union: -> { Telnyx::Calls::ActionStartConversationRelayParams::VoiceSettings }
 
         # @!method initialize(call_control_id:, assistant: nil, client_state: nil, command_id: nil, conversation_relay_dtmf_detection: nil, conversation_relay_settings: nil, conversation_relay_url: nil, custom_parameters: nil, dtmf_detection: nil, greeting: nil, interruptible: nil, interruptible_greeting: nil, interruption_settings: nil, language: nil, languages: nil, provider: nil, structured_provider: nil, transcription: nil, transcription_engine: nil, transcription_engine_config: nil, tts_provider: nil, url: nil, voice: nil, voice_settings: nil, request_options: {})
@@ -272,7 +272,7 @@ module Telnyx
         #
         #   @param voice [String] The voice to be used by the voice assistant. Currently we support ElevenLabs, Te
         #
-        #   @param voice_settings [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::InworldVoiceSettings, Telnyx::Models::XaiVoiceSettings, Telnyx::Models::Calls::SonioxVoiceSettings, Telnyx::Models::Calls::AssemblyAIVoiceSettings] The settings associated with the voice selected
+        #   @param voice_settings [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::InworldVoiceSettings, Telnyx::Models::XaiVoiceSettings, Telnyx::Models::Calls::SonioxVoiceSettings] The settings associated with the voice selected
         #
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
 
@@ -392,10 +392,8 @@ module Telnyx
 
           variant :soniox, -> { Telnyx::Calls::SonioxVoiceSettings }
 
-          variant :assemblyai, -> { Telnyx::Calls::AssemblyAIVoiceSettings }
-
           # @!method self.variants
-          #   @return [Array(Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::InworldVoiceSettings, Telnyx::Models::XaiVoiceSettings, Telnyx::Models::Calls::SonioxVoiceSettings, Telnyx::Models::Calls::AssemblyAIVoiceSettings)]
+          #   @return [Array(Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::InworldVoiceSettings, Telnyx::Models::XaiVoiceSettings, Telnyx::Models::Calls::SonioxVoiceSettings)]
         end
       end
     end

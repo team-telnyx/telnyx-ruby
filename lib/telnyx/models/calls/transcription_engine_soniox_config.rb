@@ -81,6 +81,7 @@ module Telnyx
           extend Telnyx::Internal::Type::Enum
 
           SONIOX_STT_RT_V4 = :"soniox/stt-rt-v4"
+          SONIOX_STT_RT_V6 = :"soniox/stt-rt-v6"
 
           # @!method self.values
           #   @return [Array<Symbol>]

@@ -27,7 +27,8 @@ module Telnyx
           sig { returns(Integer) }
           attr_accessor :phone_numbers_count
 
-          # Numbers rejected before submission (e.g. cooldown).
+          # Number of phone numbers the reputation partner did not re-review because it had
+          # reviewed them within the previous 60 days.
           sig { returns(Integer) }
           attr_accessor :phone_numbers_ineligible
 
@@ -110,7 +111,8 @@ module Telnyx
             # Total phone numbers in this batch, including any later cancelled. May exceed the
             # sum of the per-category result buckets, which omit cancelled numbers.
             phone_numbers_count:,
-            # Numbers rejected before submission (e.g. cooldown).
+            # Number of phone numbers the reputation partner did not re-review because it had
+            # reviewed them within the previous 60 days.
             phone_numbers_ineligible:,
             # Numbers accepted for remediation, i.e. not rejected as ineligible. Counts
             # numbers still queued (pending) as well as processed ones.

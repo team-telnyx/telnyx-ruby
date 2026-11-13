@@ -10,7 +10,7 @@ module Telnyx
         #   `deepgram/nova-3`, `deepgram/nova-2`, `assemblyai/universal-3-6-pro` (or its
         #   legacy aliases `assemblyai/universal-3-5-pro` and
         #   `assemblyai/universal-streaming`), `xai/grok-stt`, `soniox/stt-rt-v4`,
-        #   `soniox/stt-rt-v5`, `humain/realtime`, or `reson8/turns`.
+        #   `soniox/stt-rt-v5`, `soniox/stt-rt-v6`, `humain/realtime`, or `reson8/turns`.
         #
         #   @return [Symbol, Telnyx::Models::AI::TranscriptionFallbackModel::Model]
         required :model, enum: -> { Telnyx::AI::TranscriptionFallbackModel::Model }
@@ -51,7 +51,7 @@ module Telnyx
         # `deepgram/nova-3`, `deepgram/nova-2`, `assemblyai/universal-3-6-pro` (or its
         # legacy aliases `assemblyai/universal-3-5-pro` and
         # `assemblyai/universal-streaming`), `xai/grok-stt`, `soniox/stt-rt-v4`,
-        # `soniox/stt-rt-v5`, `humain/realtime`, or `reson8/turns`.
+        # `soniox/stt-rt-v5`, `soniox/stt-rt-v6`, `humain/realtime`, or `reson8/turns`.
         #
         # @see Telnyx::Models::AI::TranscriptionFallbackModel#model
         module Model
@@ -66,6 +66,7 @@ module Telnyx
           XAI_GROK_STT = :"xai/grok-stt"
           SONIOX_STT_RT_V4 = :"soniox/stt-rt-v4"
           SONIOX_STT_RT_V5 = :"soniox/stt-rt-v5"
+          SONIOX_STT_RT_V6 = :"soniox/stt-rt-v6"
           HUMAIN_REALTIME = :"humain/realtime"
           RESON8_TURNS = :"reson8/turns"
 

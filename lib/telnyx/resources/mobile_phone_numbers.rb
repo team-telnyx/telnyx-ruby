@@ -21,7 +21,7 @@ module Telnyx
       def retrieve(id, params = {})
         @client.request(
           method: :get,
-          path: ["v2/mobile_phone_numbers/%1$s", id],
+          path: ["mobile_phone_numbers/%1$s", id],
           model: Telnyx::Models::MobilePhoneNumberRetrieveResponse,
           options: params[:request_options]
         )
@@ -64,7 +64,7 @@ module Telnyx
         parsed, options = Telnyx::MobilePhoneNumberUpdateParams.dump_request(params)
         @client.request(
           method: :patch,
-          path: ["v2/mobile_phone_numbers/%1$s", id],
+          path: ["mobile_phone_numbers/%1$s", id],
           body: parsed,
           model: Telnyx::Models::MobilePhoneNumberUpdateResponse,
           options: options
@@ -89,7 +89,7 @@ module Telnyx
         query = Telnyx::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
-          path: "v2/mobile_phone_numbers",
+          path: "mobile_phone_numbers",
           query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
           page: Telnyx::Internal::DefaultFlatPagination,
           model: Telnyx::MobilePhoneNumber,

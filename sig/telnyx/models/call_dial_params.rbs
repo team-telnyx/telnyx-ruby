@@ -34,6 +34,7 @@ module Telnyx
         record_custom_file_name: String,
         record_format: Telnyx::Models::CallDialParams::record_format,
         record_max_length: Integer,
+        record_redaction: ::Array[Telnyx::Models::CallDialParams::record_redaction],
         record_timeout_secs: Integer,
         record_track: Telnyx::Models::CallDialParams::record_track,
         record_trim: Telnyx::Models::CallDialParams::record_trim,
@@ -221,6 +222,12 @@ module Telnyx
       attr_reader record_max_length: Integer?
 
       def record_max_length=: (Integer) -> Integer
+
+      attr_reader record_redaction: ::Array[Telnyx::Models::CallDialParams::record_redaction]?
+
+      def record_redaction=: (
+        ::Array[Telnyx::Models::CallDialParams::record_redaction]
+      ) -> ::Array[Telnyx::Models::CallDialParams::record_redaction]
 
       attr_reader record_timeout_secs: Integer?
 
@@ -423,6 +430,7 @@ module Telnyx
         ?record_custom_file_name: String,
         ?record_format: Telnyx::Models::CallDialParams::record_format,
         ?record_max_length: Integer,
+        ?record_redaction: ::Array[Telnyx::Models::CallDialParams::record_redaction],
         ?record_timeout_secs: Integer,
         ?record_track: Telnyx::Models::CallDialParams::record_track,
         ?record_trim: Telnyx::Models::CallDialParams::record_trim,
@@ -492,6 +500,7 @@ module Telnyx
         record_custom_file_name: String,
         record_format: Telnyx::Models::CallDialParams::record_format,
         record_max_length: Integer,
+        record_redaction: ::Array[Telnyx::Models::CallDialParams::record_redaction],
         record_timeout_secs: Integer,
         record_track: Telnyx::Models::CallDialParams::record_track,
         record_trim: Telnyx::Models::CallDialParams::record_trim,
@@ -939,6 +948,18 @@ module Telnyx
         MP3: :mp3
 
         def self?.values: -> ::Array[Telnyx::Models::CallDialParams::record_format]
+      end
+
+      type record_redaction = :pci | :pii | :phi
+
+      module RecordRedaction
+        extend Telnyx::Internal::Type::Enum
+
+        PCI: :pci
+        PII: :pii
+        PHI: :phi
+
+        def self?.values: -> ::Array[Telnyx::Models::CallDialParams::record_redaction]
       end
 
       type record_track = :both | :inbound | :outbound

@@ -67,8 +67,8 @@ module Telnyx
       sig { returns(T.nilable(String)) }
       attr_accessor :description
 
-      # Whether the model can be used as a base for a fine-tuning job via
-      # `POST /v2/ai/fine_tuning/jobs`.
+      # Whether the model can be used as a base for fine-tuning. Fine-tuning jobs are no
+      # longer served by the Telnyx API.
       sig { returns(T.nilable(T::Boolean)) }
       attr_reader :is_fine_tunable
 
@@ -223,8 +223,8 @@ module Telnyx
         beta: nil,
         # Short, human-readable summary of what the model is best suited for.
         description: nil,
-        # Whether the model can be used as a base for a fine-tuning job via
-        # `POST /v2/ai/fine_tuning/jobs`.
+        # Whether the model can be used as a base for fine-tuning. Fine-tuning jobs are no
+        # longer served by the Telnyx API.
         is_fine_tunable: nil,
         # Whether the model accepts image inputs in chat completions (multimodal vision
         # support).

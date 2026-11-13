@@ -418,6 +418,10 @@ module Telnyx
             command_id: String,
             custom_file_name: String,
             play_beep: T::Boolean,
+            redaction:
+              T::Array[
+                Telnyx::Conferences::ActionRecordStartParams::Redaction::OrSymbol
+              ],
             region: Telnyx::Conferences::ConferenceRegion::OrSymbol,
             trim: Telnyx::Conferences::ActionRecordStartParams::Trim::OrSymbol,
             request_options: Telnyx::RequestOptions::OrHash
@@ -440,6 +444,12 @@ module Telnyx
           custom_file_name: nil,
           # If enabled, a beep sound will be played at the start of a recording.
           play_beep: nil,
+          # Silences spoken details of the given kinds in the recording: `pci` (card number,
+          # expiry date, security code), `pii` (personal details such as names, phone
+          # numbers, addresses and other identifying numbers) and `phi` (health details such
+          # as medications, doses and conditions). Redaction works on English speech only.
+          # Redacted recordings are charged at the Deepgram speech-to-text rate.
+          redaction: nil,
           # Region where the conference data is located. Defaults to the region defined in
           # user's data locality settings (Europe or US).
           region: nil,
@@ -535,8 +545,7 @@ module Telnyx
                 Telnyx::ResembleVoiceSettings::OrHash,
                 Telnyx::InworldVoiceSettings::OrHash,
                 Telnyx::XaiVoiceSettings::OrHash,
-                Telnyx::Calls::SonioxVoiceSettings::OrHash,
-                Telnyx::Calls::AssemblyAIVoiceSettings::OrHash
+                Telnyx::Calls::SonioxVoiceSettings::OrHash
               ),
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Conferences::ActionSpeakResponse)

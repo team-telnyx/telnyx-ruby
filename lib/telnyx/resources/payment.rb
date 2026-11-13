@@ -23,7 +23,7 @@ module Telnyx
         parsed, options = Telnyx::PaymentCreateStoredPaymentTransactionParams.dump_request(params)
         @client.request(
           method: :post,
-          path: "v2/payment/stored_payment_transactions",
+          path: "payment/stored_payment_transactions",
           body: parsed,
           model: Telnyx::Models::PaymentCreateStoredPaymentTransactionResponse,
           options: options

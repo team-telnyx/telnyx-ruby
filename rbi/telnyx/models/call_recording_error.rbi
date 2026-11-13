@@ -245,6 +245,11 @@ module Telnyx
               :"Internal server error",
               Telnyx::CallRecordingError::Payload::Reason::TaggedSymbol
             )
+          RECORDING_REDACTION_FAILED_SO_THE_RECORDING_WAS_NOT_SAVED =
+            T.let(
+              :"Recording redaction failed, so the recording was not saved.",
+              Telnyx::CallRecordingError::Payload::Reason::TaggedSymbol
+            )
 
           sig do
             override.returns(

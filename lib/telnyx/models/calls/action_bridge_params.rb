@@ -114,6 +114,18 @@ module Telnyx
         #   @return [Integer, nil]
         optional :record_max_length, Integer
 
+        # @!attribute record_redaction
+        #   Applies to the recording started with `record`. Silences spoken details of the
+        #   given kinds in the recording: `pci` (card number, expiry date, security code),
+        #   `pii` (personal details such as names, phone numbers, addresses and other
+        #   identifying numbers) and `phi` (health details such as medications, doses and
+        #   conditions). Redaction works on English speech only. Redacted recordings are
+        #   charged at the Deepgram speech-to-text rate.
+        #
+        #   @return [Array<Symbol, Telnyx::Models::Calls::ActionBridgeParams::RecordRedaction>, nil]
+        optional :record_redaction,
+                 -> { Telnyx::Internal::Type::ArrayOf[enum: Telnyx::Calls::ActionBridgeParams::RecordRedaction] }
+
         # @!attribute record_timeout_secs
         #   The number of seconds that Telnyx will wait for the recording to be stopped if
         #   silence is detected when `record` is specified. The timer only starts when the
@@ -162,7 +174,7 @@ module Telnyx
         #   @return [String, nil]
         optional :video_room_id, String
 
-        # @!method initialize(call_control_id_to_bridge:, call_control_id_to_bridge_with:, client_state: nil, command_id: nil, hold_after_unbridge: nil, mute_dtmf: nil, park_after_unbridge: nil, play_ringtone: nil, prevent_double_bridge: nil, queue: nil, record: nil, record_channels: nil, record_custom_file_name: nil, record_format: nil, record_max_length: nil, record_timeout_secs: nil, record_track: nil, record_trim: nil, ringtone: nil, video_room_context: nil, video_room_id: nil, request_options: {})
+        # @!method initialize(call_control_id_to_bridge:, call_control_id_to_bridge_with:, client_state: nil, command_id: nil, hold_after_unbridge: nil, mute_dtmf: nil, park_after_unbridge: nil, play_ringtone: nil, prevent_double_bridge: nil, queue: nil, record: nil, record_channels: nil, record_custom_file_name: nil, record_format: nil, record_max_length: nil, record_redaction: nil, record_timeout_secs: nil, record_track: nil, record_trim: nil, ringtone: nil, video_room_context: nil, video_room_id: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::Calls::ActionBridgeParams} for more details.
         #
@@ -196,6 +208,8 @@ module Telnyx
         #   @param record_format [Symbol, Telnyx::Models::Calls::ActionBridgeParams::RecordFormat] Defines the format of the recording ('wav' or 'mp3') when `record` is specified.
         #
         #   @param record_max_length [Integer] Defines the maximum length for the recording in seconds when `record` is specifi
+        #
+        #   @param record_redaction [Array<Symbol, Telnyx::Models::Calls::ActionBridgeParams::RecordRedaction>] Applies to the recording started with `record`. Silences spoken details of the g
         #
         #   @param record_timeout_secs [Integer] The number of seconds that Telnyx will wait for the recording to be stopped if s
         #
@@ -253,6 +267,17 @@ module Telnyx
 
           WAV = :wav
           MP3 = :mp3
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
+
+        module RecordRedaction
+          extend Telnyx::Internal::Type::Enum
+
+          PCI = :pci
+          PII = :pii
+          PHI = :phi
 
           # @!method self.values
           #   @return [Array<Symbol>]

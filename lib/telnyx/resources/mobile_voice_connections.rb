@@ -27,7 +27,7 @@ module Telnyx
         parsed, options = Telnyx::MobileVoiceConnectionCreateParams.dump_request(params)
         @client.request(
           method: :post,
-          path: "v2/mobile_voice_connections",
+          path: "mobile_voice_connections",
           body: parsed,
           model: Telnyx::Models::MobileVoiceConnectionCreateResponse,
           options: options
@@ -48,7 +48,7 @@ module Telnyx
       def retrieve(id, params = {})
         @client.request(
           method: :get,
-          path: ["v2/mobile_voice_connections/%1$s", id],
+          path: ["mobile_voice_connections/%1$s", id],
           model: Telnyx::Models::MobileVoiceConnectionRetrieveResponse,
           options: params[:request_options]
         )
@@ -87,7 +87,7 @@ module Telnyx
         parsed, options = Telnyx::MobileVoiceConnectionUpdateParams.dump_request(params)
         @client.request(
           method: :patch,
-          path: ["v2/mobile_voice_connections/%1$s", id],
+          path: ["mobile_voice_connections/%1$s", id],
           body: parsed,
           model: Telnyx::Models::MobileVoiceConnectionUpdateResponse,
           options: options
@@ -119,7 +119,7 @@ module Telnyx
         query = Telnyx::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
-          path: "v2/mobile_voice_connections",
+          path: "mobile_voice_connections",
           query: query.transform_keys(
             filter_connection_name_contains: "filter[connection_name][contains]",
             page_number: "page[number]",
@@ -145,7 +145,7 @@ module Telnyx
       def delete(id, params = {})
         @client.request(
           method: :delete,
-          path: ["v2/mobile_voice_connections/%1$s", id],
+          path: ["mobile_voice_connections/%1$s", id],
           model: Telnyx::Models::MobileVoiceConnectionDeleteResponse,
           options: params[:request_options]
         )

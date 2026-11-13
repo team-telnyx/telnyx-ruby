@@ -28,7 +28,8 @@ module Telnyx
           required :phone_numbers_count, Integer
 
           # @!attribute phone_numbers_ineligible
-          #   Numbers rejected before submission (e.g. cooldown).
+          #   Number of phone numbers the reputation partner did not re-review because it had
+          #   reviewed them within the previous 60 days.
           #
           #   @return [Integer]
           required :phone_numbers_ineligible, Integer
@@ -93,7 +94,7 @@ module Telnyx
           #
           #   @param phone_numbers_count [Integer] Total phone numbers in this batch, including any later cancelled. May exceed the
           #
-          #   @param phone_numbers_ineligible [Integer] Numbers rejected before submission (e.g. cooldown).
+          #   @param phone_numbers_ineligible [Integer] Number of phone numbers the reputation partner did not re-review because it had
           #
           #   @param phone_numbers_submitted [Integer] Numbers accepted for remediation, i.e. not rejected as ineligible. Counts number
           #

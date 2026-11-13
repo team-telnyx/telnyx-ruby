@@ -114,46 +114,216 @@ module Telnyx
             )
           end
 
-        # If present, applications with <code>friendly_name</code> containing the given
-        # value will be returned. Matching is not case-sensitive. Requires at least three
-        # characters.
-        sig { returns(T.nilable(String)) }
+        # If present, applications with <code>friendly_name</code> exactly matching the
+        # given value will be returned. Matching is case-sensitive.
+        sig do
+          returns(
+            T.nilable(
+              T.any(
+                String,
+                Telnyx::TexmlApplicationListParams::Filter::FriendlyName::UnionMember1
+              )
+            )
+          )
+        end
         attr_reader :friendly_name
 
-        sig { params(friendly_name: String).void }
+        sig do
+          params(
+            friendly_name:
+              T.any(
+                String,
+                Telnyx::TexmlApplicationListParams::Filter::FriendlyName::UnionMember1::OrHash
+              )
+          ).void
+        end
         attr_writer :friendly_name
 
-        # Identifies the associated outbound voice profile.
-        sig { returns(T.nilable(String)) }
+        # If present, only applications associated with the given outbound voice profile
+        # will be returned. Matching is exact.
+        sig do
+          returns(
+            T.nilable(
+              T.any(
+                String,
+                Telnyx::TexmlApplicationListParams::Filter::OutboundVoiceProfileID::Eq
+              )
+            )
+          )
+        end
         attr_reader :outbound_voice_profile_id
 
-        sig { params(outbound_voice_profile_id: String).void }
+        sig do
+          params(
+            outbound_voice_profile_id:
+              T.any(
+                String,
+                Telnyx::TexmlApplicationListParams::Filter::OutboundVoiceProfileID::Eq::OrHash
+              )
+          ).void
+        end
         attr_writer :outbound_voice_profile_id
 
         # Consolidated filter parameter (deepObject style). Originally:
         # filter[outbound_voice_profile_id], filter[friendly_name]
         sig do
           params(
-            friendly_name: String,
-            outbound_voice_profile_id: String
+            friendly_name:
+              T.any(
+                String,
+                Telnyx::TexmlApplicationListParams::Filter::FriendlyName::UnionMember1::OrHash
+              ),
+            outbound_voice_profile_id:
+              T.any(
+                String,
+                Telnyx::TexmlApplicationListParams::Filter::OutboundVoiceProfileID::Eq::OrHash
+              )
           ).returns(T.attached_class)
         end
         def self.new(
-          # If present, applications with <code>friendly_name</code> containing the given
-          # value will be returned. Matching is not case-sensitive. Requires at least three
-          # characters.
+          # If present, applications with <code>friendly_name</code> exactly matching the
+          # given value will be returned. Matching is case-sensitive.
           friendly_name: nil,
-          # Identifies the associated outbound voice profile.
+          # If present, only applications associated with the given outbound voice profile
+          # will be returned. Matching is exact.
           outbound_voice_profile_id: nil
         )
         end
 
         sig do
           override.returns(
-            { friendly_name: String, outbound_voice_profile_id: String }
+            {
+              friendly_name:
+                T.any(
+                  String,
+                  Telnyx::TexmlApplicationListParams::Filter::FriendlyName::UnionMember1
+                ),
+              outbound_voice_profile_id:
+                T.any(
+                  String,
+                  Telnyx::TexmlApplicationListParams::Filter::OutboundVoiceProfileID::Eq
+                )
+            }
           )
         end
         def to_hash
+        end
+
+        # If present, applications with <code>friendly_name</code> exactly matching the
+        # given value will be returned. Matching is case-sensitive.
+        module FriendlyName
+          extend Telnyx::Internal::Type::Union
+
+          Variants =
+            T.type_alias do
+              T.any(
+                String,
+                Telnyx::TexmlApplicationListParams::Filter::FriendlyName::UnionMember1
+              )
+            end
+
+          class UnionMember1 < Telnyx::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Telnyx::TexmlApplicationListParams::Filter::FriendlyName::UnionMember1,
+                  Telnyx::Internal::AnyHash
+                )
+              end
+
+            # If present, applications with <code>friendly_name</code> containing the given
+            # value will be returned. Matching is not case-sensitive.
+            sig { returns(T.nilable(String)) }
+            attr_reader :contains
+
+            sig { params(contains: String).void }
+            attr_writer :contains
+
+            # Exact match for friendly_name. Matching is case-sensitive.
+            sig { returns(T.nilable(String)) }
+            attr_reader :eq
+
+            sig { params(eq: String).void }
+            attr_writer :eq
+
+            sig do
+              params(contains: String, eq: String).returns(T.attached_class)
+            end
+            def self.new(
+              # If present, applications with <code>friendly_name</code> containing the given
+              # value will be returned. Matching is not case-sensitive.
+              contains: nil,
+              # Exact match for friendly_name. Matching is case-sensitive.
+              eq: nil
+            )
+            end
+
+            sig { override.returns({ contains: String, eq: String }) }
+            def to_hash
+            end
+          end
+
+          sig do
+            override.returns(
+              T::Array[
+                Telnyx::TexmlApplicationListParams::Filter::FriendlyName::Variants
+              ]
+            )
+          end
+          def self.variants
+          end
+        end
+
+        # If present, only applications associated with the given outbound voice profile
+        # will be returned. Matching is exact.
+        module OutboundVoiceProfileID
+          extend Telnyx::Internal::Type::Union
+
+          Variants =
+            T.type_alias do
+              T.any(
+                String,
+                Telnyx::TexmlApplicationListParams::Filter::OutboundVoiceProfileID::Eq
+              )
+            end
+
+          class Eq < Telnyx::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Telnyx::TexmlApplicationListParams::Filter::OutboundVoiceProfileID::Eq,
+                  Telnyx::Internal::AnyHash
+                )
+              end
+
+            # Exact match for the associated outbound voice profile.
+            sig { returns(T.nilable(String)) }
+            attr_reader :eq
+
+            sig { params(eq: String).void }
+            attr_writer :eq
+
+            sig { params(eq: String).returns(T.attached_class) }
+            def self.new(
+              # Exact match for the associated outbound voice profile.
+              eq: nil
+            )
+            end
+
+            sig { override.returns({ eq: String }) }
+            def to_hash
+            end
+          end
+
+          sig do
+            override.returns(
+              T::Array[
+                Telnyx::TexmlApplicationListParams::Filter::OutboundVoiceProfileID::Variants
+              ]
+            )
+          end
+          def self.variants
+          end
         end
       end
 

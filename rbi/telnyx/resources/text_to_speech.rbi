@@ -17,15 +17,13 @@ module Telnyx
       # parameters.
       #
       # Supported providers: `aws`, `telnyx`, `azure`, `elevenlabs`, `minimax`,
-      # `resemble`, `xai`, `humain`, `soniox`, `assemblyai`.
+      # `resemble`, `xai`, `humain`, `soniox`.
       #
       # The Telnyx `Ultra` model supports 44 languages with emotion control, speed
       # adjustment, and volume control. Use the `telnyx` provider-specific parameters to
       # configure these features.
       sig do
         params(
-          assemblyai:
-            ::Telnyx::TextToSpeechGenerateSpeechParams::Assemblyai::OrHash,
           aws: ::Telnyx::TextToSpeechGenerateSpeechParams::Aws::OrHash,
           azure: ::Telnyx::TextToSpeechGenerateSpeechParams::Azure::OrHash,
           disable_cache: T::Boolean,
@@ -52,9 +50,6 @@ module Telnyx
         ).returns(Telnyx::Models::TextToSpeechGenerateSpeechResponse)
       end
       def generate_speech(
-        # AssemblyAI provider-specific parameters. Every voice speaks all six supported
-        # languages; set `language` to the language of the text.
-        assemblyai: nil,
         # AWS Polly provider-specific parameters.
         aws: nil,
         # Azure Cognitive Services provider-specific parameters.
@@ -136,7 +131,7 @@ module Telnyx
       # synthesize; receive JSON frames containing base64-encoded audio chunks.
       #
       # Supported providers: `aws`, `telnyx`, `azure`, `minimax`, `resemble`,
-      # `elevenlabs`, `xai`, `humain`, `soniox`, `assemblyai`.
+      # `elevenlabs`, `xai`, `humain`, `soniox`.
       #
       # **Connection flow:**
       #

@@ -14,23 +14,6 @@ module Telnyx
           )
         end
 
-      # AssemblyAI provider-specific parameters. Every voice speaks all six supported
-      # languages; set `language` to the language of the text.
-      sig do
-        returns(
-          T.nilable(::Telnyx::TextToSpeechGenerateSpeechParams::Assemblyai)
-        )
-      end
-      attr_reader :assemblyai
-
-      sig do
-        params(
-          assemblyai:
-            ::Telnyx::TextToSpeechGenerateSpeechParams::Assemblyai::OrHash
-        ).void
-      end
-      attr_writer :assemblyai
-
       # AWS Polly provider-specific parameters.
       sig do
         returns(T.nilable(::Telnyx::TextToSpeechGenerateSpeechParams::Aws))
@@ -258,8 +241,6 @@ module Telnyx
 
       sig do
         params(
-          assemblyai:
-            ::Telnyx::TextToSpeechGenerateSpeechParams::Assemblyai::OrHash,
           aws: ::Telnyx::TextToSpeechGenerateSpeechParams::Aws::OrHash,
           azure: ::Telnyx::TextToSpeechGenerateSpeechParams::Azure::OrHash,
           disable_cache: T::Boolean,
@@ -286,9 +267,6 @@ module Telnyx
         ).returns(T.attached_class)
       end
       def self.new(
-        # AssemblyAI provider-specific parameters. Every voice speaks all six supported
-        # languages; set `language` to the language of the text.
-        assemblyai: nil,
         # AWS Polly provider-specific parameters.
         aws: nil,
         # Azure Cognitive Services provider-specific parameters.
@@ -346,7 +324,6 @@ module Telnyx
       sig do
         override.returns(
           {
-            assemblyai: ::Telnyx::TextToSpeechGenerateSpeechParams::Assemblyai,
             aws: ::Telnyx::TextToSpeechGenerateSpeechParams::Aws,
             azure: ::Telnyx::TextToSpeechGenerateSpeechParams::Azure,
             disable_cache: T::Boolean,
@@ -372,336 +349,6 @@ module Telnyx
         )
       end
       def to_hash
-      end
-
-      class Assemblyai < ::Telnyx::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(
-              ::Telnyx::TextToSpeechGenerateSpeechParams::Assemblyai,
-              ::Telnyx::Internal::AnyHash
-            )
-          end
-
-        # AssemblyAI voice from the
-        # [voices listing](https://developers.telnyx.com/api-reference/text-to-speech-commands/list-available-voices),
-        # for example `aai-jane`.
-        sig { returns(String) }
-        attr_accessor :voice_id
-
-        # Audio output format.
-        sig do
-          returns(
-            T.nilable(
-              ::Telnyx::TextToSpeechGenerateSpeechParams::Assemblyai::AudioFormat::OrSymbol
-            )
-          )
-        end
-        attr_reader :audio_format
-
-        sig do
-          params(
-            audio_format:
-              ::Telnyx::TextToSpeechGenerateSpeechParams::Assemblyai::AudioFormat::OrSymbol
-          ).void
-        end
-        attr_writer :audio_format
-
-        # Two-letter ISO 639-1 code of the text. AssemblyAI does not detect the language.
-        sig do
-          returns(
-            T.nilable(
-              ::Telnyx::TextToSpeechGenerateSpeechParams::Assemblyai::Language::OrSymbol
-            )
-          )
-        end
-        attr_reader :language
-
-        sig do
-          params(
-            language:
-              ::Telnyx::TextToSpeechGenerateSpeechParams::Assemblyai::Language::OrSymbol
-          ).void
-        end
-        attr_writer :language
-
-        # AssemblyAI model.
-        sig do
-          returns(
-            T.nilable(
-              ::Telnyx::TextToSpeechGenerateSpeechParams::Assemblyai::ModelID::OrSymbol
-            )
-          )
-        end
-        attr_reader :model_id
-
-        sig do
-          params(
-            model_id:
-              ::Telnyx::TextToSpeechGenerateSpeechParams::Assemblyai::ModelID::OrSymbol
-          ).void
-        end
-        attr_writer :model_id
-
-        # Audio sample rate in Hz. Defaults to 24000, or 8000 for `pcm_mulaw` and
-        # `pcm_alaw`.
-        sig do
-          returns(
-            T.nilable(
-              ::Telnyx::TextToSpeechGenerateSpeechParams::Assemblyai::SampleRate::OrInteger
-            )
-          )
-        end
-        attr_reader :sample_rate
-
-        sig do
-          params(
-            sample_rate:
-              ::Telnyx::TextToSpeechGenerateSpeechParams::Assemblyai::SampleRate::OrInteger
-          ).void
-        end
-        attr_writer :sample_rate
-
-        # AssemblyAI provider-specific parameters. Every voice speaks all six supported
-        # languages; set `language` to the language of the text.
-        sig do
-          params(
-            voice_id: String,
-            audio_format:
-              ::Telnyx::TextToSpeechGenerateSpeechParams::Assemblyai::AudioFormat::OrSymbol,
-            language:
-              ::Telnyx::TextToSpeechGenerateSpeechParams::Assemblyai::Language::OrSymbol,
-            model_id:
-              ::Telnyx::TextToSpeechGenerateSpeechParams::Assemblyai::ModelID::OrSymbol,
-            sample_rate:
-              ::Telnyx::TextToSpeechGenerateSpeechParams::Assemblyai::SampleRate::OrInteger
-          ).returns(T.attached_class)
-        end
-        def self.new(
-          # AssemblyAI voice from the
-          # [voices listing](https://developers.telnyx.com/api-reference/text-to-speech-commands/list-available-voices),
-          # for example `aai-jane`.
-          voice_id:,
-          # Audio output format.
-          audio_format: nil,
-          # Two-letter ISO 639-1 code of the text. AssemblyAI does not detect the language.
-          language: nil,
-          # AssemblyAI model.
-          model_id: nil,
-          # Audio sample rate in Hz. Defaults to 24000, or 8000 for `pcm_mulaw` and
-          # `pcm_alaw`.
-          sample_rate: nil
-        )
-        end
-
-        sig do
-          override.returns(
-            {
-              voice_id: String,
-              audio_format:
-                ::Telnyx::TextToSpeechGenerateSpeechParams::Assemblyai::AudioFormat::OrSymbol,
-              language:
-                ::Telnyx::TextToSpeechGenerateSpeechParams::Assemblyai::Language::OrSymbol,
-              model_id:
-                ::Telnyx::TextToSpeechGenerateSpeechParams::Assemblyai::ModelID::OrSymbol,
-              sample_rate:
-                ::Telnyx::TextToSpeechGenerateSpeechParams::Assemblyai::SampleRate::OrInteger
-            }
-          )
-        end
-        def to_hash
-        end
-
-        # Audio output format.
-        module AudioFormat
-          extend ::Telnyx::Internal::Type::Enum
-
-          TaggedSymbol =
-            T.type_alias do
-              T.all(
-                Symbol,
-                ::Telnyx::TextToSpeechGenerateSpeechParams::Assemblyai::AudioFormat
-              )
-            end
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-          MP3 =
-            T.let(
-              :mp3,
-              ::Telnyx::TextToSpeechGenerateSpeechParams::Assemblyai::AudioFormat::TaggedSymbol
-            )
-          WAV =
-            T.let(
-              :wav,
-              ::Telnyx::TextToSpeechGenerateSpeechParams::Assemblyai::AudioFormat::TaggedSymbol
-            )
-          PCM_S16LE =
-            T.let(
-              :pcm_s16le,
-              ::Telnyx::TextToSpeechGenerateSpeechParams::Assemblyai::AudioFormat::TaggedSymbol
-            )
-          PCM_MULAW =
-            T.let(
-              :pcm_mulaw,
-              ::Telnyx::TextToSpeechGenerateSpeechParams::Assemblyai::AudioFormat::TaggedSymbol
-            )
-          PCM_ALAW =
-            T.let(
-              :pcm_alaw,
-              ::Telnyx::TextToSpeechGenerateSpeechParams::Assemblyai::AudioFormat::TaggedSymbol
-            )
-
-          sig do
-            override.returns(
-              T::Array[
-                ::Telnyx::TextToSpeechGenerateSpeechParams::Assemblyai::AudioFormat::TaggedSymbol
-              ]
-            )
-          end
-          def self.values
-          end
-        end
-
-        # Two-letter ISO 639-1 code of the text. AssemblyAI does not detect the language.
-        module Language
-          extend ::Telnyx::Internal::Type::Enum
-
-          TaggedSymbol =
-            T.type_alias do
-              T.all(
-                Symbol,
-                ::Telnyx::TextToSpeechGenerateSpeechParams::Assemblyai::Language
-              )
-            end
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-          EN =
-            T.let(
-              :en,
-              ::Telnyx::TextToSpeechGenerateSpeechParams::Assemblyai::Language::TaggedSymbol
-            )
-          ES =
-            T.let(
-              :es,
-              ::Telnyx::TextToSpeechGenerateSpeechParams::Assemblyai::Language::TaggedSymbol
-            )
-          DE =
-            T.let(
-              :de,
-              ::Telnyx::TextToSpeechGenerateSpeechParams::Assemblyai::Language::TaggedSymbol
-            )
-          FR =
-            T.let(
-              :fr,
-              ::Telnyx::TextToSpeechGenerateSpeechParams::Assemblyai::Language::TaggedSymbol
-            )
-          IT =
-            T.let(
-              :it,
-              ::Telnyx::TextToSpeechGenerateSpeechParams::Assemblyai::Language::TaggedSymbol
-            )
-          PT =
-            T.let(
-              :pt,
-              ::Telnyx::TextToSpeechGenerateSpeechParams::Assemblyai::Language::TaggedSymbol
-            )
-
-          sig do
-            override.returns(
-              T::Array[
-                ::Telnyx::TextToSpeechGenerateSpeechParams::Assemblyai::Language::TaggedSymbol
-              ]
-            )
-          end
-          def self.values
-          end
-        end
-
-        # AssemblyAI model.
-        module ModelID
-          extend ::Telnyx::Internal::Type::Enum
-
-          TaggedSymbol =
-            T.type_alias do
-              T.all(
-                Symbol,
-                ::Telnyx::TextToSpeechGenerateSpeechParams::Assemblyai::ModelID
-              )
-            end
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-          ASSEMBLYAI_TTS_1 =
-            T.let(
-              :"assemblyai-tts-1",
-              ::Telnyx::TextToSpeechGenerateSpeechParams::Assemblyai::ModelID::TaggedSymbol
-            )
-
-          sig do
-            override.returns(
-              T::Array[
-                ::Telnyx::TextToSpeechGenerateSpeechParams::Assemblyai::ModelID::TaggedSymbol
-              ]
-            )
-          end
-          def self.values
-          end
-        end
-
-        # Audio sample rate in Hz. Defaults to 24000, or 8000 for `pcm_mulaw` and
-        # `pcm_alaw`.
-        module SampleRate
-          extend ::Telnyx::Internal::Type::Enum
-
-          TaggedInteger =
-            T.type_alias do
-              T.all(
-                Integer,
-                ::Telnyx::TextToSpeechGenerateSpeechParams::Assemblyai::SampleRate
-              )
-            end
-          OrInteger = T.type_alias { Integer }
-
-          SAMPLE_RATE_8000 =
-            T.let(
-              8000,
-              ::Telnyx::TextToSpeechGenerateSpeechParams::Assemblyai::SampleRate::TaggedInteger
-            )
-          SAMPLE_RATE_16000 =
-            T.let(
-              16_000,
-              ::Telnyx::TextToSpeechGenerateSpeechParams::Assemblyai::SampleRate::TaggedInteger
-            )
-          SAMPLE_RATE_22050 =
-            T.let(
-              22_050,
-              ::Telnyx::TextToSpeechGenerateSpeechParams::Assemblyai::SampleRate::TaggedInteger
-            )
-          SAMPLE_RATE_24000 =
-            T.let(
-              24_000,
-              ::Telnyx::TextToSpeechGenerateSpeechParams::Assemblyai::SampleRate::TaggedInteger
-            )
-          SAMPLE_RATE_44100 =
-            T.let(
-              44_100,
-              ::Telnyx::TextToSpeechGenerateSpeechParams::Assemblyai::SampleRate::TaggedInteger
-            )
-          SAMPLE_RATE_48000 =
-            T.let(
-              48_000,
-              ::Telnyx::TextToSpeechGenerateSpeechParams::Assemblyai::SampleRate::TaggedInteger
-            )
-
-          sig do
-            override.returns(
-              T::Array[
-                ::Telnyx::TextToSpeechGenerateSpeechParams::Assemblyai::SampleRate::TaggedInteger
-              ]
-            )
-          end
-          def self.values
-          end
-        end
       end
 
       class Aws < ::Telnyx::Internal::Type::BaseModel
@@ -1342,11 +989,6 @@ module Telnyx
         SONIOX =
           T.let(
             :soniox,
-            ::Telnyx::TextToSpeechGenerateSpeechParams::Provider::TaggedSymbol
-          )
-        ASSEMBLYAI =
-          T.let(
-            :assemblyai,
             ::Telnyx::TextToSpeechGenerateSpeechParams::Provider::TaggedSymbol
           )
 

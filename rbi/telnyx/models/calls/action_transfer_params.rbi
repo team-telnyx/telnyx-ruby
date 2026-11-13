@@ -310,6 +310,33 @@ module Telnyx
         sig { params(record_max_length: Integer).void }
         attr_writer :record_max_length
 
+        # Applies to the recording started with `record`. Silences spoken details of the
+        # given kinds in the recording: `pci` (card number, expiry date, security code),
+        # `pii` (personal details such as names, phone numbers, addresses and other
+        # identifying numbers) and `phi` (health details such as medications, doses and
+        # conditions). Redaction works on English speech only. Redacted recordings are
+        # charged at the Deepgram speech-to-text rate.
+        sig do
+          returns(
+            T.nilable(
+              T::Array[
+                Telnyx::Calls::ActionTransferParams::RecordRedaction::OrSymbol
+              ]
+            )
+          )
+        end
+        attr_reader :record_redaction
+
+        sig do
+          params(
+            record_redaction:
+              T::Array[
+                Telnyx::Calls::ActionTransferParams::RecordRedaction::OrSymbol
+              ]
+          ).void
+        end
+        attr_writer :record_redaction
+
         # The number of seconds that Telnyx will wait for the recording to be stopped if
         # silence is detected when `record` is specified. The timer only starts when the
         # speech is detected. Please note that call transcription is used to detect
@@ -588,6 +615,10 @@ module Telnyx
             record_format:
               Telnyx::Calls::ActionTransferParams::RecordFormat::OrSymbol,
             record_max_length: Integer,
+            record_redaction:
+              T::Array[
+                Telnyx::Calls::ActionTransferParams::RecordRedaction::OrSymbol
+              ],
             record_timeout_secs: Integer,
             record_track:
               Telnyx::Calls::ActionTransferParams::RecordTrack::OrSymbol,
@@ -726,6 +757,13 @@ module Telnyx
           # specified. The minimum value is 0. The maximum value is 43200. The default value
           # is 0 (infinite).
           record_max_length: nil,
+          # Applies to the recording started with `record`. Silences spoken details of the
+          # given kinds in the recording: `pci` (card number, expiry date, security code),
+          # `pii` (personal details such as names, phone numbers, addresses and other
+          # identifying numbers) and `phi` (health details such as medications, doses and
+          # conditions). Redaction works on English speech only. Redacted recordings are
+          # charged at the Deepgram speech-to-text rate.
+          record_redaction: nil,
           # The number of seconds that Telnyx will wait for the recording to be stopped if
           # silence is detected when `record` is specified. The timer only starts when the
           # speech is detected. Please note that call transcription is used to detect
@@ -835,6 +873,10 @@ module Telnyx
               record_format:
                 Telnyx::Calls::ActionTransferParams::RecordFormat::OrSymbol,
               record_max_length: Integer,
+              record_redaction:
+                T::Array[
+                  Telnyx::Calls::ActionTransferParams::RecordRedaction::OrSymbol
+                ],
               record_timeout_secs: Integer,
               record_track:
                 Telnyx::Calls::ActionTransferParams::RecordTrack::OrSymbol,
@@ -1483,6 +1525,45 @@ module Telnyx
             override.returns(
               T::Array[
                 Telnyx::Calls::ActionTransferParams::RecordFormat::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
+        end
+
+        module RecordRedaction
+          extend Telnyx::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(
+                Symbol,
+                Telnyx::Calls::ActionTransferParams::RecordRedaction
+              )
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          PCI =
+            T.let(
+              :pci,
+              Telnyx::Calls::ActionTransferParams::RecordRedaction::TaggedSymbol
+            )
+          PII =
+            T.let(
+              :pii,
+              Telnyx::Calls::ActionTransferParams::RecordRedaction::TaggedSymbol
+            )
+          PHI =
+            T.let(
+              :phi,
+              Telnyx::Calls::ActionTransferParams::RecordRedaction::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                Telnyx::Calls::ActionTransferParams::RecordRedaction::TaggedSymbol
               ]
             )
           end

@@ -5,8 +5,8 @@ module Telnyx
     module AI
       module Collections
         # The type of Telnyx data attached as a source. `bucket` requires an additional
-        # `bucket_id`. Only `voice` is searchable today; `meeting_bot`, `message`, and
-        # `bucket` attach but are not yet searchable (Coming soon).
+        # `bucket_id`. `voice`, `meeting_bot`, `message`, `email`, and `whatsapp` are
+        # searchable today; `bucket` attaches but is not yet searchable (Coming soon).
         module SourceType
           extend Telnyx::Internal::Type::Enum
 
@@ -25,6 +25,10 @@ module Telnyx
             T.let(:message, Telnyx::AI::Collections::SourceType::TaggedSymbol)
           BUCKET =
             T.let(:bucket, Telnyx::AI::Collections::SourceType::TaggedSymbol)
+          EMAIL =
+            T.let(:email, Telnyx::AI::Collections::SourceType::TaggedSymbol)
+          WHATSAPP =
+            T.let(:whatsapp, Telnyx::AI::Collections::SourceType::TaggedSymbol)
 
           sig do
             override.returns(

@@ -79,6 +79,8 @@ module Telnyx
           record_custom_file_name: String,
           record_format: Telnyx::CallDialParams::RecordFormat::OrSymbol,
           record_max_length: Integer,
+          record_redaction:
+            T::Array[Telnyx::CallDialParams::RecordRedaction::OrSymbol],
           record_timeout_secs: Integer,
           record_track: Telnyx::CallDialParams::RecordTrack::OrSymbol,
           record_trim: Telnyx::CallDialParams::RecordTrim::OrSymbol,
@@ -277,6 +279,13 @@ module Telnyx
         # specified. The minimum value is 0. The maximum value is 43200. The default value
         # is 0 (infinite).
         record_max_length: nil,
+        # Applies to the recording started with `record`. Silences spoken details of the
+        # given kinds in the recording: `pci` (card number, expiry date, security code),
+        # `pii` (personal details such as names, phone numbers, addresses and other
+        # identifying numbers) and `phi` (health details such as medications, doses and
+        # conditions). Redaction works on English speech only. Redacted recordings are
+        # charged at the Deepgram speech-to-text rate.
+        record_redaction: nil,
         # The number of seconds that Telnyx will wait for the recording to be stopped if
         # silence is detected when `record` is specified. The timer only starts when the
         # speech is detected. Please note that call transcription is used to detect

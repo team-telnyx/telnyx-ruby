@@ -51,6 +51,17 @@ module Telnyx
         #   @return [Boolean, nil]
         optional :play_beep, Telnyx::Internal::Type::Boolean
 
+        # @!attribute redaction
+        #   Silences spoken details of the given kinds in the recording: `pci` (card number,
+        #   expiry date, security code), `pii` (personal details such as names, phone
+        #   numbers, addresses and other identifying numbers) and `phi` (health details such
+        #   as medications, doses and conditions). Redaction works on English speech only.
+        #   Redacted recordings are charged at the Deepgram speech-to-text rate.
+        #
+        #   @return [Array<Symbol, Telnyx::Models::Conferences::ActionRecordStartParams::Redaction>, nil]
+        optional :redaction,
+                 -> { Telnyx::Internal::Type::ArrayOf[enum: Telnyx::Conferences::ActionRecordStartParams::Redaction] }
+
         # @!attribute region
         #   Region where the conference data is located. Defaults to the region defined in
         #   user's data locality settings (Europe or US).
@@ -65,7 +76,7 @@ module Telnyx
         #   @return [Symbol, Telnyx::Models::Conferences::ActionRecordStartParams::Trim, nil]
         optional :trim, enum: -> { Telnyx::Conferences::ActionRecordStartParams::Trim }
 
-        # @!method initialize(id:, format_:, channels: nil, command_id: nil, custom_file_name: nil, play_beep: nil, region: nil, trim: nil, request_options: {})
+        # @!method initialize(id:, format_:, channels: nil, command_id: nil, custom_file_name: nil, play_beep: nil, redaction: nil, region: nil, trim: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::Conferences::ActionRecordStartParams} for more details.
         #
@@ -80,6 +91,8 @@ module Telnyx
         #   @param custom_file_name [String] The custom recording file name to be used instead of the default `call_leg_id`.
         #
         #   @param play_beep [Boolean] If enabled, a beep sound will be played at the start of a recording.
+        #
+        #   @param redaction [Array<Symbol, Telnyx::Models::Conferences::ActionRecordStartParams::Redaction>] Silences spoken details of the given kinds in the recording: `pci` (card number,
         #
         #   @param region [Symbol, Telnyx::Models::Conferences::ConferenceRegion] Region where the conference data is located. Defaults to the region defined in u
         #
@@ -106,6 +119,17 @@ module Telnyx
 
           SINGLE = :single
           DUAL = :dual
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
+
+        module Redaction
+          extend Telnyx::Internal::Type::Enum
+
+          PCI = :pci
+          PII = :pii
+          PHI = :phi
 
           # @!method self.values
           #   @return [Array<Symbol>]

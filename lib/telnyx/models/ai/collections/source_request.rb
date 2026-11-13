@@ -7,8 +7,8 @@ module Telnyx
         class SourceRequest < Telnyx::Internal::Type::BaseModel
           # @!attribute source_type
           #   The type of Telnyx data attached as a source. `bucket` requires an additional
-          #   `bucket_id`. Only `voice` is searchable today; `meeting_bot`, `message`, and
-          #   `bucket` attach but are not yet searchable (Coming soon).
+          #   `bucket_id`. `voice`, `meeting_bot`, `message`, `email`, and `whatsapp` are
+          #   searchable today; `bucket` attaches but is not yet searchable (Coming soon).
           #
           #   @return [Symbol, Telnyx::Models::AI::Collections::SourceType]
           required :source_type, enum: -> { Telnyx::AI::Collections::SourceType }
